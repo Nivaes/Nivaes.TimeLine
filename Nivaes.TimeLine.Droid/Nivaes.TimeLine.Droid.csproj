@@ -1,11 +1,20 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <TargetFramework>monoandroid10.0</TargetFramework>
+    <Title>Nivaes Timeline Android</Title>
+    <Product>TimeLine Android</Product>
+    <Description>Nivaes TimeLIne for Andorid.</Description>
+    <PackageTags>Nivaes;TimeLine</PackageTags>
+
     <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
 
-    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <!--<AndroidUseAapt2>true</AndroidUseAapt2>-->
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Images\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for Xamarin Android</Description>
@@ -13,7 +22,7 @@
     <PackageTags>xamarin;android;timeline</PackageTags>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine.Droid</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine</RepositoryUrl>
     <DesignTimeBuild>true</DesignTimeBuild>
   </PropertyGroup>
 
