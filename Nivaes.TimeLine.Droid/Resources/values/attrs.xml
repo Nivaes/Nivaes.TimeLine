@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <declare-styleable name="timeline_style" >
+        <attr name="marketColor" format="color|reference"/>
+        <attr name="lineColor" format="color|reference"/>
+        <attr name="markerSize" format="dimension"/>
+        <attr name="lineSize" format="dimension"/>
+        <attr name="lineOrientation" format="enum">
+            <enum name="verticalLeft" value="1"/>
+            <enum name="verticalRight" value="2"/>
+            <enum name="horizontalTop" value="3"/>
+            <enum name="horizontalBottom" value="4"/>
+        </attr>
+        <attr name="linePadding" format="dimension"/>
+        <attr name="markerInCenter" format="boolean"/>
+        <attr name="markerType" format="enum">
+            <enum name="positionMarker" value="1" />
+            <enum name="iconMarker" value="2" />
+            <enum name="textMarker" value="3" />
+            <enum name="icon" value="4" />
+        </attr> 
+    </declare-styleable>
+</resources>

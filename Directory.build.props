@@ -1,0 +1,29 @@
+﻿<Project>
+  <PropertyGroup>
+    <Copyright>Copyright (c) Nivaes Systems S.L.</Copyright>
+    <PackageLicenseUrl>http://opensource.org/licenses/ms-pl</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Nivaes</PackageProjectUrl>
+    <PackageIconUrl>https://i.imgur.com/D3CfFea.png</PackageIconUrl>
+    <Authors>Nivaes Systems</Authors>
+    <Owners>Nivaes</Owners>
+    <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+   
+    <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))</RepoRoot>
+    <BaseOutputPath>$(RepoRoot)Artifacts\$(Configuration)\bin\$(MSBuildProjectName)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(RepoRoot)Artifacts\$(Configuration)\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+
+    <NeutralLanguage>en</NeutralLanguage>
+    <Version>0.0.35</Version>
+
+    <!--<LangVersion>latest</LangVersion>-->
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);1591;1701;1702;1705;VSX1000</NoWarn>
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+
+    <DebugType>full</DebugType>
+    <IsTestProject>$(MSBuildProjectName.Contains('UnitTest'))</IsTestProject>
+  </PropertyGroup>
+</Project>

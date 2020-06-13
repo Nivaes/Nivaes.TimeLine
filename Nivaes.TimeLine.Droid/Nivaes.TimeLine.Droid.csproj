@@ -1,0 +1,40 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>
+    <TargetFramework>monoandroid10.0</TargetFramework>
+    <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
+
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'!='Debug'">
+    <Description>Time Line packages for Xamarin Android</Description>
+    <PackageId>Nivaes.TimeLine</PackageId>
+    <PackageTags>xamarin;android;timeline</PackageTags>
+    <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine.Droid</RepositoryUrl>
+    <DesignTimeBuild>true</DesignTimeBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Resources\*.cs" />
+    <Compile Remove="Resources\*.cs" />
+    <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateGeneratedFiles" />
+    <AndroidResource Include="Resources\**\*.jpg" Generator="MSBuild:UpdateGeneratedFiles" />
+    <AndroidResource Include="Resources\**\*.gif" Generator="MSBuild:UpdateGeneratedFiles" />
+    <AndroidResource Include="Resources\**\*.png" Generator="MSBuild:UpdateGeneratedFiles" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.6.1" />
+  </ItemGroup>
+
+</Project>

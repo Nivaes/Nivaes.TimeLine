@@ -1,0 +1,15 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>
+    <TargetFramework>Xamarin.iOS10</TargetFramework>
+    <AssemblyName>Nivaes.TimeLine.iOS</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.iOS</RootNamespace>
+    <PackageId>Nivaes.TimeLine.iOS</PackageId>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
