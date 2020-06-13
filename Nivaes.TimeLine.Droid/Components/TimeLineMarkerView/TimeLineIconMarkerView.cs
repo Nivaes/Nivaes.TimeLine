@@ -2,8 +2,8 @@
 {
     using Android.Content;
     using Android.Graphics.Drawables;
-    using Android.Support.Graphics.Drawable;
-    using Android.Support.V4.Content.Res;
+    using AndroidX.VectorDrawable.Graphics.Drawable;
+    using AndroidX.Core.Content.Resources;
 
     internal sealed class TimeLineIconMarkerView
         : TimeLineMarkerView

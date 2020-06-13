@@ -9,10 +9,10 @@
     using Android.Content.Res;
     using Android.Graphics;
     using Android.Runtime;
-    using Android.Support.V7.Widget;
     using Android.Util;
     using Android.Views;
     using Android.Widget;
+    using AndroidX.RecyclerView.Widget;
 
     [Register("com.nivaes.TimeLineView")]
     public sealed class TimeLineView
@@ -75,16 +75,16 @@
 
         private void InitView(IAttributeSet attrs)
         {
-            TypedArray typedArray = base.Context.ObtainStyledAttributes(attrs, Resource.Styleable.timeline_style);
-            mTimeLineAttributes.LineColor = typedArray.GetColor(Resource.Styleable.timeline_style_lineColor, Color.LightBlue);
-            mTimeLineAttributes.MarketColor = typedArray.GetColor(Resource.Styleable.timeline_style_marketColor, Color.Blue);
-            mTimeLineAttributes.MarkerSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_markerSize, TimeLineHelpers.DpToPx(20, base.Context));
-            mTimeLineAttributes.LineSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_lineSize, TimeLineHelpers.DpToPx(2, base.Context));
-            mTimeLineAttributes.LineOrientation = (TimeLineOrientation)typedArray.GetInt(Resource.Styleable.timeline_style_lineOrientation, (short)TimeLineOrientation.VerticalLeft);
-            mTimeLineAttributes.LinePadding = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_linePadding, 0);
-            mTimeLineAttributes.MarkerInCenter = typedArray.GetBoolean(Resource.Styleable.timeline_style_markerInCenter, true);
-            mTimeLineAttributes.MarkerType = (TimeLineMarkerType)typedArray.GetInt(Resource.Styleable.timeline_style_markerType, (short)TimeLineMarkerType.PositionMarker);
-            typedArray.Recycle();
+            //TypedArray typedArray = base.Context.ObtainStyledAttributes(attrs, Resource.Styleable.timeline_style);
+            //mTimeLineAttributes.LineColor = typedArray.GetColor(Resource.Styleable.timeline_style_lineColor, Color.LightBlue);
+            //mTimeLineAttributes.MarketColor = typedArray.GetColor(Resource.Styleable.timeline_style_marketColor, Color.Blue);
+            //mTimeLineAttributes.MarkerSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_markerSize, TimeLineHelpers.DpToPx(20, base.Context));
+            //mTimeLineAttributes.LineSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_lineSize, TimeLineHelpers.DpToPx(2, base.Context));
+            //mTimeLineAttributes.LineOrientation = (TimeLineOrientation)typedArray.GetInt(Resource.Styleable.timeline_style_lineOrientation, (short)TimeLineOrientation.VerticalLeft);
+            //mTimeLineAttributes.LinePadding = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_linePadding, 0);
+            //mTimeLineAttributes.MarkerInCenter = typedArray.GetBoolean(Resource.Styleable.timeline_style_markerInCenter, true);
+            //mTimeLineAttributes.MarkerType = (TimeLineMarkerType)typedArray.GetInt(Resource.Styleable.timeline_style_markerType, (short)TimeLineMarkerType.PositionMarker);
+            //typedArray.Recycle();
 
             InitView();
         }
@@ -278,7 +278,7 @@
                 linearLayout.Clickable = true;
 
                 TypedValue tv = new TypedValue();
-                context.Theme.ResolveAttribute(Resource.Attribute.selectableItemBackground, tv, true);
+                //context.Theme.ResolveAttribute(Resource.Attribute.selectableItemBackground, tv, true);
                 linearLayout.SetBackgroundResource(tv.ResourceId);
 
                 TimeLineContentViewHolder = timeLineContentViewHolder;

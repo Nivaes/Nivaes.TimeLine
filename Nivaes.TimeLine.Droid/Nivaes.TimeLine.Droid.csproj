@@ -9,7 +9,7 @@
     <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
 
-    <!--<AndroidUseAapt2>true</AndroidUseAapt2>-->
+    <AndroidUseAapt2>true</AndroidUseAapt2>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,12 +27,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Resources\*.cs" />
-    <Compile Remove="Resources\*.cs" />
-    <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateGeneratedFiles" />
-    <AndroidResource Include="Resources\**\*.jpg" Generator="MSBuild:UpdateGeneratedFiles" />
-    <AndroidResource Include="Resources\**\*.gif" Generator="MSBuild:UpdateGeneratedFiles" />
-    <AndroidResource Include="Resources\**\*.png" Generator="MSBuild:UpdateGeneratedFiles" />
+    <!--<None Include="Resources\*.cs" />
+    <Compile Remove="Resources\*.cs" />-->
+    <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
+    <AndroidResource Include="Resources\**\*.jpg" Generator="MSBuild:UpdateAndroidResources" />
+    <AndroidResource Include="Resources\**\*.gif" Generator="MSBuild:UpdateAndroidResources" />
+    <AndroidResource Include="Resources\**\*.png" Generator="MSBuild:UpdateAndroidResources" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,10 +40,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.6.1" />
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.1.0.1" />
+    <PackageReference Include="Xamarin.AndroidX.VectorDrawable" Version="1.1.0.1" />
   </ItemGroup>
 
 </Project>

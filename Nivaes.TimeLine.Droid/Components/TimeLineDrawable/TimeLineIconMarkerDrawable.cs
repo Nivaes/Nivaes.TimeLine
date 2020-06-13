@@ -3,7 +3,7 @@
     using Android.Content.Res;
     using Android.Graphics;
     using Android.Graphics.Drawables;
-    using Android.Support.Graphics.Drawable;
+    using AndroidX.VectorDrawable.Graphics.Drawable;
 
     /// <summary>Text drawable.</summary>
     internal sealed class TimeLineIconMarkerDrawable
@@ -38,7 +38,7 @@
         #endregion
 
         #region VectorDrawable
-        private VectorDrawableCompat mVectorDrawable;
+        private  VectorDrawableCompat mVectorDrawable;
 
         public VectorDrawableCompat VectorDrawable
         {
