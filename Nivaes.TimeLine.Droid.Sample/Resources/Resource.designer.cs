@@ -25,6 +25,231 @@ namespace Nivaes.TimeLine.Droid.Sample
 		
 		public static void UpdateIdValues()
 		{
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.alpha = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.alpha;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fastScrollEnabled = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fastScrollEnabled;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.font = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.font;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontProviderAuthority = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontProviderAuthority;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontProviderCerts = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontProviderCerts;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontProviderFetchStrategy = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontProviderFetchStrategy;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontProviderFetchTimeout = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontProviderFetchTimeout;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontProviderPackage = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontProviderPackage;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontProviderQuery = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontProviderQuery;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontStyle = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontStyle;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontVariationSettings = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontVariationSettings;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.fontWeight = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.fontWeight;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.layoutManager = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.layoutManager;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.lineColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.lineColor;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.lineOrientation = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.lineOrientation;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.linePadding = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.linePadding;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.lineSize = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.lineSize;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.markerInCenter = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.markerInCenter;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.markerSize = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.markerSize;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.markerType = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.markerType;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.marketColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.marketColor;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.recyclerViewStyle = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.recyclerViewStyle;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.reverseLayout = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.reverseLayout;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.spanCount = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.spanCount;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.stackFromEnd = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.stackFromEnd;
+			global::Nivaes.TimeLine.Droid.Resource.Attribute.ttcIndex = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.ttcIndex;
+			global::Nivaes.TimeLine.Droid.Resource.Color.notification_action_color_filter = global::Nivaes.TimeLine.Droid.Sample.Resource.Color.notification_action_color_filter;
+			global::Nivaes.TimeLine.Droid.Resource.Color.notification_icon_bg_color = global::Nivaes.TimeLine.Droid.Sample.Resource.Color.notification_icon_bg_color;
+			global::Nivaes.TimeLine.Droid.Resource.Color.ripple_material_light = global::Nivaes.TimeLine.Droid.Sample.Resource.Color.ripple_material_light;
+			global::Nivaes.TimeLine.Droid.Resource.Color.secondary_text_default_material_light = global::Nivaes.TimeLine.Droid.Sample.Resource.Color.secondary_text_default_material_light;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.compat_button_inset_horizontal_material = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.compat_button_inset_vertical_material = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.compat_button_inset_vertical_material;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.compat_button_padding_horizontal_material = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.compat_button_padding_vertical_material = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.compat_button_padding_vertical_material;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.compat_control_corner_material = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.compat_control_corner_material;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.compat_notification_large_icon_max_height = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.compat_notification_large_icon_max_width = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.fastscroll_default_thickness = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.fastscroll_default_thickness;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.fastscroll_margin = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.fastscroll_margin;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.fastscroll_minimum_range = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.fastscroll_minimum_range;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_action_icon_size = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_action_icon_size;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_action_text_size = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_action_text_size;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_big_circle_margin = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_big_circle_margin;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_content_margin_start = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_content_margin_start;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_large_icon_height = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_large_icon_height;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_large_icon_width = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_large_icon_width;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_main_column_padding_top = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_main_column_padding_top;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_media_narrow_margin = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_media_narrow_margin;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_right_icon_size = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_right_icon_size;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_right_side_padding_top = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_right_side_padding_top;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_small_icon_background_padding = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_small_icon_background_padding;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_small_icon_size_as_large = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_small_icon_size_as_large;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_subtext_size = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_subtext_size;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_top_pad = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_top_pad;
+			global::Nivaes.TimeLine.Droid.Resource.Dimension.notification_top_pad_large_text = global::Nivaes.TimeLine.Droid.Sample.Resource.Dimension.notification_top_pad_large_text;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_action_background = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_action_background;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_bg = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_bg;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_bg_low = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_bg_low;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_bg_low_normal = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_bg_low_normal;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_bg_low_pressed = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_bg_low_pressed;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_bg_normal = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_bg_normal;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_bg_normal_pressed = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_bg_normal_pressed;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_icon_background = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_icon_background;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_template_icon_bg = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_template_icon_bg;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_template_icon_low_bg = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_template_icon_low_bg;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notification_tile_bg = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notification_tile_bg;
+			global::Nivaes.TimeLine.Droid.Resource.Drawable.notify_panel_notification_icon_bg = global::Nivaes.TimeLine.Droid.Sample.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_action_clickable_span = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_action_clickable_span;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_0 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_0;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_1 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_1;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_10 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_10;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_11 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_11;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_12 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_12;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_13 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_13;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_14 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_14;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_15 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_15;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_16 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_16;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_17 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_17;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_18 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_18;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_19 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_19;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_2 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_2;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_20 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_20;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_21 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_21;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_22 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_22;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_23 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_23;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_24 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_24;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_25 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_25;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_26 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_26;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_27 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_27;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_28 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_28;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_29 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_29;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_3 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_3;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_30 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_30;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_31 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_31;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_4 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_4;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_5 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_5;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_6 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_6;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_7 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_7;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_8 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_8;
+			global::Nivaes.TimeLine.Droid.Resource.Id.accessibility_custom_action_9 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.accessibility_custom_action_9;
+			global::Nivaes.TimeLine.Droid.Resource.Id.actions = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.actions;
+			global::Nivaes.TimeLine.Droid.Resource.Id.action_container = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.action_container;
+			global::Nivaes.TimeLine.Droid.Resource.Id.action_divider = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.action_divider;
+			global::Nivaes.TimeLine.Droid.Resource.Id.action_image = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.action_image;
+			global::Nivaes.TimeLine.Droid.Resource.Id.action_text = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.action_text;
+			global::Nivaes.TimeLine.Droid.Resource.Id.async = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.async;
+			global::Nivaes.TimeLine.Droid.Resource.Id.blocking = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.blocking;
+			global::Nivaes.TimeLine.Droid.Resource.Id.chronometer = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.chronometer;
+			global::Nivaes.TimeLine.Droid.Resource.Id.dialog_button = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.dialog_button;
+			global::Nivaes.TimeLine.Droid.Resource.Id.forever = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.forever;
+			global::Nivaes.TimeLine.Droid.Resource.Id.horizontalBottom = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.horizontalBottom;
+			global::Nivaes.TimeLine.Droid.Resource.Id.horizontalTop = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.horizontalTop;
+			global::Nivaes.TimeLine.Droid.Resource.Id.icon = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.icon;
+			global::Nivaes.TimeLine.Droid.Resource.Id.iconMarker = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.iconMarker;
+			global::Nivaes.TimeLine.Droid.Resource.Id.icon_group = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.icon_group;
+			global::Nivaes.TimeLine.Droid.Resource.Id.info = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.info;
+			global::Nivaes.TimeLine.Droid.Resource.Id.italic = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.italic;
+			global::Nivaes.TimeLine.Droid.Resource.Id.item_touch_helper_previous_elevation = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.item_touch_helper_previous_elevation;
+			global::Nivaes.TimeLine.Droid.Resource.Id.line1 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.line1;
+			global::Nivaes.TimeLine.Droid.Resource.Id.line3 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.line3;
+			global::Nivaes.TimeLine.Droid.Resource.Id.normal = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.normal;
+			global::Nivaes.TimeLine.Droid.Resource.Id.notification_background = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.notification_background;
+			global::Nivaes.TimeLine.Droid.Resource.Id.notification_main_column = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.notification_main_column;
+			global::Nivaes.TimeLine.Droid.Resource.Id.notification_main_column_container = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.notification_main_column_container;
+			global::Nivaes.TimeLine.Droid.Resource.Id.positionMarker = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.positionMarker;
+			global::Nivaes.TimeLine.Droid.Resource.Id.right_icon = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.right_icon;
+			global::Nivaes.TimeLine.Droid.Resource.Id.right_side = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.right_side;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_accessibility_actions = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_accessibility_actions;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_accessibility_clickable_spans = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_accessibility_clickable_spans;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_accessibility_heading = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_accessibility_heading;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_accessibility_pane_title = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_accessibility_pane_title;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_screen_reader_focusable = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_screen_reader_focusable;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_transition_group = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_transition_group;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_unhandled_key_event_manager = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_unhandled_key_event_manager;
+			global::Nivaes.TimeLine.Droid.Resource.Id.tag_unhandled_key_listeners = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.tag_unhandled_key_listeners;
+			global::Nivaes.TimeLine.Droid.Resource.Id.text = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.text;
+			global::Nivaes.TimeLine.Droid.Resource.Id.text2 = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.text2;
+			global::Nivaes.TimeLine.Droid.Resource.Id.textMarker = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.textMarker;
+			global::Nivaes.TimeLine.Droid.Resource.Id.time = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.time;
+			global::Nivaes.TimeLine.Droid.Resource.Id.title = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.title;
+			global::Nivaes.TimeLine.Droid.Resource.Id.verticalLeft = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.verticalLeft;
+			global::Nivaes.TimeLine.Droid.Resource.Id.verticalRight = global::Nivaes.TimeLine.Droid.Sample.Resource.Id.verticalRight;
+			global::Nivaes.TimeLine.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::Nivaes.TimeLine.Droid.Sample.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Nivaes.TimeLine.Droid.Resource.Layout.custom_dialog = global::Nivaes.TimeLine.Droid.Sample.Resource.Layout.custom_dialog;
+			global::Nivaes.TimeLine.Droid.Resource.Layout.notification_action = global::Nivaes.TimeLine.Droid.Sample.Resource.Layout.notification_action;
+			global::Nivaes.TimeLine.Droid.Resource.Layout.notification_action_tombstone = global::Nivaes.TimeLine.Droid.Sample.Resource.Layout.notification_action_tombstone;
+			global::Nivaes.TimeLine.Droid.Resource.Layout.notification_template_custom_big = global::Nivaes.TimeLine.Droid.Sample.Resource.Layout.notification_template_custom_big;
+			global::Nivaes.TimeLine.Droid.Resource.Layout.notification_template_icon_group = global::Nivaes.TimeLine.Droid.Sample.Resource.Layout.notification_template_icon_group;
+			global::Nivaes.TimeLine.Droid.Resource.Layout.notification_template_part_chronometer = global::Nivaes.TimeLine.Droid.Sample.Resource.Layout.notification_template_part_chronometer;
+			global::Nivaes.TimeLine.Droid.Resource.Layout.notification_template_part_time = global::Nivaes.TimeLine.Droid.Sample.Resource.Layout.notification_template_part_time;
+			global::Nivaes.TimeLine.Droid.Resource.String.status_bar_notification_info_overflow = global::Nivaes.TimeLine.Droid.Sample.Resource.String.status_bar_notification_info_overflow;
+			global::Nivaes.TimeLine.Droid.Resource.Style.TextAppearance_Compat_Notification = global::Nivaes.TimeLine.Droid.Sample.Resource.Style.TextAppearance_Compat_Notification;
+			global::Nivaes.TimeLine.Droid.Resource.Style.TextAppearance_Compat_Notification_Info = global::Nivaes.TimeLine.Droid.Sample.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::Nivaes.TimeLine.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::Nivaes.TimeLine.Droid.Sample.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::Nivaes.TimeLine.Droid.Resource.Style.TextAppearance_Compat_Notification_Time = global::Nivaes.TimeLine.Droid.Sample.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::Nivaes.TimeLine.Droid.Resource.Style.TextAppearance_Compat_Notification_Title = global::Nivaes.TimeLine.Droid.Sample.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::Nivaes.TimeLine.Droid.Resource.Style.Widget_Compat_NotificationActionContainer = global::Nivaes.TimeLine.Droid.Sample.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::Nivaes.TimeLine.Droid.Resource.Style.Widget_Compat_NotificationActionText = global::Nivaes.TimeLine.Droid.Sample.Resource.Style.Widget_Compat_NotificationActionText;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.ColorStateListItem = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.ColorStateListItem;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.ColorStateListItem_alpha = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.ColorStateListItem_alpha;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.ColorStateListItem_android_alpha = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.ColorStateListItem_android_color = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.ColorStateListItem_android_color;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamily = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamily;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_android_font = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_android_font;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_font = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_font;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_fontStyle = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_fontWeight = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamilyFont_ttcIndex = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamily_fontProviderAuthority = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamily_fontProviderCerts = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamily_fontProviderPackage = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.FontFamily_fontProviderQuery = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColorItem = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColorItem;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColorItem_android_color = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColorItem_android_color;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColorItem_android_offset = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColorItem_android_offset;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_centerColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_centerColor;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_centerX = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_centerX;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_centerY = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_centerY;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_endColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_endColor;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_endX = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_endX;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_endY = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_endY;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_gradientRadius = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_startColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_startColor;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_startX = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_startX;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_startY = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_startY;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_tileMode = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_tileMode;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.GradientColor_android_type = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.GradientColor_android_type;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_android_clipToPadding = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_android_clipToPadding;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_android_orientation = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_android_orientation;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_layoutManager = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_layoutManager;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_reverseLayout = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_reverseLayout;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_spanCount = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_spanCount;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.RecyclerView_stackFromEnd = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_lineColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_lineColor;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_lineOrientation = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_lineOrientation;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_linePadding = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_linePadding;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_lineSize = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_lineSize;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_markerInCenter = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_markerInCenter;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_markerSize = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_markerSize;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_markerType = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_markerType;
+			global::Nivaes.TimeLine.Droid.Resource.Styleable.timeline_style_marketColor = global::Nivaes.TimeLine.Droid.Sample.Resource.Styleable.timeline_style_marketColor;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::Nivaes.TimeLine.Droid.Sample.Resource.Attribute.font;
@@ -3370,76 +3595,82 @@ namespace Nivaes.TimeLine.Droid.Sample
 			public const int design_snackbar_background = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int ic_check = 2131165292;
+			public const int ic_budget = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
-			public const int ic_check_circle = 2131165293;
+			public const int ic_camera = 2131165293;
 			
 			// aapt resource value: 0x7F07006E
-			public const int ic_chevron_left = 2131165294;
+			public const int ic_check = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int ic_chevron_right = 2131165295;
+			public const int ic_check_circle = 2131165295;
 			
 			// aapt resource value: 0x7F070070
-			public const int ic_mtrl_chip_checked_black = 2131165296;
+			public const int ic_chevron_left = 2131165296;
 			
 			// aapt resource value: 0x7F070071
-			public const int ic_mtrl_chip_checked_circle = 2131165297;
+			public const int ic_chevron_right = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int ic_mtrl_chip_close_circle = 2131165298;
+			public const int ic_mtrl_chip_checked_black = 2131165298;
 			
 			// aapt resource value: 0x7F070073
-			public const int mtrl_snackbar_background = 2131165299;
+			public const int ic_mtrl_chip_checked_circle = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int mtrl_tabs_default_indicator = 2131165300;
+			public const int ic_mtrl_chip_close_circle = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int navigation_empty_icon = 2131165301;
+			public const int mtrl_snackbar_background = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int notification_action_background = 2131165302;
+			public const int mtrl_tabs_default_indicator = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int notification_bg = 2131165303;
+			public const int navigation_empty_icon = 2131165303;
 			
 			// aapt resource value: 0x7F070078
-			public const int notification_bg_low = 2131165304;
+			public const int notification_action_background = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int notification_bg_low_normal = 2131165305;
+			public const int notification_bg = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int notification_bg_low_pressed = 2131165306;
+			public const int notification_bg_low = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int notification_bg_normal = 2131165307;
+			public const int notification_bg_low_normal = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
-			public const int notification_bg_normal_pressed = 2131165308;
+			public const int notification_bg_low_pressed = 2131165308;
 			
 			// aapt resource value: 0x7F07007D
-			public const int notification_icon_background = 2131165309;
+			public const int notification_bg_normal = 2131165309;
 			
 			// aapt resource value: 0x7F07007E
-			public const int notification_template_icon_bg = 2131165310;
+			public const int notification_bg_normal_pressed = 2131165310;
 			
 			// aapt resource value: 0x7F07007F
-			public const int notification_template_icon_low_bg = 2131165311;
+			public const int notification_icon_background = 2131165311;
 			
 			// aapt resource value: 0x7F070080
-			public const int notification_tile_bg = 2131165312;
+			public const int notification_template_icon_bg = 2131165312;
 			
 			// aapt resource value: 0x7F070081
-			public const int notify_panel_notification_icon_bg = 2131165313;
+			public const int notification_template_icon_low_bg = 2131165313;
 			
 			// aapt resource value: 0x7F070082
-			public const int tooltip_frame_dark = 2131165314;
+			public const int notification_tile_bg = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int tooltip_frame_light = 2131165315;
+			public const int notify_panel_notification_icon_bg = 2131165315;
+			
+			// aapt resource value: 0x7F070084
+			public const int tooltip_frame_dark = 2131165316;
+			
+			// aapt resource value: 0x7F070085
+			public const int tooltip_frame_light = 2131165317;
 			
 			static Drawable()
 			{

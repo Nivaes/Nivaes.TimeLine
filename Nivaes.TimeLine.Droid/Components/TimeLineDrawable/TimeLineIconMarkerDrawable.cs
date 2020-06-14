@@ -10,7 +10,7 @@
         : TimeLineMarkerDrawable
     {
         #region Properties
-        private readonly Paint? mPaintIcon;
+        private readonly Paint? mPaintIcon = null;
 
         #region BitmapDrawable
         private BitmapDrawable? mBitmapDrawable = null;

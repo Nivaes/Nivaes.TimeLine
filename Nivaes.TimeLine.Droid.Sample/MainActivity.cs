@@ -12,6 +12,8 @@ namespace Nivaes.TimeLine.Droid.Sample
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        private TestTimeLineAdapter? mTestTimeLineAdapter = null;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,7 +34,7 @@ namespace Nivaes.TimeLine.Droid.Sample
                 },
                 new TestTimeLineItem
                 {
-                    IconResource = Resource.Drawable.ic_calendar,
+                    IconResource = Resource.Drawable.ic_camera,
                     Title = "2",
                     Message = "Two"
                 },
@@ -48,8 +50,8 @@ namespace Nivaes.TimeLine.Droid.Sample
                 }
             };
 
-            var timeLineAdapter = new TestTimeLineAdapter(items, true);
-            timeLine.SetAdapter(timeLineAdapter);
+            mTestTimeLineAdapter = new TestTimeLineAdapter(items, true);
+            timeLine.SetAdapter(mTestTimeLineAdapter);
             timeLine.MarkerType = TimeLineMarkerType.Icon;
             timeLine.TimeLinePositioin = -1;
         }
@@ -59,6 +61,16 @@ namespace Nivaes.TimeLine.Droid.Sample
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if(disposing)
+            {
+                mTestTimeLineAdapter?.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
 
         private class TestTimeLineAdapter
