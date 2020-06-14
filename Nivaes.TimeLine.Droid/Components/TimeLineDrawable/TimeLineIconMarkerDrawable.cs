@@ -1,6 +1,5 @@
 ﻿namespace Nivaes.TimeLine.Droid
 {
-    using System.Diagnostics.CodeAnalysis;
     using Android.Content.Res;
     using Android.Graphics;
     using Android.Graphics.Drawables;
@@ -11,14 +10,12 @@
         : TimeLineMarkerDrawable
     {
         #region Properties
-        [AllowNull]
-        private readonly Paint mPaintIcon;
+        private readonly Paint? mPaintIcon;
 
         #region BitmapDrawable
-        [AllowNull]
-        private BitmapDrawable mBitmapDrawable;
+        private BitmapDrawable? mBitmapDrawable = null;
 
-        public BitmapDrawable BitmapDrawable
+        public BitmapDrawable? BitmapDrawable
         {
             get => mBitmapDrawable;
             set
@@ -27,7 +24,7 @@
                 {
                     mBitmapDrawable = value;
 
-                    if (mBitmapDrawable == null)
+                    if (value == null)
                     {
                         mIntrinsicWidth = 0;
                     }
@@ -38,12 +35,14 @@
                 }
             }
         }
+
+        private PorterDuffColorFilter? mPorterDuffColorFilter = null;
         #endregion
 
         #region VectorDrawable
-        private  VectorDrawableCompat mVectorDrawable;
+        private VectorDrawableCompat? mVectorDrawable = null;
 
-        public VectorDrawableCompat VectorDrawable
+        public VectorDrawableCompat? VectorDrawable
         {
             get => mVectorDrawable;
             set
@@ -52,7 +51,7 @@
                 {
                     mVectorDrawable = value;
 
-                    if (mVectorDrawable == null)
+                    if (value == null)
                     {
                         mIntrinsicWidth = 0;
                     }
@@ -83,13 +82,13 @@
             {
                 if (MarketPosition != TimeLinePositionType.NoMarket)
                 {
-                    mPaintIcon.SetStyle(Paint.Style.Fill);
-                    mPaintIcon.Color = Color.White;
+                    mPaintIcon?.SetStyle(Paint.Style.Fill);
+                    mPaintIcon!.Color = Color.White;
                 }
                 else
                 {
-                    mPaintIcon.SetStyle(Paint.Style.Fill);
-                    mPaintIcon.Color = base.Color;
+                    mPaintIcon?.SetStyle(Paint.Style.Fill);
+                    mPaintIcon!.Color = base.Color;
                 }
 
                 Rect bounds = base.Bounds;
@@ -101,11 +100,11 @@
             {
                 if (MarketPosition != TimeLinePositionType.NoMarket)
                 {
-                    mVectorDrawable.SetColorFilter(new PorterDuffColorFilter(Color.White, PorterDuff.Mode.SrcIn));
+                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(Color.White, PorterDuff.Mode.SrcIn));
                 }
                 else
                 {
-                    mVectorDrawable.SetColorFilter(new PorterDuffColorFilter(base.Color, PorterDuff.Mode.SrcIn));
+                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(base.Color, PorterDuff.Mode.SrcIn));
                 }
 
                 var bounds = base.Bounds;
@@ -114,6 +113,18 @@
                 mVectorDrawable.SetBounds(bounds.Left + reduction, bounds.Top + reduction, bounds.Right - reduction, bounds.Bottom - reduction);
                 mVectorDrawable.Draw(canvas);
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                mBitmapDrawable?.Dispose();
+                mVectorDrawable?.Dispose();
+                mPorterDuffColorFilter?.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
     }
 }

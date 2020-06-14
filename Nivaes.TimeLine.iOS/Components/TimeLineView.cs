@@ -13,30 +13,30 @@
         : UITableView
     {
         #region Properties
-        private TimeLineAttributes mTimeLineAttributes;
+        private TimeLineAttributes? mTimeLineAttributes = null;
 
-        public TimeLineMarkerType MarkerType
+        public TimeLineMarkerType? MarkerType
         {
-            get => mTimeLineAttributes.MarkerType;
-            set => mTimeLineAttributes.MarkerType = value;
+            get => mTimeLineAttributes!.MarkerType;
+            set => mTimeLineAttributes!.MarkerType = value;
         }
 
-        public UIColor MarketColor
+        public UIColor? MarketColor
         {
-            get => mTimeLineAttributes.MarketColor;
-            set => mTimeLineAttributes.MarketColor = value;
+            get => mTimeLineAttributes!.MarketColor;
+            set => mTimeLineAttributes!.MarketColor = value;
         }
 
-        public UIColor LineColor
+        public UIColor? LineColor
         {
-            get => mTimeLineAttributes.LineColor;
-            set => mTimeLineAttributes.LineColor = value;
+            get => mTimeLineAttributes!.LineColor;
+            set => mTimeLineAttributes!.LineColor = value;
         }
 
         public int TimeLinePositioin
         {
-            get => mTimeLineAttributes.TimeLinePositioin;
-            set => mTimeLineAttributes.TimeLinePositioin = value;
+            get => mTimeLineAttributes!.TimeLinePositioin;
+            set => mTimeLineAttributes!.TimeLinePositioin = value;
         }
         #endregion
 
@@ -105,16 +105,14 @@
         {
             base.AutoresizingMask = UIViewAutoresizing.All;
             base.SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine;
-            base.SeparatorColor = mTimeLineAttributes.LineColor;
+            base.SeparatorColor = mTimeLineAttributes!.LineColor;
             base.SeparatorInset = new UIEdgeInsets(0, mTimeLineAttributes.MarkerSize + 20, 0, 0);
             base.TableFooterView = new UIView();
         }
 
         public void SetSource(TimeLineTableViewSource source)
         {
-            if (source == null) throw new ArgumentNullException(nameof(source));
-
-            base.Source = source;
+            base.Source = source ?? throw new ArgumentNullException(nameof(source));
 
             source.TimeLineAttributes = mTimeLineAttributes;
         }
@@ -123,11 +121,11 @@
             : UITableViewCell
         {
             #region Properties
-            private readonly TimeLineAttributes mTimeLineAttributes;
+            private readonly TimeLineAttributes? mTimeLineAttributes = null;
 
-            private readonly UIView mTimeLineView;
+            private readonly UIView? mTimeLineView = null;
 
-            private UIView mContectView;
+            private UIView? mContectView = null;
             #endregion
 
             internal TimeLineTableViewCell(NSString cellId,
@@ -212,7 +210,7 @@
                 }
             }
 
-            internal void UpdateMarket(TimeLinePositionType timeLinePositionType, UIColor startColor, UIColor endColor)
+            internal void UpdateMarket(TimeLinePositionType timeLinePositionType, UIColor? startColor, UIColor? endColor)
             {
                 if (mTimeLineView is TimeLineMarkerView mTimeLineMarkerView)
                 {
@@ -234,7 +232,7 @@
         {
             #region TimeLines
             private readonly NSString cellIdentifier = new NSString("TimeLineTableCell");
-            internal TimeLineAttributes TimeLineAttributes { get; set; }
+            internal TimeLineAttributes? TimeLineAttributes { get; set; }
             private nfloat mRowHeight;
 
             private TimeLineItem[] mTimeLines;
@@ -288,19 +286,19 @@
                 cell.UpdateCell(timeLineItem, contentView);
 
                 TimeLinePositionType timeLinePositionType;
-                UIColor startColor;
-                UIColor endColor;
-                if (TimeLineAttributes.TimeLinePositioin < indexPath.Row)
+                UIColor? startColor;
+                UIColor? endColor;
+                if (TimeLineAttributes!.TimeLinePositioin < indexPath.Row)
                 {
                     timeLinePositionType = TimeLinePositionType.NoMarket;
-                    startColor = TimeLineAttributes.LineColor;
-                    endColor = TimeLineAttributes.LineColor;
+                    startColor = TimeLineAttributes!.LineColor;
+                    endColor = TimeLineAttributes!.LineColor;
                 }
                 else if (TimeLineAttributes.TimeLinePositioin > indexPath.Row)
                 {
                     timeLinePositionType = TimeLinePositionType.Market;
-                    startColor = TimeLineAttributes.MarketColor;
-                    endColor = TimeLineAttributes.MarketColor;
+                    startColor = TimeLineAttributes!.MarketColor;
+                    endColor = TimeLineAttributes!.MarketColor;
                 }
                 else
                 {

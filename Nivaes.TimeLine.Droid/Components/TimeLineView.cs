@@ -17,7 +17,7 @@
 
     [Register("com.nivaes.TimeLineView")]
     public sealed class TimeLineView
-        : RecyclerView, IDisposable
+        : RecyclerView
     {
         #region Properties
         private readonly TimeLineAttributes mTimeLineAttributes = new TimeLineAttributes();
@@ -35,6 +35,9 @@
         }
 
         public ObservableCollection<ITimeLineItem> Items { get; } = new ObservableCollection<ITimeLineItem>();
+
+        private DefaultItemAnimator? mDefaultItemAnimator = null;
+        private LinearLayoutManager? mLinearLayoutManager = null;
         #endregion
 
         #region Constructors
@@ -67,11 +70,11 @@
             base.OverScrollMode = OverScrollMode.Never;
 
             if (mTimeLineAttributes.LineOrientation == TimeLineOrientation.VerticalLeft || mTimeLineAttributes.LineOrientation == TimeLineOrientation.VerticalRight)
-                base.SetLayoutManager(new LinearLayoutManager(base.Context, LinearLayoutManager.Vertical, false));
+                base.SetLayoutManager(mLinearLayoutManager = new LinearLayoutManager(base.Context, LinearLayoutManager.Vertical, false));
             else
-                base.SetLayoutManager(new LinearLayoutManager(base.Context, LinearLayoutManager.Horizontal, false));
+                base.SetLayoutManager(mLinearLayoutManager = new LinearLayoutManager(base.Context, LinearLayoutManager.Horizontal, false));
 
-            base.SetItemAnimator(new DefaultItemAnimator());
+            base.SetItemAnimator(mDefaultItemAnimator = new DefaultItemAnimator());
         }
 
         private void InitView(IAttributeSet attrs)
@@ -118,8 +121,9 @@
         {
             public IEnumerable<ITimeLineItem> Items { get; private set; }
 
-            [AllowNull]
             internal TimeLineAttributes? TimeLineAttributes { get; set; } = null;
+
+            private BlendModeColorFilter? mBlendModeColorFilter = null;
 
             protected TimeLineAdapter(IEnumerable<ITimeLineItem> items)
                 : base()
@@ -137,90 +141,94 @@
 
                 var timeLineViewHolder = (TimeLineMarketViewHolder)holder;
 
-                var timeLineItem = Items.ElementAt(position);
+                if (timeLineViewHolder?.TimeLineMarker != null)
+                {
+                    var timeLineItem = Items.ElementAt(position);
 
-                timeLineViewHolder.Click = timeLineItem.Click;
-                timeLineViewHolder.LongClick = timeLineItem.LongClick;
+                    timeLineViewHolder.Click = timeLineItem.Click;
+                    timeLineViewHolder.LongClick = timeLineItem.LongClick;
 
-                if (TimeLineAttributes!.MarkerType == TimeLineMarkerType.Icon)
-                {
-                    timeLineViewHolder.Image.SetImageResource(timeLineItem.IconResource);
-                    timeLineViewHolder.Image.Drawable?.SetColorFilter(new BlendModeColorFilter(TimeLineAttributes!.LineColor, BlendMode.SrcIn));
-                }
-                else if (!timeLineItem.ShowMarker)
-                {
-                    timeLineViewHolder.TimeLineMarker.Visibility = ViewStates.Invisible;
-                }
-                else
-                {
-                    BindingTypeLineMarker(timeLineViewHolder.TimeLineMarker, position);
-                    switch (TimeLineAttributes.MarkerType)
+                    if (TimeLineAttributes!.MarkerType == TimeLineMarkerType.Icon)
                     {
-                        case TimeLineMarkerType.TextMarker:
-                            ((TimeLineTextMarkerView)timeLineViewHolder.TimeLineMarker).MarkerText = timeLineItem.MarkerText;
-                            break;
-                        case TimeLineMarkerType.IconMarker:
-                            ((TimeLineIconMarkerView)timeLineViewHolder.TimeLineMarker).IconResource = timeLineItem.IconResource;
-                            break;
+                        timeLineViewHolder.Image?.SetImageResource(timeLineItem.IconResource);
+                        timeLineViewHolder.Image?.Drawable?.SetColorFilter(mBlendModeColorFilter = new BlendModeColorFilter(TimeLineAttributes!.LineColor, BlendMode.SrcIn));
                     }
-                }
+                    else if (!timeLineItem.ShowMarker)
+                    {
+                        timeLineViewHolder!.TimeLineMarker!.Visibility = ViewStates.Invisible;
+                    }
+                    else
+                    {
+                        BindingTypeLineMarker(timeLineViewHolder!.TimeLineMarker, position);
 
-                OnBindViewHolder(timeLineViewHolder.TimeLineContentViewHolder, position);
+                        switch (TimeLineAttributes.MarkerType)
+                        {
+                            case TimeLineMarkerType.TextMarker:
+                                ((TimeLineTextMarkerView)timeLineViewHolder.TimeLineMarker).MarkerText = timeLineItem.MarkerText;
+                                break;
+                            case TimeLineMarkerType.IconMarker:
+                                ((TimeLineIconMarkerView)timeLineViewHolder.TimeLineMarker).IconResource = timeLineItem.IconResource;
+                                break;
+                        }
+                    }
+
+                    OnBindViewHolder(timeLineViewHolder.TimeLineContentViewHolder, position);
+                }
             }
 
-            public abstract void OnBindViewHolder(TimeLineContentViewHolder holder, int position);
+            public abstract void OnBindViewHolder(TimeLineContentViewHolder? holder, int position);
 
-            private void BindingTypeLineMarker(TimeLineMarkerView timeLineMarkerView, int position)
+            private void BindingTypeLineMarker(TimeLineMarkerView? timeLineMarkerView, int position)
             {
                 if (TimeLineAttributes!.TimeLinePositioin < position)
                 {
-                    timeLineMarkerView.MarketPosition = TimeLinePositionType.NoMarket;
-                    timeLineMarkerView.StartColor = TimeLineAttributes.LineColor;
-                    timeLineMarkerView.EndColor = TimeLineAttributes.LineColor;
+                    timeLineMarkerView!.MarketPosition = TimeLinePositionType.NoMarket;
+                    timeLineMarkerView!.StartColor = TimeLineAttributes.LineColor;
+                    timeLineMarkerView!.EndColor = TimeLineAttributes.LineColor;
                 }
                 else if (TimeLineAttributes!.TimeLinePositioin > position)
                 {
-                    timeLineMarkerView.MarketPosition = TimeLinePositionType.Market;
-                    timeLineMarkerView.StartColor = TimeLineAttributes.MarketColor;
-                    timeLineMarkerView.EndColor = TimeLineAttributes.MarketColor;
+                    timeLineMarkerView!.MarketPosition = TimeLinePositionType.Market;
+                    timeLineMarkerView!.StartColor = TimeLineAttributes.MarketColor;
+                    timeLineMarkerView!.EndColor = TimeLineAttributes.MarketColor;
                 }
                 else
                 {
-                    timeLineMarkerView.MarketPosition = TimeLinePositionType.MarketPosition;
-                    timeLineMarkerView.StartColor = TimeLineAttributes.MarketColor;
-                    timeLineMarkerView.EndColor = TimeLineAttributes.LineColor;
+                    timeLineMarkerView!.MarketPosition = TimeLinePositionType.MarketPosition;
+                    timeLineMarkerView!.StartColor = TimeLineAttributes.MarketColor;
+                    timeLineMarkerView!.EndColor = TimeLineAttributes.LineColor;
                 }
 
                 if (Items.Count() == 1)
                 {
-                    timeLineMarkerView.TimeLineType = TimeLineItemType.OnlyOne;
+                    timeLineMarkerView!.TimeLineType = TimeLineItemType.OnlyOne;
                 }
                 else if (position == 0)
                 {
                     if (!Items.ElementAt(1).ShowMarker)
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.OnlyOne;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.OnlyOne;
                     else
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.Begin;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Begin;
                 }
                 else if (position >= Items.Count() - 1)
                 {
                     if (!Items.ElementAt(position - 1).ShowMarker)
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.OnlyOne;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.OnlyOne;
                     else
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.End;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.End;
                 }
                 else
                 {
                     bool showEnd = Items.ElementAt(position + 1).ShowMarker;
                     bool showBegin = Items.ElementAt(position - 1).ShowMarker;
                     if (showEnd && showBegin)
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.Normal;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Normal;
                     else if (!showEnd)
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.End;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.End;
                     else if (!showBegin)
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.Begin;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Begin;
                     else
-                        timeLineMarkerView.TimeLineType = TimeLineItemType.Normal;
+                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Normal;
                 }
             }
 
@@ -237,53 +245,62 @@
             }
 
             public abstract TimeLineContentViewHolder OnCreateContentViewHolder(ViewGroup parent, int viewType);
+
+            protected override void Dispose(bool disposing)
+            {
+                if(disposing)
+                {
+                    mBlendModeColorFilter?.Dispose();
+                }
+
+                base.Dispose(disposing);
+            }
         }
 
         internal class TimeLineMarketViewHolder
             : RecyclerView.ViewHolder
         {
-            [AllowNull]
-            internal TimeLineContentViewHolder TimeLineContentViewHolder { get; set; } = null;
+            internal TimeLineContentViewHolder? TimeLineContentViewHolder { get; set; } = null;
 
-            [AllowNull]
-            internal TimeLineMarkerView TimeLineMarker { get; set; } = null;
+            internal TimeLineMarkerView? TimeLineMarker { get; set; } = null;
 
-            [AllowNull]
-            internal ImageView Image { get; set; } = null;
+            internal ImageView? Image { get; set; } = null;
+
+            private FrameLayout.LayoutParams? mMarkerLayoutParams = null;
 
             public TimeLineMarketViewHolder(Context context, LinearLayout linearLayout,
-                TimeLineContentViewHolder timeLineContentViewHolder, TimeLineAttributes timeLineAttributes)
+                TimeLineContentViewHolder timeLineContentViewHolder, TimeLineAttributes? timeLineAttributes)
                 : base(linearLayout)
             {
-                FrameLayout.LayoutParams? markerLayoutParams;
-                switch (timeLineAttributes.LineOrientation)
+                
+                switch (timeLineAttributes!.LineOrientation)
                 {
                     case TimeLineOrientation.VerticalLeft:
                         linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
                         linearLayout.Orientation = Android.Widget.Orientation.Horizontal;
                         linearLayout.SetPadding(20, 0, 20, 0);
-                        markerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
+                        mMarkerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
                         break;
                     case TimeLineOrientation.VerticalRight:
                         linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
                         linearLayout.Orientation = Android.Widget.Orientation.Horizontal;
                         linearLayout.SetPadding(20, 0, 20, 0);
-                        markerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
+                        mMarkerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
                         break;
                     case TimeLineOrientation.HorizontalTop:
                         linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
                         linearLayout.Orientation = Android.Widget.Orientation.Vertical;
                         linearLayout.SetPadding(0, 20, 0, 20);
-                        markerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
+                        mMarkerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
                         break;
                     case TimeLineOrientation.HorizontalBottom:
                         linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
                         linearLayout.Orientation = Android.Widget.Orientation.Vertical;
                         linearLayout.SetPadding(0, 20, 0, 20);
-                        markerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
+                        mMarkerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
                         break;
                     default:
-                        markerLayoutParams = null;
+                        mMarkerLayoutParams = null;
                         break;
                 }
                 linearLayout.Clickable = true;
@@ -305,7 +322,7 @@
                     case TimeLineMarkerType.TextMarker:
                         TimeLineMarker = new TimeLineTextMarkerView(context)
                         {
-                            LayoutParameters = markerLayoutParams,
+                            LayoutParameters = mMarkerLayoutParams,
                             TimeLineAttributes = timeLineAttributes
                         };
                         linearLayout.AddView(TimeLineMarker);
@@ -313,7 +330,7 @@
                     case TimeLineMarkerType.IconMarker:
                         TimeLineMarker = new TimeLineIconMarkerView(context)
                         {
-                            LayoutParameters = markerLayoutParams,
+                            LayoutParameters = mMarkerLayoutParams,
                             TimeLineAttributes = timeLineAttributes
                         };
                         linearLayout.AddView(TimeLineMarker);
@@ -321,7 +338,7 @@
                     case TimeLineMarkerType.PositionMarker:
                         TimeLineMarker = new TimeLinePositionMarkerView(context)
                         {
-                            LayoutParameters = markerLayoutParams,
+                            LayoutParameters = mMarkerLayoutParams,
                             TimeLineAttributes = timeLineAttributes
                         };
                         linearLayout.AddView(TimeLineMarker);
@@ -329,7 +346,7 @@
                     case TimeLineMarkerType.Icon:
                         Image = new ImageView(context)
                         {
-                            LayoutParameters = markerLayoutParams,
+                            LayoutParameters = mMarkerLayoutParams,
                         };
                         linearLayout.AddView(Image);
                         break;
@@ -412,6 +429,16 @@
                 }
             }
             #endregion
+
+            protected override void Dispose(bool disposing)
+            {
+                if(disposing)
+                {
+                    mMarkerLayoutParams?.Dispose();
+                }
+
+                base.Dispose(disposing);
+            }
         }
 
         public abstract class TimeLineContentViewHolder
@@ -422,5 +449,16 @@
             { }
         }
         #endregion
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                mDefaultItemAnimator?.Dispose();
+                mLinearLayoutManager?.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
     }
 }
