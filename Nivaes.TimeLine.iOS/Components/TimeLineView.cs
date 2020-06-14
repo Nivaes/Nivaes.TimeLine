@@ -316,7 +316,7 @@
 
             private TimeLineItemType BindingTypeLineMarker(NSIndexPath indexPath)
             {
-                if (mTimeLines.Count() == 1)
+                if (mTimeLines.Length == 1)
                 {
                     return TimeLineItemType.OnlyOne;
                 }
@@ -327,7 +327,7 @@
                     else
                         return TimeLineItemType.Begin;
                 }
-                else if (indexPath.Row >= mTimeLines.Count() - 1)
+                else if (indexPath.Row >= mTimeLines.Length - 1)
                 {
                     if (!mTimeLines[indexPath.Row - 1].ShowMarker)
                         return TimeLineItemType.OnlyOne;

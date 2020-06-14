@@ -118,7 +118,7 @@
             public IEnumerable<ITimeLineItem> Items { get; private set; }
             internal TimeLineAttributes TimeLineAttributes { get; set; }
 
-            public TimeLineAdapter(IEnumerable<ITimeLineItem> items)
+            protected TimeLineAdapter(IEnumerable<ITimeLineItem> items)
                 : base()
             {
                 Items = items;

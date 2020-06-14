@@ -3,4 +3,9 @@
     <color name="colorPrimary">#2c3e50</color>
     <color name="colorPrimaryDark">#1B3147</color>
     <color name="colorAccent">#3498db</color>
+
+    <color name="time_line_color">#C5D0DA</color>
+
+    <color name="list_primary_text_color">#FF4D5157</color>
+    <color name="list_secondary_text_color">#74797d</color>
 </resources>

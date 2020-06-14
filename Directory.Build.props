@@ -17,8 +17,7 @@
     <NeutralLanguage>en</NeutralLanguage>
     <Version>0.0.35</Version>
 
-    <!--<LangVersion>latest</LangVersion>-->
-    <LangVersion>preview</LangVersion>
+    <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>$(NoWarn);1591;1701;1702;1705;VSX1000</NoWarn>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>

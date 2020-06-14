@@ -1,7 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <com.nivaes.TimeLineView
+        android:id="@+id/time_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollIndicators="none"
+        app:lineColor="@color/time_line_color"
+        app:lineOrientation="verticalLeft"
+        app:linePadding="7dp"
+        app:lineSize="1dp"
+        app:markerInCenter="true"
+        app:markerSize="20dp"
+        app:marketColor="@color/colorPrimary" />
 </RelativeLayout>

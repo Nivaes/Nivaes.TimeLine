@@ -9,10 +9,10 @@
 
         bool ShowMarker { get; set; }
 
-        DependencyObject Icon { get; set; }
+        DependencyObject? Icon { get; set; }
 
-        ICommand Click { get; set; }
+        ICommand? Click { get; set; }
 
-        ICommand LongClick { get; set; }
+        ICommand? LongClick { get; set; }
     }
 }

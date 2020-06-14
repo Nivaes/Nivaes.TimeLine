@@ -9,7 +9,7 @@
     <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
 
-    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <!--<AndroidUseAapt2>true</AndroidUseAapt2>-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,8 +27,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--<None Include="Resources\*.cs" />
-    <Compile Remove="Resources\*.cs" />-->
+    <None Include="Resources\*.cs" />
+    <Compile Remove="Resources\*.cs" />
     <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
     <AndroidResource Include="Resources\**\*.jpg" Generator="MSBuild:UpdateAndroidResources" />
     <AndroidResource Include="Resources\**\*.gif" Generator="MSBuild:UpdateAndroidResources" />

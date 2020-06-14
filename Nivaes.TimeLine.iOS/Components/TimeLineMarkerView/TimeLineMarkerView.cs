@@ -9,18 +9,22 @@
         : UIView
     {
         #region Properties
-        private CAShapeLayer mShapeLayer;
-        private TimeLineAttributes mTimeLineAttributes;
-        private CATextLayer mMarketLayer;
-        private CAShapeLayer mStartLineLayer;
-        private CAShapeLayer mEndLineLayer;
+        private CAShapeLayer? mShapeLayer;
+        private readonly TimeLineAttributes mTimeLineAttributes;
+        private CATextLayer? mMarketLayer = null;
+        private CAShapeLayer? mStartLineLayer;
+        private CAShapeLayer? mEndLineLayer;
 
         private readonly TimeLineItemType mTimeLineType;
 
         public string MarketText
         {
-            get => mMarketLayer.String;
-            set => mMarketLayer.String = value;
+            get => mMarketLayer?.String ?? string.Empty;
+            set
+            {
+                if(mMarketLayer != null)
+                    mMarketLayer.String = value;
+            }
         }
         #endregion
 
