@@ -41,10 +41,10 @@ namespace Nivaes.TimeLine.Droid.Sample
                 }
             };
 
-            var timeLineAdapter = new TestTimeLineAdapter(items, true);
-            timeLine.SetAdapter(timeLineAdapter);
-            timeLine.MarkerType = TimeLineMarkerType.Icon;
-            timeLine.TimeLinePositioin = -1;
+            //var timeLineAdapter = new TestTimeLineAdapter(items, true);
+            //timeLine.SetAdapter(timeLineAdapter);
+            //timeLine.MarkerType = TimeLineMarkerType.Icon;
+            //timeLine.TimeLinePositioin = -1;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

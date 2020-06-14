@@ -19,7 +19,7 @@
         : RecyclerView
     {
         #region Properties
-        private TimeLineAttributes mTimeLineAttributes = new TimeLineAttributes();
+        private readonly TimeLineAttributes mTimeLineAttributes = new TimeLineAttributes();
 
         public int TimeLinePositioin
         {
@@ -247,7 +247,7 @@
                 TimeLineContentViewHolder timeLineContentViewHolder, TimeLineAttributes timeLineAttributes)
                 : base(linearLayout)
             {
-                FrameLayout.LayoutParams markerLayoutParams = null;
+                FrameLayout.LayoutParams? markerLayoutParams;
                 switch (timeLineAttributes.LineOrientation)
                 {
                     case TimeLineOrientation.VerticalLeft:
@@ -274,10 +274,13 @@
                         linearLayout.SetPadding(0, 20, 0, 20);
                         markerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
                         break;
+                    default:
+                        markerLayoutParams = null;
+                        break;
                 }
                 linearLayout.Clickable = true;
 
-                TypedValue tv = new TypedValue();
+                using TypedValue tv = new TypedValue();
                 //context.Theme.ResolveAttribute(Resource.Attribute.selectableItemBackground, tv, true);
                 linearLayout.SetBackgroundResource(tv.ResourceId);
 
