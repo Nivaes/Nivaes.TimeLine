@@ -9,7 +9,11 @@
     <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
 
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <!--<AndroidUseAapt2>true</AndroidUseAapt2>-->
+    <AndroidUseManagedDesignTimeResourceGenerator>False</AndroidUseManagedDesignTimeResourceGenerator>
   </PropertyGroup>
 
   <ItemGroup>

@@ -75,16 +75,16 @@
 
         private void InitView(IAttributeSet attrs)
         {
-            //TypedArray typedArray = base.Context.ObtainStyledAttributes(attrs, Resource.Styleable.timeline_style);
-            //mTimeLineAttributes.LineColor = typedArray.GetColor(Resource.Styleable.timeline_style_lineColor, Color.LightBlue);
-            //mTimeLineAttributes.MarketColor = typedArray.GetColor(Resource.Styleable.timeline_style_marketColor, Color.Blue);
-            //mTimeLineAttributes.MarkerSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_markerSize, TimeLineHelpers.DpToPx(20, base.Context));
-            //mTimeLineAttributes.LineSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_lineSize, TimeLineHelpers.DpToPx(2, base.Context));
-            //mTimeLineAttributes.LineOrientation = (TimeLineOrientation)typedArray.GetInt(Resource.Styleable.timeline_style_lineOrientation, (short)TimeLineOrientation.VerticalLeft);
-            //mTimeLineAttributes.LinePadding = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_linePadding, 0);
-            //mTimeLineAttributes.MarkerInCenter = typedArray.GetBoolean(Resource.Styleable.timeline_style_markerInCenter, true);
-            //mTimeLineAttributes.MarkerType = (TimeLineMarkerType)typedArray.GetInt(Resource.Styleable.timeline_style_markerType, (short)TimeLineMarkerType.PositionMarker);
-            //typedArray.Recycle();
+            TypedArray typedArray = base.Context.ObtainStyledAttributes(attrs, Resource.Styleable.timeline_style);
+            mTimeLineAttributes.LineColor = typedArray.GetColor(Resource.Styleable.timeline_style_lineColor, Color.LightBlue);
+            mTimeLineAttributes.MarketColor = typedArray.GetColor(Resource.Styleable.timeline_style_marketColor, Color.Blue);
+            mTimeLineAttributes.MarkerSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_markerSize, TimeLineHelpers.DpToPx(20, base.Context));
+            mTimeLineAttributes.LineSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_lineSize, TimeLineHelpers.DpToPx(2, base.Context));
+            mTimeLineAttributes.LineOrientation = (TimeLineOrientation)typedArray.GetInt(Resource.Styleable.timeline_style_lineOrientation, (short)TimeLineOrientation.VerticalLeft);
+            mTimeLineAttributes.LinePadding = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_linePadding, 0);
+            mTimeLineAttributes.MarkerInCenter = typedArray.GetBoolean(Resource.Styleable.timeline_style_markerInCenter, true);
+            mTimeLineAttributes.MarkerType = (TimeLineMarkerType)typedArray.GetInt(Resource.Styleable.timeline_style_markerType, (short)TimeLineMarkerType.PositionMarker);
+            typedArray.Recycle();
 
             InitView();
         }
@@ -116,7 +116,7 @@
             : RecyclerView.Adapter
         {
             public IEnumerable<ITimeLineItem> Items { get; private set; }
-            internal TimeLineAttributes TimeLineAttributes { get; set; }
+            internal TimeLineAttributes? TimeLineAttributes { get; set; }
 
             protected TimeLineAdapter(IEnumerable<ITimeLineItem> items)
                 : base()
@@ -139,10 +139,10 @@
                 timeLineViewHolder.Click = timeLineItem.Click;
                 timeLineViewHolder.LongClick = timeLineItem.LongClick;
 
-                if (TimeLineAttributes.MarkerType == TimeLineMarkerType.Icon)
+                if (TimeLineAttributes!.MarkerType == TimeLineMarkerType.Icon)
                 {
                     timeLineViewHolder.Image.SetImageResource(timeLineItem.IconResource);
-                    timeLineViewHolder.Image.Drawable?.SetColorFilter(TimeLineAttributes.LineColor, PorterDuff.Mode.SrcIn);
+                    timeLineViewHolder.Image.Drawable?.SetColorFilter(new BlendModeColorFilter(TimeLineAttributes!.LineColor, BlendMode.SrcIn));
                 }
                 else if (!timeLineItem.ShowMarker)
                 {
@@ -169,13 +169,13 @@
 
             private void BindingTypeLineMarker(TimeLineMarkerView timeLineMarkerView, int position)
             {
-                if (TimeLineAttributes.TimeLinePositioin < position)
+                if (TimeLineAttributes!.TimeLinePositioin < position)
                 {
                     timeLineMarkerView.MarketPosition = TimeLinePositionType.NoMarket;
                     timeLineMarkerView.StartColor = TimeLineAttributes.LineColor;
                     timeLineMarkerView.EndColor = TimeLineAttributes.LineColor;
                 }
-                else if (TimeLineAttributes.TimeLinePositioin > position)
+                else if (TimeLineAttributes!.TimeLinePositioin > position)
                 {
                     timeLineMarkerView.MarketPosition = TimeLinePositionType.Market;
                     timeLineMarkerView.StartColor = TimeLineAttributes.MarketColor;
@@ -225,7 +225,7 @@
             {
                 if (parent == null) throw new ArgumentNullException(nameof(parent));
 
-                var linearLayout = new LinearLayout(parent.Context);
+                using var linearLayout = new LinearLayout(parent.Context);
 
                 var vimeLineContentViewHolder = OnCreateContentViewHolder(parent, viewType);
 
