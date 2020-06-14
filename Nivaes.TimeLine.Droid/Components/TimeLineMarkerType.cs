@@ -1,7 +1,7 @@
 ﻿namespace Nivaes.TimeLine.Droid
 {
     public enum TimeLineMarkerType
-        : short
+        : byte
     {
         PositionMarker = 1,
         IconMarker = 2,

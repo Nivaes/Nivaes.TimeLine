@@ -5,7 +5,6 @@ using Android.Runtime;
 using System.Collections.Generic;
 using Android.Views;
 using Android.Widget;
-using Nivaes.TimeLine.Droid;
 using System.Linq;
 
 namespace Nivaes.TimeLine.Droid.Sample
@@ -25,19 +24,27 @@ namespace Nivaes.TimeLine.Droid.Sample
             var items = new[]{
                 new TestTimeLineItem
                 {
-                    Title = "1", Message = "One"
+                    ShowMarker = true,
+                    IconResource = Resource.Drawable.ic_budget,
+                    MarkerText = "1",
+                    Title = "1",
+                    Message = "One",
                 },
                 new TestTimeLineItem
                 {
-                    Title = "2", Message = "Two"
+                    IconResource = Resource.Drawable.ic_calendar,
+                    Title = "2",
+                    Message = "Two"
                 },
                 new TestTimeLineItem
                 {
-                    Title = "3", Message = "Three"
+                    Title = "3",
+                    Message = "Three"
                 },
                 new TestTimeLineItem
                 {
-                    Title = "4", Message = "Four"
+                    Title = "4",
+                    Message = "Four"
                 }
             };
 
@@ -119,8 +126,8 @@ namespace Nivaes.TimeLine.Droid.Sample
         private class TestTimeLineItem
             : TimeLineItem, ITimeLineItem
         {
-            public string Title { get; set; }
-            public string Message { get; set; }
+            public string Title { get; set; } = string.Empty;
+            public string Message { get; set; } = string.Empty;
         }
     }
 }

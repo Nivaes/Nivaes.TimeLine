@@ -1,7 +1,7 @@
 ﻿namespace Nivaes.TimeLine.Droid
 {
     public enum TimeLineOrientation
-        : short
+        : byte
     {
         VerticalLeft = 1,
         VerticalRight = 2,

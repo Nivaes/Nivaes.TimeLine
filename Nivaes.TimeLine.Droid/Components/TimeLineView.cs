@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Windows.Input;
     using Android.Content;
@@ -16,7 +17,7 @@
 
     [Register("com.nivaes.TimeLineView")]
     public sealed class TimeLineView
-        : RecyclerView
+        : RecyclerView, IDisposable
     {
         #region Properties
         private readonly TimeLineAttributes mTimeLineAttributes = new TimeLineAttributes();
@@ -116,7 +117,9 @@
             : RecyclerView.Adapter
         {
             public IEnumerable<ITimeLineItem> Items { get; private set; }
-            internal TimeLineAttributes? TimeLineAttributes { get; set; }
+
+            [AllowNull]
+            internal TimeLineAttributes? TimeLineAttributes { get; set; } = null;
 
             protected TimeLineAdapter(IEnumerable<ITimeLineItem> items)
                 : base()
@@ -239,9 +242,14 @@
         internal class TimeLineMarketViewHolder
             : RecyclerView.ViewHolder
         {
-            internal TimeLineContentViewHolder TimeLineContentViewHolder { get; set; }
-            internal TimeLineMarkerView TimeLineMarker { get; set; }
-            internal ImageView Image { get; set; }
+            [AllowNull]
+            internal TimeLineContentViewHolder TimeLineContentViewHolder { get; set; } = null;
+
+            [AllowNull]
+            internal TimeLineMarkerView TimeLineMarker { get; set; } = null;
+
+            [AllowNull]
+            internal ImageView Image { get; set; } = null;
 
             public TimeLineMarketViewHolder(Context context, LinearLayout linearLayout,
                 TimeLineContentViewHolder timeLineContentViewHolder, TimeLineAttributes timeLineAttributes)
@@ -373,12 +381,12 @@
             }
 
             #region Command
-            private ICommand mClick;
+            [AllowNull]
+            private ICommand mClick = null;
 
             internal ICommand Click
             {
                 get => mClick;
-
                 set
                 {
                     if (!ReferenceEquals(mClick, value))
@@ -388,7 +396,8 @@
                 }
             }
 
-            private ICommand mLongClick;
+            [AllowNull]
+            private ICommand mLongClick = null;
 
             internal ICommand LongClick
             {

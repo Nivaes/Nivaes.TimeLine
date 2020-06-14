@@ -22,7 +22,7 @@
 
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for Xamarin Android</Description>
-    <PackageId>Nivaes.TimeLine</PackageId>
+    <PackageId>Nivaes.TimeLine.Droid</PackageId>
     <PackageTags>xamarin;android;timeline</PackageTags>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

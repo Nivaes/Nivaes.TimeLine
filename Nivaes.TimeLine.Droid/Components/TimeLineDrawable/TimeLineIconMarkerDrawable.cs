@@ -1,5 +1,6 @@
 ﻿namespace Nivaes.TimeLine.Droid
 {
+    using System.Diagnostics.CodeAnalysis;
     using Android.Content.Res;
     using Android.Graphics;
     using Android.Graphics.Drawables;
@@ -10,9 +11,11 @@
         : TimeLineMarkerDrawable
     {
         #region Properties
-        private Paint mPaintIcon;
+        [AllowNull]
+        private readonly Paint mPaintIcon;
 
         #region BitmapDrawable
+        [AllowNull]
         private BitmapDrawable mBitmapDrawable;
 
         public BitmapDrawable BitmapDrawable

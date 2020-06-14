@@ -70,7 +70,7 @@
 
                 Rect bounds = base.Bounds;
 
-                var textBoundRect = new Rect();
+                using var textBoundRect = new Rect();
                 mPaintText.GetTextBounds(mText, 0, Text.Length, textBoundRect);
                 var textHeight = textBoundRect.Height() - base.LineStroke / 2f;
 

@@ -4,25 +4,31 @@
     using Android.Graphics;
     using Android.Graphics.Drawables;
     using Android.Views;
+    using System.Diagnostics.CodeAnalysis;
 
     internal abstract class TimeLineMarkerView
         : View
     {
         #region Properties
-        internal TimeLineMarkerDrawable Marker { get; set; }
+        [AllowNull]
+        internal TimeLineMarkerDrawable Marker { get; set; } = null;
 
-        private Drawable mStartLine;
-        private Drawable mEndLine;
+        [AllowNull]
+        private Drawable mStartLine = null;
+
+        [AllowNull]
+        private Drawable mEndLine = null;
 
         internal Color StartColor
         {
-            get => Marker.Color;
-            set => Marker.Color = value;
+            get => Marker!.Color;
+            set => Marker!.Color = value;
         }
 
         internal Color EndColor { get; set; }
 
-        internal TimeLineAttributes TimeLineAttributes { get; set; }
+        [AllowNull]
+        internal TimeLineAttributes TimeLineAttributes { get; set; } = null;
 
         internal TimeLinePositionType MarketPosition
         {
@@ -31,8 +37,9 @@
         }
 
         internal TimeLineItemType TimeLineType { get; set; }
-        
-        private Rect mBounds;
+
+        [AllowNull]
+        private Rect mBounds = null;
         #endregion
 
         #region Constructors

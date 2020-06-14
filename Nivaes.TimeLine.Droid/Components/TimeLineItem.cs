@@ -1,18 +1,25 @@
 ﻿namespace Nivaes.TimeLine.Droid
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Windows.Input;
 
-    public class TimeLineItem
+    public abstract class TimeLineItem
         : ITimeLineItem
     {
+        protected TimeLineItem()
+        {
+        }
+
         public string MarkerText { get; set; } = string.Empty;
 
         public bool ShowMarker { get; set; }
 
         public int IconResource { get; set; }
 
-        public ICommand? Click { get; set; }      
+        [AllowNull]
+        public ICommand Click { get; set; } = null;
 
-        public ICommand? LongClick { get; set; }
+        [AllowNull]
+        public ICommand LongClick { get; set; } = null;
     }
 }
