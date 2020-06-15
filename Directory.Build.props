@@ -15,7 +15,7 @@
     <BaseIntermediateOutputPath>$(RepoRoot)Artifacts\$(Configuration)\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
 
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>0.1.35</Version>
+    <Version>0.1.37</Version>
 
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
