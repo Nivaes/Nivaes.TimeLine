@@ -210,7 +210,7 @@
                 }
             }
 
-            internal void UpdateMarket(TimeLinePositionType timeLinePositionType, UIColor? startColor, UIColor? endColor)
+            internal void UpdateMarket(TimeLinePositionType timeLinePositionType, UIColor startColor, UIColor endColor)
             {
                 if (mTimeLineView is TimeLineMarkerView mTimeLineMarkerView)
                 {
@@ -307,7 +307,7 @@
                     endColor = TimeLineAttributes.LineColor;
                 }
 
-                cell.UpdateMarket(timeLinePositionType, startColor, endColor);
+                cell.UpdateMarket(timeLinePositionType, startColor!, endColor!);
 
                 return cell;
             }

@@ -82,8 +82,8 @@
             TypedArray typedArray = base.Context.ObtainStyledAttributes(attrs, Resource.Styleable.timeline_style);
             mTimeLineAttributes.LineColor = typedArray.GetColor(Resource.Styleable.timeline_style_lineColor, Color.LightBlue);
             mTimeLineAttributes.MarketColor = typedArray.GetColor(Resource.Styleable.timeline_style_marketColor, Color.Blue);
-            mTimeLineAttributes.MarkerSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_markerSize, TimeLineHelpers.DpToPx(20, base.Context));
-            mTimeLineAttributes.LineSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_lineSize, TimeLineHelpers.DpToPx(2, base.Context));
+            mTimeLineAttributes.MarkerSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_markerSize, (int)TimeLineHelpers.DpToPx(20, base.Context));
+            mTimeLineAttributes.LineSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_lineSize, (int)TimeLineHelpers.DpToPx(2, base.Context));
             mTimeLineAttributes.LineOrientation = (TimeLineOrientation)typedArray.GetInt(Resource.Styleable.timeline_style_lineOrientation, (short)TimeLineOrientation.VerticalLeft);
             mTimeLineAttributes.LinePadding = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_linePadding, 0);
             mTimeLineAttributes.MarkerInCenter = typedArray.GetBoolean(Resource.Styleable.timeline_style_markerInCenter, true);
@@ -141,26 +141,32 @@
 
                 var timeLineViewHolder = (TimeLineMarketViewHolder)holder;
 
-                if (timeLineViewHolder?.TimeLineMarker != null)
+                var timeLineItem = Items.ElementAt(position);
+
+                timeLineViewHolder.Click = timeLineItem.Click;
+                timeLineViewHolder.LongClick = timeLineItem.LongClick;
+
+                if (TimeLineAttributes!.MarkerType == TimeLineMarkerType.Icon)
                 {
-                    var timeLineItem = Items.ElementAt(position);
+                    timeLineViewHolder.Image?.SetImageResource(timeLineItem.IconResource);
 
-                    timeLineViewHolder.Click = timeLineItem.Click;
-                    timeLineViewHolder.LongClick = timeLineItem.LongClick;
+#if false
+                    //ToDo: Para quitar SetColorFilter obsoleta hay que solucionar el error. Java.Lang.ClassNotFoundException: 'Didn't find class "android.graphics.BlendMode" on path: 
+                    timeLineViewHolder.Image?.Drawable?.SetColorFilter(mBlendModeColorFilter = new BlendModeColorFilter(TimeLineAttributes!.LineColor, BlendMode.SrcIn));
+#endif
+                    timeLineViewHolder.Image?.Drawable?.SetColorFilter(TimeLineAttributes.LineColor, PorterDuff.Mode.SrcIn);
 
-                    if (TimeLineAttributes!.MarkerType == TimeLineMarkerType.Icon)
-                    {
-                        timeLineViewHolder.Image?.SetImageResource(timeLineItem.IconResource);
-                        timeLineViewHolder.Image?.Drawable?.SetColorFilter(mBlendModeColorFilter = new BlendModeColorFilter(TimeLineAttributes!.LineColor, BlendMode.SrcIn));
-                    }
-                    else if (!timeLineItem.ShowMarker)
-                    {
-                        timeLineViewHolder!.TimeLineMarker!.Visibility = ViewStates.Invisible;
-                    }
-                    else
-                    {
-                        BindingTypeLineMarker(timeLineViewHolder!.TimeLineMarker, position);
+                }
+                else if (!timeLineItem.ShowMarker)
+                {
+                    timeLineViewHolder!.TimeLineMarker!.Visibility = ViewStates.Invisible;
+                }
+                else
+                {
+                    BindingTypeLineMarker(timeLineViewHolder!.TimeLineMarker, position);
 
+                    if (timeLineViewHolder?.TimeLineMarker != null)
+                    {
                         switch (TimeLineAttributes.MarkerType)
                         {
                             case TimeLineMarkerType.TextMarker:
@@ -171,9 +177,9 @@
                                 break;
                         }
                     }
-
-                    OnBindViewHolder(timeLineViewHolder.TimeLineContentViewHolder, position);
                 }
+
+                OnBindViewHolder(timeLineViewHolder!.TimeLineContentViewHolder, position);
             }
 
             public abstract void OnBindViewHolder(TimeLineContentViewHolder? holder, int position);
@@ -248,7 +254,7 @@
 
             protected override void Dispose(bool disposing)
             {
-                if(disposing)
+                if (disposing)
                 {
                     mBlendModeColorFilter?.Dispose();
                 }
@@ -272,7 +278,6 @@
                 TimeLineContentViewHolder timeLineContentViewHolder, TimeLineAttributes? timeLineAttributes)
                 : base(linearLayout)
             {
-                
                 switch (timeLineAttributes!.LineOrientation)
                 {
                     case TimeLineOrientation.VerticalLeft:
@@ -397,7 +402,7 @@
                 }
             }
 
-            #region Command
+#region Command
             [AllowNull]
             private ICommand mClick = null;
 
@@ -419,7 +424,6 @@
             internal ICommand LongClick
             {
                 get => mLongClick;
-
                 set
                 {
                     if (!ReferenceEquals(mLongClick, value))
@@ -428,11 +432,11 @@
                     }
                 }
             }
-            #endregion
+#endregion
 
             protected override void Dispose(bool disposing)
             {
-                if(disposing)
+                if (disposing)
                 {
                     mMarkerLayoutParams?.Dispose();
                 }
@@ -448,7 +452,7 @@
                 : base(view)
             { }
         }
-        #endregion
+#endregion
 
         protected override void Dispose(bool disposing)
         {

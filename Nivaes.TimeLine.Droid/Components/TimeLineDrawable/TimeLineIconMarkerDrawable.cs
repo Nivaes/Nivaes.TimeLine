@@ -122,6 +122,7 @@
                 mBitmapDrawable?.Dispose();
                 mVectorDrawable?.Dispose();
                 mPorterDuffColorFilter?.Dispose();
+                mPaintIcon?.Dispose();
             }
 
             base.Dispose(disposing);

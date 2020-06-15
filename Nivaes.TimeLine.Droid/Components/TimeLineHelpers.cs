@@ -6,15 +6,14 @@
 
     internal static class TimeLineHelpers
     {
-        internal static int DpToPx(float dp, Context context)
+        internal static float DpToPx(float dp, Context context)
         {
             return DpToPx(dp, context.Resources);
         }
 
-        internal static int DpToPx(float dp, Resources resources)
+        internal static float DpToPx(float dp, Resources resources)
         {
-            float px = TypedValue.ApplyDimension(ComplexUnitType.Dip, dp, resources.DisplayMetrics);
-            return (int)px;
+            return TypedValue.ApplyDimension(ComplexUnitType.Dip, dp, resources.DisplayMetrics);
         }
     }
 }

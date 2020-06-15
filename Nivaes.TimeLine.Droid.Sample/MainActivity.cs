@@ -65,7 +65,7 @@ namespace Nivaes.TimeLine.Droid.Sample
 
         protected override void Dispose(bool disposing)
         {
-            if(disposing)
+            if (disposing)
             {
                 mTestTimeLineAdapter?.Dispose();
             }

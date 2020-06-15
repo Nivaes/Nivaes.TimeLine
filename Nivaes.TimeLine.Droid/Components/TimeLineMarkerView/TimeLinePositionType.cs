@@ -1,6 +1,7 @@
 ﻿namespace Nivaes.TimeLine.Droid
 {
-    internal enum TimeLinePositionType : short
+    internal enum TimeLinePositionType
+        : byte
     {
         Market,
         MarketPosition,
