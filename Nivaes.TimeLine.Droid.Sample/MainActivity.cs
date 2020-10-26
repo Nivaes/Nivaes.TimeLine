@@ -1,18 +1,18 @@
-﻿using Android.App;
-using Android.OS;
-using AndroidX.AppCompat.App;
-using Android.Runtime;
-using System.Collections.Generic;
-using Android.Views;
-using Android.Widget;
-using System.Linq;
-
-namespace Nivaes.TimeLine.Droid.Sample
+﻿namespace Nivaes.TimeLine.Droid.Sample
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Android.App;
+    using Android.OS;
+    using Android.Runtime;
+    using Android.Views;
+    using Android.Widget;
+    using AndroidX.AppCompat.App;
+
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private TestTimeLineAdapter? mTestTimeLineAdapter = null;
+        private TestTimeLineAdapter mTestTimeLineAdapter = null;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
