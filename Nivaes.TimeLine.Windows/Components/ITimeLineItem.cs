@@ -1,7 +1,7 @@
-﻿namespace Nivaes.TimeLine.UAP
+﻿namespace Nivaes.TimeLine.Windows
 {
     using System.Windows.Input;
-    using Windows.UI.Xaml;
+    using Microsoft.UI.Xaml;
 
     public interface ITimeLineItem
     {

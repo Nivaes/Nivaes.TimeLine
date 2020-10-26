@@ -1,4 +1,4 @@
-﻿namespace Nivaes.TimeLine.UAP
+﻿namespace Nivaes.TimeLine.Windows
 {
     public enum TimeLineMarkerType
     {

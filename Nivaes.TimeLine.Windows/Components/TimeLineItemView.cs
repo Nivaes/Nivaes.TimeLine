@@ -1,10 +1,10 @@
-﻿namespace Nivaes.TimeLine.UAP
+﻿namespace Nivaes.TimeLine.Windows
 {
     using System.Windows.Input;
-    using Windows.UI.Xaml;
-    using Windows.UI.Xaml.Controls;
-    using Windows.UI.Xaml.Input;
-    using Windows.UI.Xaml.Media;
+    using Microsoft.UI.Xaml;
+    using Microsoft.UI.Xaml.Controls;
+    using Microsoft.UI.Xaml.Input;
+    using Microsoft.UI.Xaml.Media;
 
     [TemplatePart(Name = "LeftTimeLineMarker", Type = typeof(TimeLineMarkerView))]
     [TemplatePart(Name = "RithTimeLineMarker", Type = typeof(TimeLineMarkerView))]
