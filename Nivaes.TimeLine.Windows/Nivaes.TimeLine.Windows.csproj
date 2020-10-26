@@ -1,15 +1,15 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>uap10.0.16299</TargetFramework>
-    <PackageId>Nivaes.TimeLine.UAP</PackageId>
-    <Title>Nivaes Timeline UAP</Title>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <PackageId>Nivaes.TimeLine.Windows</PackageId>
+    <Title>Nivaes Timeline Windows</Title>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-    <Product>TimeLine UAP</Product>
-    <Description>Nivaes TimeLine for UAP.</Description>
+    <Product>TimeLine Windows</Product>
+    <Description>Nivaes TimeLine for Windows.</Description>
     <PackageTags>Nivaes;TimeLine</PackageTags>
     
-    <AssemblyName>Nivaes.TimeLine.UAP</AssemblyName>
-    <RootNamespace>Nivaes.TimeLine.UAP</RootNamespace>
+    <AssemblyName>Nivaes.TimeLine.Windows</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.Windows</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for UAP</Description>
     <PackageId>Nivaes.TimeLine.UAP</PackageId>
-    <PackageTags>xamarin;UAP;timeline</PackageTags>
+    <PackageTags>UAP;WinRT;timeline</PackageTags>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine</RepositoryUrl>
@@ -27,10 +27,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />
+    <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview2.200713.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.3-rc3" />
   </ItemGroup>
+
 </Project>
 
