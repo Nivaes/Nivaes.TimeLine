@@ -1,9 +1,10 @@
-﻿namespace Nivaes.TimeLine.Windows
+﻿using Windows.Foundation.Collections;
+
+namespace Nivaes.TimeLine.Windows
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Windows.Foundation.Collections;
     using Microsoft.UI;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
@@ -150,11 +151,12 @@
             base.Items.VectorChanged += Items_VectorChanged;
         }
 
+
         private void Items_VectorChanged(IObservableVector<object> sender, IVectorChangedEventArgs @event)
         {
             for (int i = 0; i < base.Items.Count; i++)
             {
-                var timeLineItemView = ContainerFromIndex(i);
+                _ = ContainerFromIndex(i);
             }
         }
 
