@@ -1,7 +1,5 @@
 ﻿<Application
-    x:Class="Nivaes.TimeLine.UAP.Sample.App"
+    x:Class="Nivaes.TimeLine.WinUI.UWP.Sample.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Nivaes.TimeLine.UAP.Sample">
-
-</Application>
+    xmlns:local="using:Nivaes.TimeLine.WinUI.UWP.Sample" />

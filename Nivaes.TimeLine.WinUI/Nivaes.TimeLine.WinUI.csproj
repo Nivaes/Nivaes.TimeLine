@@ -1,16 +1,15 @@
-﻿<!--<Project Sdk="Microsoft.NET.Sdk">-->
-  <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <PackageId>Nivaes.TimeLine.Windows</PackageId>
-    <Title>Nivaes Timeline Windows</Title>
+    <TargetFrameworks>net5.0-windows10.0.17763.0</TargetFrameworks>
+
+    <Title>Nivaes Timeline WinUI</Title>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-    <Product>TimeLine Windows</Product>
-    <Description>Nivaes TimeLine for Windows.</Description>
+    <Product>TimeLine for Windows</Product>
+    <Description>Nivaes TimeLine for WinUI.</Description>
     <PackageTags>Nivaes;TimeLine</PackageTags>
     
-    <AssemblyName>Nivaes.TimeLine.Windows</AssemblyName>
-    <RootNamespace>Nivaes.TimeLine.Windows</RootNamespace>
+    <AssemblyName>Nivaes.TimeLine.WinUI</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.WinUI</RootNamespace>
 
     <MsAppxPackageTargets>$(MSBuildThisFileDirectory)Net5_WinUI_Fixup.Targets</MsAppxPackageTargets>
   </PropertyGroup>
@@ -21,7 +20,7 @@
 
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for UAP</Description>
-    <PackageId>Nivaes.TimeLine.UAP</PackageId>
+    <PackageId>Nivaes.TimeLine.Windows</PackageId>
     <PackageTags>UAP;WinRT;timeline</PackageTags>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -30,9 +29,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />
+    <!--<PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />-->
+    <!--<PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />-->
     <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview2.200713.0" targetFramework="native" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.3-rc3" />
+    <!--<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.3-rc3" />-->
   </ItemGroup>
 
 </Project>

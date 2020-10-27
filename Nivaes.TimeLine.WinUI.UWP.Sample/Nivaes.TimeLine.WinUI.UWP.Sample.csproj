@@ -1,25 +1,32 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<!--<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">-->
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.17763.0</TargetFramework>
     <!--<TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>-->
-    <!-- <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>-->
     <DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
     <ApplicationManifest>Nivaes.TimeLine.Windows.Sample.exe.manifest</ApplicationManifest>
 
     <XamlCodeGenerationControlFlags>DoNotGenerateOtherProviders</XamlCodeGenerationControlFlags>
     <Platforms>x86;x64</Platforms>
 
-    <RootNamespace>Nivaes.TimeLine.Windows.Sample</RootNamespace>
-    <AssemblyName>Nivaes.TimeLine.Windows.Sample</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.WinUI.WPF.Sample</RootNamespace>
+    <AssemblyName>Nivaes.TimeLine.WinUI.WPF.Sample</AssemblyName>
 
     <MsAppxPackageTargets>$(MSBuildThisFileDirectory)Net5_WinUI_Fixup.Targets</MsAppxPackageTargets>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <None Remove="Components\**" />
+    <Page Remove="Components\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
-    <PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />
+    <!--<PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />-->
     <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview2.200713.0" />
   </ItemGroup>
 
@@ -33,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Views\" />
+    <ProjectReference Include="..\Nivaes.TimeLine.WinUI\Nivaes.TimeLine.WinUI.csproj" />
   </ItemGroup>
 
 </Project>
