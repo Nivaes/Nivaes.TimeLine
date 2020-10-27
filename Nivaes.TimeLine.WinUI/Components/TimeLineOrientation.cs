@@ -1,4 +1,4 @@
-﻿namespace Nivaes.TimeLine.Windows
+﻿namespace Nivaes.TimeLine.WinUI
 {
     public enum TimeLineOrientation
         //: short

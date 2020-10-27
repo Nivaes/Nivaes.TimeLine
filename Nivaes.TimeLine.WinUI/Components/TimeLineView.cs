@@ -1,6 +1,6 @@
 ﻿using Windows.Foundation.Collections;
 
-namespace Nivaes.TimeLine.Windows
+namespace Nivaes.TimeLine.WinUI
 {
     using System;
     using System.Collections.Generic;

@@ -17,9 +17,9 @@
         public int IconResource { get; set; }
 
         [AllowNull]
-        public ICommand Click { get; set; } = null;
+        public ICommand? Click { get; set; } = null;
 
         [AllowNull]
-        public ICommand LongClick { get; set; } = null;
+        public ICommand? LongClick { get; set; } = null;
     }
 }

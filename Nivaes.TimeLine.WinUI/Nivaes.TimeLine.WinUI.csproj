@@ -20,8 +20,8 @@
 
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for UAP</Description>
-    <PackageId>Nivaes.TimeLine.Windows</PackageId>
-    <PackageTags>UAP;WinRT;timeline</PackageTags>
+    <PackageId>Nivaes.TimeLine.WinUI</PackageId>
+    <PackageTags>UAP;WinRT;WinUI;timeline</PackageTags>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine</RepositoryUrl>

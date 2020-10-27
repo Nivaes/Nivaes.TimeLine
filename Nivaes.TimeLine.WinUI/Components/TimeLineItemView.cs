@@ -1,4 +1,4 @@
-﻿namespace Nivaes.TimeLine.Windows
+﻿namespace Nivaes.TimeLine.WinUI
 {
     using System.Windows.Input;
     using Microsoft.UI.Xaml;

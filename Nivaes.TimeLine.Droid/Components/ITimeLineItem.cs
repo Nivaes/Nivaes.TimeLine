@@ -10,8 +10,8 @@
 
         int IconResource { get; set; }
 
-        ICommand Click { get; set; }
+        ICommand? Click { get; set; }
 
-        ICommand LongClick { get; set; }
+        ICommand? LongClick { get; set; }
     }
 }
