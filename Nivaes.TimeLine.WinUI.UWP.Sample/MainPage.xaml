@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Nivaes.TimeLine.WinUI.UWP.Sample"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:timeLine="clr-namespace:Nivaes.TimeLine.Windows;assembly=Nivaes.TimeLine.WinUI"
+    xmlns:timeLine="clr-namespace:Nivaes.TimeLine.WinUI;assembly=Nivaes.TimeLine.WinUI"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
