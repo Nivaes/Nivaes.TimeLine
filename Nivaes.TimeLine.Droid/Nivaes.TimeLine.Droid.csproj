@@ -40,8 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.1.0.1" />
-    <PackageReference Include="Xamarin.AndroidX.VectorDrawable" Version="1.1.0.1" />
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView" />
+    <PackageReference Include="Xamarin.AndroidX.VectorDrawable" />
   </ItemGroup>
 
 </Project>
