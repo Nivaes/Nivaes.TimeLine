@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net5.0-windows10.0.18362.0</TargetFrameworks>
-    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
 
     <Title>Nivaes Timeline WinUI</Title>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
@@ -11,8 +11,6 @@
     
     <AssemblyName>Nivaes.TimeLine.WinUI</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.WinUI</RootNamespace>
-
-    <MsAppxPackageTargets>$(MSBuildThisFileDirectory)Net5_WinUI_Fixup.Targets</MsAppxPackageTargets>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,15 +30,8 @@
   <ItemGroup>
     <!--<PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />-->
     <!--<PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />-->
-    <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview2.200713.0" targetFramework="native" />
+    <PackageReference Include="Microsoft.WinUI" />
     <!--<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.3-rc3" />-->
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
 </Project>

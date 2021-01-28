@@ -1,53 +1,31 @@
-﻿<!--<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">-->
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
-    <!--<TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>-->
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
+
     <DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
     <ApplicationManifest>Nivaes.TimeLine.Windows.Sample.exe.manifest</ApplicationManifest>
 
-    <XamlCodeGenerationControlFlags>DoNotGenerateOtherProviders</XamlCodeGenerationControlFlags>
-    <Platforms>x86;x64</Platforms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
 
     <RootNamespace>Nivaes.TimeLine.WinUI.WPF.Sample</RootNamespace>
     <AssemblyName>Nivaes.TimeLine.WinUI.WPF.Sample</AssemblyName>
-
-    <MsAppxPackageTargets>$(MSBuildThisFileDirectory)Net5_WinUI_Fixup.Targets</MsAppxPackageTargets>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Components\**" />
-    <EmbeddedResource Remove="Components\**" />
-    <None Remove="Components\**" />
-    <Page Remove="Components\**" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" />
+    <PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />
+    <PackageReference Include="Microsoft.WinUI" />
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
-    <!--<PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.7" />-->
-    <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview2.200713.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-    <Manifest Include="Nivaes.TimeLine.Windows.Sample.exe.manifest">
-      <DeploymentContent>true</DeploymentContent>
-    </Manifest>
+    <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Nivaes.TimeLine.WinUI\Nivaes.TimeLine.WinUI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
 </Project>
