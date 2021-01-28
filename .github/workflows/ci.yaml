@@ -46,24 +46,6 @@ jobs:
     - name: Build App.Cross.Droid
       run: msbuild ./Nivaes.TimeLine.Droid.Sample/ /property:Configuration=Release
 
-    - name: Install dependencies iOS
-      run: msbuild /t:restore ./Nivaes.TimeLine.iOS.Sample/
-
-    - name: Build App.Cross.iOS
-      run: msbuild ./Nivaes.TimeLine.iOS.Sample/ /property:Configuration=Release
-
-    - name: Install dependencies WinUI
-      run: msbuild /t:restore ./Nivaes.TimeLine.WinUI.UWP.Sample/
-
-    - name: Build App.Cross.WinUI
-      run: msbuild ./Nivaes.TimeLine.WinUI.UWP.Sample/ /property:Configuration=Release
-
-    - name: Install dependencies WPF
-      run: msbuild /t:restore ./Nivaes.TimeLine.WinUI.WPF.Sample/
-
-    - name: Build App.Cross.WPF
-      run: msbuild ./Nivaes.TimeLine.WinUI.WPF.Sample/ /property:Configuration=Release
-
   build-iOS:
     runs-on: windows-2019
 
