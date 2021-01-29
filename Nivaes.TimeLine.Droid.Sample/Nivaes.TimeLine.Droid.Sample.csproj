@@ -105,7 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.AppCompat">
-      <Version>1.1.0.1</Version>
+      <Version>1.2.0.6</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.2.1.1" />
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.Utils" Version="1.0.0.1" />
