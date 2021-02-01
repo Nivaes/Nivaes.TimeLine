@@ -10,10 +10,10 @@
         : TimeLineMarkerDrawable
     {
         #region Properties
-        private readonly Paint? mPaintIcon = null;
+        private readonly Paint? mPaintIcon;
 
         #region BitmapDrawable
-        private BitmapDrawable? mBitmapDrawable = null;
+        private BitmapDrawable? mBitmapDrawable;
 
         public BitmapDrawable? BitmapDrawable
         {
@@ -36,11 +36,11 @@
             }
         }
 
-        private PorterDuffColorFilter? mPorterDuffColorFilter = null;
+        private PorterDuffColorFilter? mPorterDuffColorFilter;
         #endregion
 
         #region VectorDrawable
-        private VectorDrawableCompat? mVectorDrawable = null;
+        private VectorDrawableCompat? mVectorDrawable;
 
         public VectorDrawableCompat? VectorDrawable
         {

@@ -20,7 +20,7 @@
                 {
                     mIconResource = value;
 
-                    var vectorDrawable = VectorDrawableCompat.Create(base.Context.Resources, value, null);
+                    var vectorDrawable = VectorDrawableCompat.Create(base.Context!.Resources, value, null);
                     ((TimeLineIconMarkerDrawable)base.Marker).VectorDrawable = vectorDrawable;
 
                     if(vectorDrawable == null)

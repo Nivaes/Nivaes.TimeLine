@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFramework>monoandroid10.0</TargetFramework>
+    <TargetFramework>monoandroid11.0</TargetFramework>
     <Title>Nivaes Timeline Android</Title>
     <Product>TimeLine Android</Product>
     <Description>Nivaes TimeLIne for Andorid.</Description>
