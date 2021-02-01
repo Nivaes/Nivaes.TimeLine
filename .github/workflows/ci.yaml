@@ -118,7 +118,7 @@ jobs:
         msbuild /t:restore ./Nivaes.TimeLine.WinUI.WPF.Sample/
 
     - name: Build App.Cross.WinUI
-      run: msbuild ./Nivaes.TimeLine.WinUI.UWP/ /property:Configuration=Release     
+      run: msbuild ./Nivaes.TimeLine.WinUI/ /property:Configuration=Release
 
     #- name: Build App.Cross.WPF
     #  run: msbuild ./Nivaes.TimeLine.WinUI.WPF.Sample/ /property:Configuration=Release
