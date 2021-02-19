@@ -1,7 +1,7 @@
 ﻿<Project>
 
   <ItemGroup>
-    <PackageReference Update="Xamarin.AndroidX.RecyclerView" Version="1.1.0.6" />
+    <PackageReference Update="Xamarin.AndroidX.RecyclerView" Version="1.1.0.7" />
     <PackageReference Update="Xamarin.AndroidX.VectorDrawable" Version="1.1.0.6" />
 
     <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
