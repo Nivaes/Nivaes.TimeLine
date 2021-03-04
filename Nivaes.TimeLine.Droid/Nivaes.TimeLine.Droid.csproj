@@ -1,27 +1,19 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>monoandroid11.0</TargetFramework>
-    <Title>Nivaes Timeline Android</Title>
-    <Product>TimeLine Android</Product>
-    <Description>Nivaes TimeLIne for Andorid.</Description>
-    <PackageTags>Nivaes;TimeLine</PackageTags>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net6.0-android</TargetFramework>
+    <!--<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>-->
+    <!--<RuntimeIdentifiers>android-x64;android-arm64</RuntimeIdentifiers>-->
+    <!--<RuntimeIdentifiers>linux-arm;linux-arm64;linux-x64</RuntimeIdentifiers>-->
 
     <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
-
   </PropertyGroup>
-  
-  <PropertyGroup>
-    <!--<AndroidUseAapt2>true</AndroidUseAapt2>-->
-    <AndroidUseManagedDesignTimeResourceGenerator>False</AndroidUseManagedDesignTimeResourceGenerator>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="Images\icon.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for Xamarin Android</Description>
+    <!--<Summary>???</Summary>-->
     <PackageId>Nivaes.TimeLine.Droid</PackageId>
     <PackageTags>xamarin;android;timeline</PackageTags>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
@@ -31,17 +23,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Resources\*.cs" />
-    <Compile Remove="Resources\*.cs" />
-    <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
-    <AndroidResource Include="Resources\**\*.jpg" Generator="MSBuild:UpdateAndroidResources" />
-    <AndroidResource Include="Resources\**\*.gif" Generator="MSBuild:UpdateAndroidResources" />
-    <AndroidResource Include="Resources\**\*.png" Generator="MSBuild:UpdateAndroidResources" />
+    <None Include="Images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.RecyclerView" />
     <PackageReference Include="Xamarin.AndroidX.VectorDrawable" />
-  </ItemGroup>
+  </ItemGroup> 
 
 </Project>

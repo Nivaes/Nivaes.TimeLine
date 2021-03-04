@@ -37,6 +37,11 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+    - name: Setup .NET Core 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.100-preview.1.21103.13
+
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
 
@@ -49,7 +54,7 @@ jobs:
       run: msbuild ./Nivaes.TimeLine.Droid/ /property:Configuration=Release
 
   build-iOS:
-    runs-on: windows-2019
+    runs-on: macos-11.0
 
     steps:
     - name: Dump GitHub context
@@ -72,6 +77,11 @@ jobs:
         source-url: https://nuget.pkg.github.com/Nivaes/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Setup .NET Core 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.100-preview.1.21103.13
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
@@ -107,6 +117,11 @@ jobs:
         source-url: https://nuget.pkg.github.com/Nivaes/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Setup .NET Core 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.100-preview.1.21103.13
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2

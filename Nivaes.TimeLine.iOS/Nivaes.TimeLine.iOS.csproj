@@ -1,6 +1,8 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>Xamarin.iOS10</TargetFramework>
+    <TargetFramework>net6.0-ios</TargetFramework>
+    <RuntimeIdentifier>ios-x64</RuntimeIdentifier>
+    <OutputType>Library</OutputType>
 
     <Title>Nivaes Timeline iOS</Title>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
@@ -10,8 +12,6 @@
 
     <AssemblyName>Nivaes.TimeLine.iOS</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.iOS</RootNamespace>
-    
-    <!--<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,5 +27,5 @@
     <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine</RepositoryUrl>
     <DesignTimeBuild>true</DesignTimeBuild>
   </PropertyGroup>
-  
+
 </Project>
