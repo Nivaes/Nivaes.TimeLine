@@ -1,4 +1,4 @@
-﻿namespace Nivaes.TimeLine.WinUI.UWP.Sample
+﻿namespace Nivaes.TimeLine.WinUI.Windows.Sample
 {
     using Microsoft.UI.Xaml;
 

@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Nivaes.TimeLine.WinUI\Nivaes.TimeLine.WinUI.csproj" />
+    <!--<ProjectReference Include="..\Nivaes.TimeLine.WinUI\Nivaes.TimeLine.WinUI.csproj" />-->
   </ItemGroup>
 
 </Project>

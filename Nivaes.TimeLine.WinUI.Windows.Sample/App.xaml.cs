@@ -1,7 +1,9 @@
-﻿namespace Nivaes.TimeLine.WinUI.UWP.Sample
+﻿using Windows.ApplicationModel;
+
+namespace Nivaes.TimeLine.WinUI.Windows.Sample
 {
+    
     using Microsoft.UI.Xaml;
-    using Windows.ApplicationModel;
 
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

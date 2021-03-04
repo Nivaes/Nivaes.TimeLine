@@ -5,15 +5,15 @@
     <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
 
-    <DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
-    <ApplicationManifest>Nivaes.TimeLine.Windows.Sample.exe.manifest</ApplicationManifest>
+    <!--<DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>-->
+    <ApplicationManifest>Nivaes.TimeLine.WinUI.Windows.Sample.exe.manifest</ApplicationManifest>
 
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
 
-    <RootNamespace>Nivaes.TimeLine.WinUI.WPF.Sample</RootNamespace>
-    <AssemblyName>Nivaes.TimeLine.WinUI.WPF.Sample</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.WinUI.Windows.Sample</RootNamespace>
+    <AssemblyName>Nivaes.TimeLine.WinUI.Windows.Sample</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

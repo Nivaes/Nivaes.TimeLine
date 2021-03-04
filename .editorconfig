@@ -229,3 +229,6 @@ dotnet_diagnostic.CA1032.severity = none
 
 # CA1028: Enum storage should be Int32
 dotnet_diagnostic.ca1028.severity = none
+
+# Default severity for analyzer diagnostics with category 'Style'
+dotnet_analyzer_diagnostic.category-Style.severity = none
