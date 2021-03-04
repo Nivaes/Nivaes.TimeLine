@@ -53,6 +53,9 @@ jobs:
     - name: Build App.Cross.Droid
       run: msbuild ./Nivaes.TimeLine.Droid/ /property:Configuration=Release
 
+    - name: Build App.Cross.Droid
+      run: dotnet build ./Nivaes.TimeLine.Droid/  --configuration Release
+
   build-iOS:
     runs-on: macos-11.0
 
@@ -93,6 +96,9 @@ jobs:
 
     - name: Build App.Cross.iOS
       run: msbuild ./Nivaes.TimeLine.iOS/ /property:Configuration=Release
+
+    - name: Build App.Cross.iOS
+      run: dotnet build ./Nivaes.TimeLine.Droid/  --configuration Release
 
   build-Windows:
     runs-on: windows-2019
