@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:timeLine="using:Nivaes.TimeLine.WinUI"
     mc:Ignorable="d">
-    <!--xmlns:timeLine="clr-namespace:Nivaes.TimeLine.WinUI; assembly=Nivaes.TimeLine.WinUI"-->
+
     <timeLine:TimeLineView
         x:Name="mTimeLine"
         Margin="0,0,0,0"
