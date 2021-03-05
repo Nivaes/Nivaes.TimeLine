@@ -51,7 +51,7 @@
             };
         }
 
-        public override void Draw(Canvas canvas)
+        public override void Draw(Canvas? canvas)
         {
             base.Draw(canvas);
 
@@ -74,7 +74,7 @@
                 mPaintText.GetTextBounds(mText, 0, Text.Length, textBoundRect);
                 var textHeight = textBoundRect.Height() - base.LineStroke / 2f;
 
-                canvas.DrawText(mText, bounds.ExactCenterX(), bounds.ExactCenterY() + (textHeight / 2f), mPaintText);
+                canvas?.DrawText(mText, bounds.ExactCenterX(), bounds.ExactCenterY() + (textHeight / 2f), mPaintText);
             }
         }
     }

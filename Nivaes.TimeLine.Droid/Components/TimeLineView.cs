@@ -36,8 +36,8 @@
 
         public ObservableCollection<ITimeLineItem> Items { get; } = new ObservableCollection<ITimeLineItem>();
 
-        private DefaultItemAnimator? mDefaultItemAnimator = null;
-        private LinearLayoutManager? mLinearLayoutManager = null;
+        private DefaultItemAnimator? mDefaultItemAnimator;
+        private LinearLayoutManager? mLinearLayoutManager;
         #endregion
 
         #region Constructors
@@ -79,7 +79,7 @@
 
         private void InitView(IAttributeSet attrs)
         {
-            TypedArray typedArray = base.Context.ObtainStyledAttributes(attrs, Resource.Styleable.timeline_style);
+            TypedArray typedArray = base.Context!.ObtainStyledAttributes(attrs, Resource.Styleable.timeline_style);
             mTimeLineAttributes.LineColor = typedArray.GetColor(Resource.Styleable.timeline_style_lineColor, Color.LightBlue);
             mTimeLineAttributes.MarketColor = typedArray.GetColor(Resource.Styleable.timeline_style_marketColor, Color.Blue);
             mTimeLineAttributes.MarkerSize = typedArray.GetDimensionPixelSize(Resource.Styleable.timeline_style_markerSize, (int)TimeLineHelpers.DpToPx(20, base.Context));
@@ -121,9 +121,9 @@
         {
             public IEnumerable<ITimeLineItem> Items { get; private set; }
 
-            internal TimeLineAttributes? TimeLineAttributes { get; set; } = null;
+            internal TimeLineAttributes? TimeLineAttributes { get; set; }
 
-            private BlendModeColorFilter? mBlendModeColorFilter = null;
+            private BlendModeColorFilter? mBlendModeColorFilter;
 
             protected TimeLineAdapter(IEnumerable<ITimeLineItem> items)
                 : base()
@@ -154,7 +154,7 @@
                     //ToDo: Para quitar SetColorFilter obsoleta hay que solucionar el error. Java.Lang.ClassNotFoundException: 'Didn't find class "android.graphics.BlendMode" on path: 
                     timeLineViewHolder.Image?.Drawable?.SetColorFilter(mBlendModeColorFilter = new BlendModeColorFilter(TimeLineAttributes!.LineColor, BlendMode.SrcIn));
 #endif
-                    timeLineViewHolder.Image?.Drawable?.SetColorFilter(TimeLineAttributes.LineColor, PorterDuff.Mode.SrcIn);
+                    timeLineViewHolder.Image?.Drawable?.SetColorFilter(TimeLineAttributes.LineColor, PorterDuff.Mode.SrcIn!);
 
                 }
                 else if (!timeLineItem.ShowMarker)
@@ -246,7 +246,7 @@
 
                 var vimeLineContentViewHolder = OnCreateContentViewHolder(parent, viewType);
 
-                return new TimeLineMarketViewHolder(parent.Context, linearLayout,
+                return new TimeLineMarketViewHolder(parent.Context!, linearLayout,
                     vimeLineContentViewHolder, TimeLineAttributes);
             }
 
@@ -266,13 +266,13 @@
         internal class TimeLineMarketViewHolder
             : RecyclerView.ViewHolder
         {
-            internal TimeLineContentViewHolder? TimeLineContentViewHolder { get; set; } = null;
+            internal TimeLineContentViewHolder? TimeLineContentViewHolder { get; set; }
 
-            internal TimeLineMarkerView? TimeLineMarker { get; set; } = null;
+            internal TimeLineMarkerView? TimeLineMarker { get; set; }
 
-            internal ImageView? Image { get; set; } = null;
+            internal ImageView? Image { get; set; }
 
-            private FrameLayout.LayoutParams? mMarkerLayoutParams = null;
+            private FrameLayout.LayoutParams? mMarkerLayoutParams;
 
             public TimeLineMarketViewHolder(Context context, LinearLayout linearLayout,
                 TimeLineContentViewHolder timeLineContentViewHolder, TimeLineAttributes? timeLineAttributes)

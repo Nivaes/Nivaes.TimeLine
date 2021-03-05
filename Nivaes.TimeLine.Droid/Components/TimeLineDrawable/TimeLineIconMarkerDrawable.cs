@@ -74,7 +74,7 @@
             mPaintIcon = new Paint(PaintFlags.AntiAlias | PaintFlags.LinearText);
         }
 
-        public override void Draw(Canvas canvas)
+        public override void Draw(Canvas? canvas)
         {
             base.Draw(canvas);
 
@@ -93,18 +93,21 @@
 
                 Rect bounds = base.Bounds;
 
-                canvas.DrawBitmap(mBitmapDrawable.Bitmap, bounds.ExactCenterX(), bounds.ExactCenterY() + (mBitmapDrawable.IntrinsicHeight / 2f), mPaintIcon);
+                if (mBitmapDrawable.Bitmap != null)
+                {
+                    canvas?.DrawBitmap(mBitmapDrawable.Bitmap, bounds.ExactCenterX(), bounds.ExactCenterY() + (mBitmapDrawable.IntrinsicHeight / 2f), mPaintIcon);
+                }
             }
 
             if (mVectorDrawable != null)
             {
                 if (MarketPosition != TimeLinePositionType.NoMarket)
                 {
-                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(Color.White, PorterDuff.Mode.SrcIn));
+                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(Color.White, PorterDuff.Mode.SrcIn!));
                 }
                 else
                 {
-                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(base.Color, PorterDuff.Mode.SrcIn));
+                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(base.Color, PorterDuff.Mode.SrcIn!));
                 }
 
                 var bounds = base.Bounds;

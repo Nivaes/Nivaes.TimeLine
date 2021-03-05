@@ -9,7 +9,7 @@
         public TimeLinePositionMarkerView(Context context)
             : base(context)
         {
-            Marker = new TimeLinePositionMarkerDrawable(base.Context.Resources);
+            Marker = new TimeLinePositionMarkerDrawable(base.Context!.Resources!);
         }
         #endregion
     }

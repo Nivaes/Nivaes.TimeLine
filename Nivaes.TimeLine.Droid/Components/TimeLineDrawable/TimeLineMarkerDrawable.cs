@@ -10,25 +10,25 @@
         : Drawable
     {
         #region Properties       
-        private Paint mPaintMarket;
+        private readonly Paint mPaintMarket;
 
         internal Color Color { get; set; }
 
         internal TimeLinePositionType MarketPosition { get; set; }
 
-        private int mIntrinsicHeight;
-        internal float LineStroke { get; private set; }
+        private readonly int mIntrinsicHeight;
+        internal float LineStroke { get; }
         #endregion
 
-        public TimeLineMarkerDrawable(Resources res)
+        protected TimeLineMarkerDrawable(Resources res)
         {
             mPaintMarket = new Paint(PaintFlags.AntiAlias | PaintFlags.LinearText);
-           
-            LineStroke = TypedValue.ApplyDimension(ComplexUnitType.Dip, 1, res.DisplayMetrics);          
+
+            LineStroke = TypedValue.ApplyDimension(ComplexUnitType.Dip, 1, res.DisplayMetrics);     
             mIntrinsicHeight = mPaintMarket.GetFontMetricsInt(null);
         }
 
-        public override void Draw(Canvas canvas)
+        public override void Draw(Canvas? canvas)
         {
             Rect bounds = base.Bounds;
 
@@ -45,7 +45,7 @@
 
             mPaintMarket.StrokeWidth = LineStroke;
 
-            canvas.DrawOval(bounds.Left + LineStroke, bounds.Top + LineStroke, bounds.Right - LineStroke, bounds.Bottom - LineStroke, mPaintMarket);
+            canvas?.DrawOval(bounds.Left + LineStroke, bounds.Top + LineStroke, bounds.Right - LineStroke, bounds.Bottom - LineStroke, mPaintMarket);
         }
 
         public override int Opacity => mPaintMarket.Alpha;
@@ -57,7 +57,7 @@
             mPaintMarket.Alpha = alpha;
         }
 
-        public override void SetColorFilter(ColorFilter colorFilter)
+        public override void SetColorFilter(ColorFilter? colorFilter)
         {
             mPaintMarket.SetColorFilter(colorFilter);
         }

@@ -8,7 +8,7 @@
     {
         internal static float DpToPx(float dp, Context context)
         {
-            return DpToPx(dp, context.Resources);
+            return DpToPx(dp, context.Resources!);
         }
 
         internal static float DpToPx(float dp, Resources resources)

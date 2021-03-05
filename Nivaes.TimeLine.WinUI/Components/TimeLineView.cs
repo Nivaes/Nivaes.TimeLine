@@ -31,7 +31,7 @@ namespace Nivaes.TimeLine.WinUI
         {
             var timeLineView = (TimeLineView)d;
 
-            for (int i = 1; i < timeLineView.Items.Count(); i++)
+            for (int i = 1; i < timeLineView.Items.Count; i++)
             {
                 var timeLineItem = (TimeLineItemView)timeLineView.ContainerFromIndex(i);
                 if (timeLineItem != null)
@@ -57,7 +57,7 @@ namespace Nivaes.TimeLine.WinUI
         {
             var timeLineView = (TimeLineView)d;
 
-            for (int i = 1; i < timeLineView.Items.Count(); i++)
+            for (int i = 1; i < timeLineView.Items.Count; i++)
             {
                 var timeLineItem = (TimeLineItemView)timeLineView.ContainerFromIndex(i);
                 timeLineItem.TimeLineOrientation = (TimeLineOrientation)e.NewValue;
@@ -183,7 +183,7 @@ namespace Nivaes.TimeLine.WinUI
         }
 
         private void BindingTypeLineMarker()
-        { 
+        {
             List<Tuple<ITimeLineItem, TimeLineItemView>> items = new List<Tuple<ITimeLineItem, TimeLineItemView>>();
 
             for (int i = 0; i < base.Items.Count; i++)
@@ -192,7 +192,7 @@ namespace Nivaes.TimeLine.WinUI
 
                 if (timeLineItemView != null)
                 {
-                    var timeLineItem = ItemFromContainer(timeLineItemView) as ITimeLineItem;
+                    var timeLineItem = (ITimeLineItem)ItemFromContainer(timeLineItemView);
                     items.Add(new Tuple<ITimeLineItem, TimeLineItemView>(timeLineItem, timeLineItemView));
                 }
             }

@@ -2,9 +2,7 @@
 {
     public enum TimeLineMarkerType
     {
-        //PositionMarker,
-        //IconMarker,
         TextMarker,
-        Icon 
+        Icon
     }
 }

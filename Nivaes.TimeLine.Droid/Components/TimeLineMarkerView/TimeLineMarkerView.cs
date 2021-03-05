@@ -52,7 +52,7 @@
         protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
         {
             base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
-            
+
             int w = TimeLineAttributes.MarkerSize + base.PaddingLeft + base.PaddingRight;
             int h = TimeLineAttributes.MarkerSize + base.PaddingTop + base.PaddingTop;
 
@@ -85,12 +85,12 @@
             int markSize = System.Math.Min(TimeLineAttributes.MarkerSize, System.Math.Min(cWidth, cHeight));          
 
             if (TimeLineAttributes.MarkerInCenter)
-            { 
+            {
                 Marker.SetBounds((width / 2) - (markSize / 2), (height / 2) - (markSize / 2), (width / 2) + (markSize / 2), (height / 2) + (markSize / 2));
                 mBounds = Marker.Bounds;
             }
             else
-            { 
+            {
                 Marker.SetBounds(pLeft, pTop, pLeft + markSize, pTop + markSize);
                 mBounds = Marker.Bounds;
             }
@@ -130,23 +130,17 @@
             }
         }
 
-        protected override void OnDraw(Canvas canvas)
+        protected override void OnDraw(Canvas? canvas)
         {
             base.OnDraw(canvas);
 
-            if (Marker != null)
-            {
-                Marker.Draw(canvas);
-            }
+            Marker?.Draw(canvas);
 
-            if (mStartLine != null)
+            if (canvas != null)
             {
-                mStartLine.Draw(canvas);
-            }
+                mStartLine?.Draw(canvas);
 
-            if (mEndLine != null)
-            {
-                mEndLine.Draw(canvas);
+                mEndLine?.Draw(canvas);
             }
         }
     }

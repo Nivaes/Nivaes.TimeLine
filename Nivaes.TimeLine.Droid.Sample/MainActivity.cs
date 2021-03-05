@@ -10,11 +10,12 @@
     using AndroidX.AppCompat.App;
 
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity
+        : AppCompatActivity
     {
-        private TestTimeLineAdapter mTestTimeLineAdapter = null;
+        private TestTimeLineAdapter? mTestTimeLineAdapter;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -89,31 +90,34 @@
                 return position;
             }
 
-            public override void OnBindViewHolder(TimeLineView.TimeLineContentViewHolder holder, int position)
+            public override void OnBindViewHolder(TimeLineView.TimeLineContentViewHolder? holder, int position)
             {
-                var timeLineViewHolder = (TestDetailViewHolder)holder;
+                var timeLineViewHolder = (TestDetailViewHolder?)holder;
                 var timeLineItem = (TestTimeLineItem)base.Items.ElementAt(position);
 
-                timeLineViewHolder.Title.Text = timeLineItem.Title;
-
-                if (string.IsNullOrEmpty(timeLineItem.Message))
+                if (timeLineViewHolder != null)
                 {
-                    timeLineViewHolder.Message.Visibility = ViewStates.Gone;
-                }
-                else
-                {
-                    timeLineViewHolder.Message.Visibility = ViewStates.Visible;
-                    timeLineViewHolder.Message.Text = timeLineItem.Message;
-                }
+                    timeLineViewHolder.Title.Text = timeLineItem.Title;
 
-                timeLineViewHolder.ImageNext.Visibility = mShowImageNext ? ViewStates.Visible : ViewStates.Gone;
+                    if (string.IsNullOrEmpty(timeLineItem.Message))
+                    {
+                        timeLineViewHolder.Message.Visibility = ViewStates.Gone;
+                    }
+                    else
+                    {
+                        timeLineViewHolder.Message.Visibility = ViewStates.Visible;
+                        timeLineViewHolder.Message.Text = timeLineItem.Message;
+                    }
+
+                    timeLineViewHolder.ImageNext.Visibility = mShowImageNext ? ViewStates.Visible : ViewStates.Gone;
+                }
             }
 
             public override TimeLineView.TimeLineContentViewHolder OnCreateContentViewHolder(ViewGroup parent, int viewType)
             {
                 var context = parent.Context;
                 var layoutInflater = LayoutInflater.From(context);
-                View view = layoutInflater.Inflate(Resource.Layout.time_line_button_title_message, parent, false);
+                View view = layoutInflater?.Inflate(Resource.Layout.time_line_button_title_message, parent, false);
 
                 return new TestDetailViewHolder(view);
             }

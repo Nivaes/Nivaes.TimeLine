@@ -17,7 +17,7 @@
         public TimeLineTextMarkerView(Context context)
             : base(context)
         {
-            Marker = new TimeLineTextMarkerDrawable(base.Context.Resources);
+            Marker = new TimeLineTextMarkerDrawable(base.Context!.Resources!);
         }
         #endregion
     }

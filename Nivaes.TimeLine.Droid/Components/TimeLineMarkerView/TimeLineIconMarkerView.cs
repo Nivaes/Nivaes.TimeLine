@@ -38,7 +38,7 @@
         public TimeLineIconMarkerView(Context context)
             : base(context)
         {
-            Marker = new TimeLineIconMarkerDrawable(base.Context.Resources);
+            Marker = new TimeLineIconMarkerDrawable(base.Context!.Resources!);
         }
         #endregion
     }

@@ -17,7 +17,7 @@
             mPaintPosition = new Paint(PaintFlags.AntiAlias);
         }
 
-        public override void Draw(Canvas canvas)
+        public override void Draw(Canvas? canvas)
         {
             Rect bounds = base.Bounds;
 
