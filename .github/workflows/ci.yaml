@@ -60,8 +60,8 @@ jobs:
     #    msbuild /t:restore ./Nivaes.TimeLine.Droid/
     #    msbuild /t:restore ./Nivaes.TimeLine.Droid.Sample/
 
-    - name: Build App.Cross.Droid
-      run: msbuild ./Nivaes.TimeLine.Droid/ /property:Configuration=Release
+    #- name: Build App.Cross.Droid
+    #  run: msbuild ./Nivaes.TimeLine.Droid/ /property:Configuration=Release
 
     - name: Build App.Cross.Droid
       run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
@@ -157,10 +157,10 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    #- name: Setup .NET Core 6.0.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 6.0.100-preview.1.21103.13
+    - name: Setup .NET Core 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.100-preview.1.21103.13
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
