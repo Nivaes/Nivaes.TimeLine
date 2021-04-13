@@ -42,8 +42,8 @@ jobs:
       with:
         dotnet-version: 6.0.100-preview.3.21202.5
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.0.2
+    #- name: Setup MSBuild
+    #  uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Install Android Workloads
       #env:
@@ -106,7 +106,8 @@ jobs:
       run: |
         dotnet tool install --global boots
         boots --stable Mono
-        boots https://dl.internalx.com/vsts-devdiv/Xamarin.Android/public/net6/4624420/6.0.1xx-preview3/7d6cd1cde4182d7db2cfc5d0b55364c972b6d34f/Microsoft.NET.Workload.Android-11.0.200-preview.3.196.pkg
+        boots --preview Xamarin.iOS
+        boots --preview Xamarin.Mac
         boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.iOS.Bundle.14.4.100-preview.3.1326.pkg
         boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.macOS.Bundle.11.1.100-preview.3.1379.pkg
         boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.MacCatalyst.Bundle.14.3.100-preview.3.471.pkg
@@ -134,8 +135,8 @@ jobs:
     #- name: Build App.Cross.iOS
     #  run: msbuild ./Nivaes.TimeLine.iOS/ /property:Configuration=Release
 
-    #- name: Build App.Cross.iOS
-    #  run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
+    - name: Build App.Cross.iOS
+      run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
 
   build-Windows:
     runs-on: windows-2019
