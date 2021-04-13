@@ -123,7 +123,7 @@
 
             internal TimeLineAttributes? TimeLineAttributes { get; set; }
 
-            private BlendModeColorFilter? mBlendModeColorFilter;
+            private readonly BlendModeColorFilter? mBlendModeColorFilter;
 
             protected TimeLineAdapter(IEnumerable<ITimeLineItem> items)
                 : base()
@@ -394,9 +394,9 @@
                 };
             }
 
-            protected virtual void ExecuteCommandOnItem(ICommand command)
+            protected virtual void ExecuteCommandOnItem(ICommand? command)
             {
-                if (command != null && command.CanExecute(null))
+                if (command?.CanExecute(null) == true)
                 {
                     command.Execute(null);
                 }
@@ -404,9 +404,9 @@
 
 #region Command
             [AllowNull]
-            private ICommand mClick = null;
+            private ICommand? mClick;
 
-            internal ICommand Click
+            internal ICommand? Click
             {
                 get => mClick;
                 set
@@ -419,9 +419,9 @@
             }
 
             [AllowNull]
-            private ICommand mLongClick = null;
+            private ICommand? mLongClick;
 
-            internal ICommand LongClick
+            internal ICommand? LongClick
             {
                 get => mLongClick;
                 set
@@ -448,7 +448,7 @@
         public abstract class TimeLineContentViewHolder
             : RecyclerView.ViewHolder
         {
-            public TimeLineContentViewHolder(View view)
+            protected TimeLineContentViewHolder(View view)
                 : base(view)
             { }
         }

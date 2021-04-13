@@ -1,8 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-ios</TargetFramework>
-    <RuntimeIdentifier>ios-x64</RuntimeIdentifier>
     <OutputType>Library</OutputType>
+    <TargetFrameworks>xamarin.ios10;net6.0-ios</TargetFrameworks>
+    <RuntimeIdentifier>ios-x64</RuntimeIdentifier>
+    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">$(TargetFrameworks);net6.0-maccatalyst</TargetFrameworks>
+    <!--<TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">$(TargetFrameworks);net6.0-maccatalyst;net6.0-macos</TargetFrameworks>-->
+    <RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-ios'">ios-x64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">maccatalyst-x64</RuntimeIdentifier>
+
 
     <Title>Nivaes Timeline iOS</Title>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
