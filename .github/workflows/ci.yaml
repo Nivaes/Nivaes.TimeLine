@@ -54,6 +54,7 @@ jobs:
         dotnet tool install --global boots
         boots --stable Mono
         boots --preview Xamarin.Android
+        boots https://aka.ms/xamarin-android-commercial-d16-7-windows
         boots https://dl.internalx.com/vsts-devdiv/Xamarin.Android/public/net6/4624420/6.0.1xx-preview3/7d6cd1cde4182d7db2cfc5d0b55364c972b6d34f/Microsoft.NET.Workload.Android.11.0.200.196.msi
 
 
@@ -108,6 +109,8 @@ jobs:
         boots --stable Mono
         boots --preview Xamarin.iOS
         boots --preview Xamarin.Mac
+        boots https://download.visualstudio.microsoft.com/download/pr/7b60a920-c8b1-4798-b660-ae1a7294eb6d/bbdc2a9c6705520fd0a6d04f71e5ed3e/xamarin.ios-14.2.0.12.pkg
+        boots https://download.visualstudio.microsoft.com/download/pr/b089be2f-932a-40ab-904b-b626f9e6427b/6aad9f3ea4fbfb92ce267e0f60b34797/xamarin.mac-6.20.2.2.pkg
         boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.iOS.Bundle.14.4.100-preview.3.1326.pkg
         boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.macOS.Bundle.11.1.100-preview.3.1379.pkg
         boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.MacCatalyst.Bundle.14.3.100-preview.3.471.pkg
@@ -136,7 +139,7 @@ jobs:
     #  run: msbuild ./Nivaes.TimeLine.iOS/ /property:Configuration=Release
 
     - name: Build App.Cross.iOS
-      run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
+      run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
 
   build-Windows:
     runs-on: windows-2019
