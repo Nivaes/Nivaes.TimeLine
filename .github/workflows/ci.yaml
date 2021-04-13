@@ -66,6 +66,7 @@ jobs:
     - name: Build App.Cross.Droid
       run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
 
+
   build-iOS:
     runs-on: macos-10.15
 
