@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>MonoAndroid90;net6.0-android</TargetFrameworks>
+    <!--<TargetFrameworks>MonoAndroid90;net6.0-android</TargetFrameworks>-->
+    <TargetFrameworks>net6.0-android</TargetFrameworks>
 
     <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
