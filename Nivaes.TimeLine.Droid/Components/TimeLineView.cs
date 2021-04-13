@@ -123,7 +123,9 @@
 
             internal TimeLineAttributes? TimeLineAttributes { get; set; }
 
+#if false
             private readonly BlendModeColorFilter? mBlendModeColorFilter;
+#endif
 
             protected TimeLineAdapter(IEnumerable<ITimeLineItem> items)
                 : base()
@@ -256,7 +258,9 @@
             {
                 if (disposing)
                 {
+#if false
                     mBlendModeColorFilter?.Dispose();
+#endif
                 }
 
                 base.Dispose(disposing);
