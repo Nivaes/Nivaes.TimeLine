@@ -34,7 +34,7 @@ jobs:
     #  with:
     #    dotnet-version: 5.0.x
     #    source-url: https://nuget.pkg.github.com/Nivaes/index.json
-    #  env:
+    #  env:dotnet tool install --global boots
     #    NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Setup .NET Core 6.0.x
@@ -53,11 +53,12 @@ jobs:
       run: |
         dotnet tool install --global boots
         boots --stable Mono
+        boots --preview Xamarin.Android
         boots https://dl.internalx.com/vsts-devdiv/Xamarin.Android/public/net6/4624420/6.0.1xx-preview3/7d6cd1cde4182d7db2cfc5d0b55364c972b6d34f/Microsoft.NET.Workload.Android.11.0.200.196.msi
 
 
     #- name: Install dependencies
-    #  run: |
+    #  run: |is:issue is:open 
     #    msbuild /t:restore ./Nivaes.TimeLine.Droid/
     #    msbuild /t:restore ./Nivaes.TimeLine.Droid.Sample/
 
