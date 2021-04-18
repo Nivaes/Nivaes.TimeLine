@@ -60,7 +60,6 @@ jobs:
         boots https://aka.ms/xamarin-android-commercial-d16-7-windows
         boots https://dl.internalx.com/vsts-devdiv/Xamarin.Android/public/net6/4624420/6.0.1xx-preview3/7d6cd1cde4182d7db2cfc5d0b55364c972b6d34f/Microsoft.NET.Workload.Android.11.0.200.196.msi
 
-
     #- name: Install dependencies
     #  run: |is:issue is:open 
     #    msbuild /t:restore ./Nivaes.TimeLine.Droid/
@@ -84,10 +83,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    #- name: Setup .NET Core 3.1.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 3.1.x
+    - name: Setup .NET Core 3.1.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
 
     #- name: Setup .NET Core 5.0.x
     #  uses: actions/setup-dotnet@v1
@@ -133,7 +132,6 @@ jobs:
         /usr/libexec/PlistBuddy -c "add :AppleSdkRoot string $(dirname $(dirname $(xcode-select -p)))" ~/Library/Preferences/Xamarin/Settings.plist || true
         cat ~/Library/Preferences/Xamarin/Settings.plist || true
 
-
     #- name: Setup MSBuild
     #  uses: microsoft/setup-msbuild@v1.0.2
 
@@ -145,8 +143,8 @@ jobs:
     #- name: Build App.Cross.iOS
     #  run: msbuild ./Nivaes.TimeLine.iOS/ /property:Configuration=Release
 
-    - name: Build App.Cross.iOS
-      run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
+    #- name: Build App.Cross.iOS
+    #  run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
 
   build-Windows:
     runs-on: windows-2019
@@ -186,8 +184,8 @@ jobs:
         msbuild /t:restore ./Nivaes.TimeLine.WinUI.Windows.Sample/
         msbuild /t:restore ./Nivaes.TimeLine.WinUI.WPF.Windows.Sample/
 
-    - name: Build App.Cross.WinUI
-      run: msbuild ./Nivaes.TimeLine.WinUI/ /property:Configuration=Release
+    #- name: Build App.Cross.WinUI
+    #  run: msbuild ./Nivaes.TimeLine.WinUI/ /property:Configuration=Release
 
     #- name: Build Nivaes.TimeLine.WinUI.Windows.Sample
     #  run: msbuild ./Nivaes.TimeLine.WinUI.Windows.Sample/ /property:Configuration=Release
