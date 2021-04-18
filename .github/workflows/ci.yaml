@@ -37,18 +37,21 @@ jobs:
     #  env:dotnet tool install --global boots
     #    NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+    #- name: Setup .NET Core 6.0.x
+    #  uses: actions/setup-dotnet@v1
+    #  with:
+    #    dotnet-version: 6.0.100-preview.3.21202.5
+
     - name: Setup .NET Core 6.0.x
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.100-preview.3.21202.5
+      run: |
+        Invoke-WebRequest -Uri "https://dot.net/v1/dotnet-install.ps1" -OutFile dotnet-install.ps1
+        .\dotnet-install.ps1 -Version 6.0.100-preview.3.21202.5 -InstallDir "$env:ProgramFiles\dotnet\" -Verbose
+        dotnet --list-sdks
 
     #- name: Setup MSBuild
     #  uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Install Android Workloads
-      #env:
-      #  ANDROIDWORKLOADS: ${{https://dl.internalx.com/vsts-devdiv/Xamarin.Android/public/net6/4451481/master/05bb8e0eae11ae6a73838b13cf91ee2433169dff/Microsoft.NET.Workload.Android.11.0.200.136.msi}}
-      #  MACOSWORKLOADS: ${{https://bosstoragemirror.azureedge.net/wrench/main/f01fde5cd9a7ffffcdc8d241200c35988700fa00/4449408/package/Microsoft.NET.Workload.iOS.14.3.100-ci.main.1171.msi}}
       shell: pwsh
       run: |
         dotnet tool install --global boots
@@ -68,7 +71,6 @@ jobs:
 
     - name: Build App.Cross.Droid
       run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
-
 
   build-iOS:
     runs-on: macos-10.15
@@ -95,15 +97,20 @@ jobs:
     #  env:
     #    NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - name: Setup .NET Core 6.0.x
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.100-preview.3.21202.5
+    #- name: Setup .NET Core 6.0.x
+    #  uses: actions/setup-dotnet@v1
+    #  with:
+    #    dotnet-version: 6.0.100-preview.3.21202.5
+
+    - name: Install .NET Core 6.0.x
+      run: |
+        export PATH="/usr/local/share/dotnet/:~/.dotnet/tools:$PATH" 
+        curl -L https://raw.githubusercontent.com/dotnet/install-scripts/7a9d5dcab92cf131fc2d8977052f8c2c2d540e22/src/dotnet-install.sh > dotnet-install.sh 
+        sh dotnet-install.sh --version 6.0.100-preview.3.21202.5 --install-dir $DOTNET_ROOT --verbose 
+        dotnet --list-sdks
+        echo "##vso[task.setvariable variable=PATH]$PATH"
 
     - name: Install iOS Workloads
-      #env:
-      #  ANDROIDWORKLOADS: ${{https://dl.internalx.com/vsts-devdiv/Xamarin.Android/public/net6/4451481/master/05bb8e0eae11ae6a73838b13cf91ee2433169dff/Microsoft.NET.Workload.Android-11.0.200-ci.master.136.pkg}}
-      #  MACOSWORKLOADS: ${{https://bosstoragemirror.azureedge.net/wrench/main/f01fde5cd9a7ffffcdc8d241200c35988700fa00/4449408/package/notarized/Microsoft.iOS.Bundle.14.3.100-ci.main.1079.pkg}}
       run: |
         dotnet tool install --global boots
         boots --stable Mono
