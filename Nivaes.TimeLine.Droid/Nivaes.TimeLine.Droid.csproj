@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFrameworks>MonoAndroid90;net6.0-android</TargetFrameworks>
+    <RuntimeIdentifiers>android-x86;android-x64;android-arm;android-arm64</RuntimeIdentifiers>
 
     <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
@@ -26,6 +27,10 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.RecyclerView" />
     <PackageReference Include="Xamarin.AndroidX.VectorDrawable" />
-  </ItemGroup> 
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.DotNet.PackageValidation" />
+  </ItemGroup>
 
 </Project>
