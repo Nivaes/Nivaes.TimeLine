@@ -11,6 +11,9 @@ on:
     paths-ignore:
     - '**/*.md'
 
+env:
+    net_core_version: 6.0.100-preview.7.21379.14
+
 jobs:
   build-Android:
     runs-on: windows-2019
@@ -24,49 +27,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    #- name: Setup .NET Core 3.1.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 3.1.x
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1 
+      with:
+        dotnet-version: ${{ env.net_core_version }}
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    #- name: Setup .NET Core 5.0.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 5.0.x
-    #    source-url: https://nuget.pkg.github.com/Nivaes/index.json
-    #  env:dotnet tool install --global boots
-    #    NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-    #- name: Setup .NET Core 6.0.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 6.0.100-preview.3.21202.5
-
-    - name: Setup .NET Core 6.0.x
+    - name: Install workload
       run: |
-        Invoke-WebRequest -Uri "https://dot.net/v1/dotnet-install.ps1" -OutFile dotnet-install.ps1
-        .\dotnet-install.ps1 -Version 6.0.100-preview.3.21202.5 -InstallDir "$env:ProgramFiles\dotnet\" -Verbose
-        dotnet --list-sdks
+        dotnet workload install android-aot  --verbosity detailed
 
-    #- name: Setup MSBuild
-    #  uses: microsoft/setup-msbuild@v1.0.2
-
-    - name: Install Android Workloads
-      shell: pwsh
-      run: |
-        dotnet tool install --global boots
-        boots --stable Mono
-        boots --preview Xamarin.Android
-        boots https://aka.ms/xamarin-android-commercial-d16-7-windows
-        boots https://dl.internalx.com/vsts-devdiv/Xamarin.Android/public/net6/4624420/6.0.1xx-preview3/7d6cd1cde4182d7db2cfc5d0b55364c972b6d34f/Microsoft.NET.Workload.Android.11.0.200.196.msi
-
-    #- name: Install dependencies
-    #  run: |is:issue is:open 
-    #    msbuild /t:restore ./Nivaes.TimeLine.Droid/
-    #    msbuild /t:restore ./Nivaes.TimeLine.Droid.Sample/
-
-    #- name: Build App.Cross.Droid
-    #  run: msbuild ./Nivaes.TimeLine.Droid/ /property:Configuration=Release
 
     - name: Build App.Cross.Droid
       run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
@@ -88,63 +59,26 @@ jobs:
       with:
         dotnet-version: 3.1.x
 
-    #- name: Setup .NET Core 5.0.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 5.0.x
-    #    source-url: https://nuget.pkg.github.com/Nivaes/index.json
-    #  env:
-    #    NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1 
+      with:
+        dotnet-version: ${{ env.net_core_version }}
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    #- name: Setup .NET Core 6.0.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 6.0.100-preview.3.21202.5
-
-    - name: Install .NET Core 6.0.x
+    - name: Install workload
+      shell: pwsh
       run: |
-        export PATH="/usr/local/share/dotnet/:~/.dotnet/tools:$PATH" 
-        curl -L https://raw.githubusercontent.com/dotnet/install-scripts/7a9d5dcab92cf131fc2d8977052f8c2c2d540e22/src/dotnet-install.sh > dotnet-install.sh 
-        sh dotnet-install.sh --version 6.0.100-preview.3.21202.5 --install-dir $DOTNET_ROOT --verbose 
-        dotnet --list-sdks
-        echo "##vso[task.setvariable variable=PATH]$PATH"
+        dotnet workload install ios
+        dotnet workload install macos
+        dotnet workload install maccatalyst
+        dotnet workload install tvos
 
-    - name: Install iOS Workloads
-      run: |
-        dotnet tool install --global boots
-        boots --stable Mono
-        boots --preview Xamarin.iOS
-        boots --preview Xamarin.Mac
-        boots https://download.visualstudio.microsoft.com/download/pr/7b60a920-c8b1-4798-b660-ae1a7294eb6d/bbdc2a9c6705520fd0a6d04f71e5ed3e/xamarin.ios-14.2.0.12.pkg
-        boots https://download.visualstudio.microsoft.com/download/pr/b089be2f-932a-40ab-904b-b626f9e6427b/6aad9f3ea4fbfb92ce267e0f60b34797/xamarin.mac-6.20.2.2.pkg
-        boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.iOS.Bundle.14.4.100-preview.3.1326.pkg
-        boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.macOS.Bundle.11.1.100-preview.3.1379.pkg
-        boots https://bosstoragemirror.azureedge.net/wrench/6.0.1xx-preview3/f68d4d9c2a342daf9eaad364ccbe252e009d3901/4623693/package/notarized/Microsoft.MacCatalyst.Bundle.14.3.100-preview.3.471.pkg
+    - name: Install Xcode
+      uses: devbotsxyz/xcode-select@v1
 
-    - name: Install Xcode 12.4
-      run: sudo xcode-select -s /Applications/Xcode_12.4.app
-
-    - name: configure vsmac xcode
-      run: |
-        set -x
-        mkdir -p ~/Library/Preferences/Xamarin
-        rm -f ~/Library/Preferences/Xamarin/Settings.plist
-        /usr/libexec/PlistBuddy -c "add :AppleSdkRoot string $(dirname $(dirname $(xcode-select -p)))" ~/Library/Preferences/Xamarin/Settings.plist || true
-        cat ~/Library/Preferences/Xamarin/Settings.plist || true
-
-    #- name: Setup MSBuild
-    #  uses: microsoft/setup-msbuild@v1.0.2
-
-    #- name: Install dependencies
-    #  run: |
-    #    msbuild /t:restore ./Nivaes.TimeLine.iOS/
-    #    msbuild /t:restore ./Nivaes.TimeLine.iOS.Sample/
-
-    #- name: Build App.Cross.iOS
-    #  run: msbuild ./Nivaes.TimeLine.iOS/ /property:Configuration=Release
-
-    #- name: Build App.Cross.iOS
-    #  run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
+    - name: Build App.Cross.iOS
+      run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
 
   build-Windows:
     runs-on: windows-2019
@@ -157,23 +91,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    #- name: Setup .NET Core 3.1.x
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 3.1.x
-
-    - name: Setup .NET Core 5.0.x
-      uses: actions/setup-dotnet@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1 
       with:
-        dotnet-version: 5.0.x
-        source-url: https://nuget.pkg.github.com/Nivaes/index.json
+        dotnet-version: ${{ env.net_core_version }}
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-    - name: Setup .NET Core 6.0.x
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.100-preview.3.21202.5
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
@@ -184,11 +107,11 @@ jobs:
         msbuild /t:restore ./Nivaes.TimeLine.WinUI.Windows.Sample/
         msbuild /t:restore ./Nivaes.TimeLine.WinUI.WPF.Windows.Sample/
 
-    #- name: Build App.Cross.WinUI
-    #  run: msbuild ./Nivaes.TimeLine.WinUI/ /property:Configuration=Release
+    - name: Build App.Cross.WinUI
+      run: msbuild ./Nivaes.TimeLine.WinUI/ /property:Configuration=Release
 
-    #- name: Build Nivaes.TimeLine.WinUI.Windows.Sample
-    #  run: msbuild ./Nivaes.TimeLine.WinUI.Windows.Sample/ /property:Configuration=Release
+    - name: Build Nivaes.TimeLine.WinUI.Windows.Sample
+      run: msbuild ./Nivaes.TimeLine.WinUI.Windows.Sample/ /property:Configuration=Release
 
-    #- name: Build Nivaes.TimeLine.WinUI.WPF.Windows.Sample
-    #  run: msbuild ./Nivaes.TimeLine.WinUI.WPF.Windows.Sample/ /property:Configuration=Release
+    - name: Build Nivaes.TimeLine.WinUI.WPF.Windows.Sample
+      run: msbuild ./Nivaes.TimeLine.WinUI.WPF.Windows.Sample/ /property:Configuration=Release
