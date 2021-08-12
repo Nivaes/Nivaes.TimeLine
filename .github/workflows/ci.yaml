@@ -41,9 +41,8 @@ jobs:
     - name: Build App.Cross.Droid
       run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
 
-    - name: Build App.Cross.Droid.Sample
-      run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release
-
+    #- name: Build App.Cross.Droid.Sample
+    #  run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release
 
   build-iOS:
     runs-on: macos-10.15
@@ -81,7 +80,7 @@ jobs:
       uses: devbotsxyz/xcode-select@v1
 
     - name: Build App.Cross.iOS
-      run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --runtime iossimulator-x64
+      run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
 
   build-Windows:
     runs-on: windows-2019
@@ -110,14 +109,14 @@ jobs:
         msbuild /t:restore ./Nivaes.TimeLine.WinUI.Windows.Sample/
         msbuild /t:restore ./Nivaes.TimeLine.WinUI.WPF.Windows.Sample/
 
-    - name: Build App.Cross.WinUI
-      run: msbuild ./Nivaes.TimeLine.WinUI/ /property:Configuration=Release
+    #- name: Build App.Cross.WinUI
+    #  run: msbuild ./Nivaes.TimeLine.WinUI/ /property:Configuration=Release
 
-    - name: Build App.Cross.WinUI
-      run: dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release
+    #- name: Build App.Cross.WinUI
+    #  run: dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release
 
-    - name: Build Nivaes.TimeLine.WinUI.Windows.Sample
-      run: msbuild ./Nivaes.TimeLine.WinUI.Windows.Sample/ /property:Configuration=Release
+    #- name: Build Nivaes.TimeLine.WinUI.Windows.Sample
+    #  run: msbuild ./Nivaes.TimeLine.WinUI.Windows.Sample/ /property:Configuration=Release
 
-    - name: Build Nivaes.TimeLine.WinUI.WPF.Windows.Sample
-      run: msbuild ./Nivaes.TimeLine.WinUI.WPF.Windows.Sample/ /property:Configuration=Release
+    #- name: Build Nivaes.TimeLine.WinUI.WPF.Windows.Sample
+    #  run: msbuild ./Nivaes.TimeLine.WinUI.WPF.Windows.Sample/ /property:Configuration=Release
