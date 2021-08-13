@@ -15,7 +15,7 @@
 
     <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.0.0-experimental1" />
 
-    <PackageReference Update="Microsoft.DotNet.PackageValidation" Version="1.0.0-preview.7.21379.12" />
+    <PackageReference Update="Microsoft.DotNet.PackageValidation" Version="1.0.0-rc.1.21412.8" />
 
   </ItemGroup>
   
