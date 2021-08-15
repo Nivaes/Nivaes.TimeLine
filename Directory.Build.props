@@ -22,7 +22,6 @@
     <BaseIntermediateOutputPath>$(RepoRoot)Artifacts\$(Configuration)\obj\$(Platform)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
   </PropertyGroup>-->
 
-  <!-- Common properties -->
   <PropertyGroup>
     <SolutionDirPath Condition=" '$(SolutionDir)' != '' ">$(SolutionDir)ArtifactsVS\</SolutionDirPath>
     <SolutionDirPath Condition=" '$(SolutionDir)' == '' ">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))Artifacts\</SolutionDirPath>
