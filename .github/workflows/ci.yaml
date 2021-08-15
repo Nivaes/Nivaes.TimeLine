@@ -12,7 +12,7 @@ on:
     - '**/*.md'
 
 env:
-    net_core_version: 6.0.100-preview.7.21379.14
+    net_core_version: 6.0.100-rc.1.21414.1
 
 jobs:
   build-Android:
@@ -41,8 +41,8 @@ jobs:
     - name: Build App.Cross.Droid
       run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release
 
-    #- name: Build App.Cross.Droid.Sample
-    #  run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release
+    - name: Build App.Cross.Droid.Sample
+      run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --runtime android-x64
 
   build-iOS:
     runs-on: macos-10.15
@@ -81,6 +81,9 @@ jobs:
 
     - name: Build App.Cross.iOS
       run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
+
+    - name: Build TimeLine.iOS.Sample
+      run: dotnet build ./Nivaes.TimeLine.iOS.Sample/ --configuration Release
 
   build-Windows:
     runs-on: windows-2019
