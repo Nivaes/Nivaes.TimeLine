@@ -31,7 +31,7 @@
     <IntermediateOutputPath>$(SolutionDirPath)obj\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
     <MSBuildProjectExtensionsPath>$(IntermediateOutputPath)\</MSBuildProjectExtensionsPath>
     <OutputPath>$(SolutionDirPath)bin\$(MSBuildProjectName)\</OutputPath>
-    <OutDir>$(OutputPath)</OutDir>
+    <!--<OutDir>$(OutputPath)</OutDir>-->
     <DocumentationFile>$(SolutionDirPath)doc\$(Configuration)\$(MSBuildProjectName).xml</DocumentationFile>
   </PropertyGroup>
 
