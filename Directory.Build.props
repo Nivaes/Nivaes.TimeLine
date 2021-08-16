@@ -30,7 +30,7 @@
     <BaseIntermediateOutputPath>$(SolutionDirPath)obj\$(Configuration)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(SolutionDirPath)obj\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
     <MSBuildProjectExtensionsPath>$(IntermediateOutputPath)\</MSBuildProjectExtensionsPath>
-    <OutputPath>$(SolutionDirPath)bin\$(Configuration)\</OutputPath>
+    <OutputPath>$(SolutionDirPath)bin\$(MSBuildProjectName)\</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
     <DocumentationFile>$(SolutionDirPath)doc\$(Configuration)\$(MSBuildProjectName).xml</DocumentationFile>
   </PropertyGroup>
