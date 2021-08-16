@@ -80,7 +80,7 @@ jobs:
       uses: devbotsxyz/xcode-select@v1
 
     - name: Build App.Cross.iOS
-      run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release
+      run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --runtime iossimulator-x64
 
     #- name: Build TimeLine.iOS.Sample
     #  run: dotnet build ./Nivaes.TimeLine.iOS.Sample/ --configuration Release
