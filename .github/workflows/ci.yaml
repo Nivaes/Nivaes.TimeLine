@@ -16,8 +16,7 @@ env:
 
 jobs:
   build-Android:
-    # runs-on: windows-2022
-    runs-on: ubuntu-22.04
+    runs-on: windows-2022
 
     steps:
     - name: Dump GitHub context
@@ -39,7 +38,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         distribution: 'microsoft'
-        java-version: '11'
+        java-version: '17'
 
     - name: Install workload
       run: |
@@ -50,8 +49,8 @@ jobs:
 
     - name: Build App.Cross.Droid
       run: |
-          dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release -f net8.0-android --no-restore
-          dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release -f net8.0-android --no-restore
+          dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release --framework net8.0-android --no-restore
+          dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --framework net8.0-android --no-restore
 
     #- name: Build App.Cross.Droid.Sample
     #  run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --runtime android-x64
@@ -93,8 +92,8 @@ jobs:
 
     - name: Build App.Cross.iOS
       run: |
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release -f net8.0-ios --no-restore
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release -f net8.0-maccatalyst --no-restore
+          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-ios --no-restore
+          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-maccatalyst --no-restore
 
     #- name: Build TimeLine.iOS.Sample
     #  run: dotnet build ./Nivaes.TimeLine.iOS.Sample/ --configuration Release
@@ -117,16 +116,23 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    # - name: Setup MSBuild
-    #   uses: microsoft/setup-msbuild@v1.0.2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
 
     - name: Restore Dependencies
       run: |
           dotnet restore ./Nivaes.TimeLine.WinUI/
           dotnet restore ./Nivaes.TimeLine.WinUI.Windows.Sample/
 
+    # - name: Build App.Cross.WinUI
+    #   run: |
+    #       dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
+    #       dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
+
     - name: Build App.Cross.WinUI
       run: |
-          dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release -f net8.0-windows10.0.19041.0 --no-restore
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release -f net8.0-windows10.0.19041.0 --no-restore
+          msbuild /m /p:Configuration=Release,Platform=x86 ./Nivaes.TimeLine.WinUI/
+          msbuild /m /p:Configuration=Release,Platform=x64 ./Nivaes.TimeLine.WinUI/
+          msbuild /m /p:Configuration=Release,Platform=ARM64 ./Nivaes.TimeLine.WinUI/
+
 
