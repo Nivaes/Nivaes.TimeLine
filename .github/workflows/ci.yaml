@@ -57,9 +57,14 @@ jobs:
       run: |
           dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --framework net8.0-android --no-restore
 
+    # https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet.yml
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        path: |
+          ./**/*.aab
+          ./**/*.apk
 
-    #- name: Build App.Cross.Droid.Sample
-    #  run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --runtime android-x64
 
   build-iOS:
     runs-on: macos-latest
@@ -88,8 +93,14 @@ jobs:
         dotnet workload install maccatalyst
         dotnet workload install tvos
 
-    - name: Install Xcode
-      uses: devbotsxyz/xcode-select@v1
+    # https://github.com/Apple-Actions/Example-iOS/blob/master/.github/workflows/test.yml
+    # https://calvium.com/how-to-make-a-p12-file/
+    # https://www.andreasnesheim.no/setting-up-ci-for-your-net-maui-ios-app-with-github-actions/
+    - name: Import Code-Signing Certificates
+      uses: Apple-Actions/import-codesign-certs@v2
+      with:
+        p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+        p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
 
     - name: Restore Dependencies
       run: dotnet restore ./Nivaes.TimeLine.iOS/
@@ -100,9 +111,12 @@ jobs:
       run: |
           dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-ios --no-restore
           dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-maccatalyst --no-restore
-
-    #- name: Build TimeLine.iOS.Sample
-    #  run: dotnet build ./Nivaes.TimeLine.iOS.Sample/ --configuration Release
+          # /p:ArchiveOnBuild=true /p:EnableAssemblyILStripping=false
+    
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        path: '**/*.ipa'
 
   build-Windows:
     runs-on: windows-2022
@@ -135,10 +149,24 @@ jobs:
     #       dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
     #       dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
 
+    #https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet-windows.yml
+
     - name: Build App.Cross.WinUI
       run: |
           msbuild /m /p:Configuration=Release,Platform=x86 ./Nivaes.TimeLine.WinUI/
           msbuild /m /p:Configuration=Release,Platform=x64 ./Nivaes.TimeLine.WinUI/
           msbuild /m /p:Configuration=Release,Platform=ARM64 ./Nivaes.TimeLine.WinUI/
+
+    - name: Upload Windows Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: windows-ci-build
+        path: ./Nivaes.TimeLine.WinUI.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: windows-ci-build-apppackages
+        path: .\**\AppPackages\**\*.*
 
 
