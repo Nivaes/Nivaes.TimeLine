@@ -59,11 +59,13 @@ jobs:
 
     # https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet.yml
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@v4
       with:
         path: |
-          ./**/*.aab
-          ./**/*.apk
+          ./**/*.*
+          # ./**/*.aab
+          # ./**/*.apk
+          
 
 
   build-iOS:
@@ -114,9 +116,11 @@ jobs:
           # /p:ArchiveOnBuild=true /p:EnableAssemblyILStripping=false
     
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@v4
       with:
-        path: '**/*.ipa'
+        path: |
+            ./**/*.*
+            # '**/*.ipa'
 
   build-Windows:
     runs-on: windows-2022
@@ -158,15 +162,17 @@ jobs:
           msbuild /m /p:Configuration=Release,Platform=ARM64 ./Nivaes.TimeLine.WinUI/
 
     - name: Upload Windows Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@4
       with:
         name: windows-ci-build
-        path: ./Nivaes.TimeLine.WinUI.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
+        path: |
+            ./**/*.*
+        # ./Nivaes.TimeLine.WinUI.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
 
-    - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: windows-ci-build-apppackages
-        path: .\**\AppPackages\**\*.*
+    # - name: Upload Build Artifacts
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: windows-ci-build-apppackages
+    #     path: .\**\AppPackages\**\*.*
 
 
