@@ -13,7 +13,13 @@
 
   <PropertyGroup>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>0.0.0-dev</Version>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <VersionSuffix>-dev</VersionSuffix>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <!--<PropertyGroup>
@@ -22,21 +28,21 @@
     <BaseIntermediateOutputPath>$(RepoRoot)Artifacts\$(Configuration)\obj\$(Platform)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
   </PropertyGroup>-->
 
-  <PropertyGroup>
+  <!--<PropertyGroup>
     <SolutionDirPath Condition=" '$(SolutionDir)' != '' ">$(SolutionDir)ArtifactsVS\</SolutionDirPath>
     <SolutionDirPath Condition=" '$(SolutionDir)' == '' ">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))Artifacts\</SolutionDirPath>
 
-    <!-- Output paths -->
+    --><!-- Output paths --><!--
     <BaseIntermediateOutputPath>$(SolutionDirPath)obj\$(Configuration)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(SolutionDirPath)obj\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
     <MSBuildProjectExtensionsPath>$(IntermediateOutputPath)\</MSBuildProjectExtensionsPath>
     <OutputPath>$(SolutionDirPath)bin\$(MSBuildProjectName)\</OutputPath>
-    <!--<OutDir>$(OutputPath)</OutDir>-->
+    --><!--<OutDir>$(OutputPath)</OutDir>--><!--
     <DocumentationFile>$(SolutionDirPath)doc\$(Configuration)\$(MSBuildProjectName).xml</DocumentationFile>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <!--<LangVersion>latest</LangVersion>-->
     <Nullable>enable</Nullable>
     <NoWarn>$(NoWarn);1591;1701;1702;1705;VSX1000</NoWarn>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
@@ -45,19 +51,6 @@
     <IsTestProject>$(MSBuildProjectName.Contains('UnitTest'))</IsTestProject>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Roslynator.Analyzers" Version="3.2.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="AsyncFixer" Version="1.5.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.3-beta1.20609.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+
 
 </Project>

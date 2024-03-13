@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks>net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
     <!--<TargetFrameworks>net6.0-ios</TargetFrameworks>
     <RuntimeIdentifiers>iossimulator-x64</RuntimeIdentifiers>-->
     <!--<RuntimeIdentifiers Condition="'$(TargetFramework)' == 'net6.0-ios'">iossimulator-x64;iossimulator-x86;ios-x64;ios-arm;ios-arm64</RuntimeIdentifiers>
