@@ -45,12 +45,18 @@ jobs:
         dotnet workload install android --ignore-failed-sources --verbosity detailed
 
     - name: Restore Dependencies
-      run: dotnet restore ./Nivaes.TimeLine.Droid/
+      run: |
+          dotnet restore ./Nivaes.TimeLine.Droid/
+          dotnet restore ./Nivaes.TimeLine.Droid.Sample/
 
     - name: Build App.Cross.Droid
       run: |
           dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release --framework net8.0-android --no-restore
+
+    - name: Build App.Cross.Droid.Sample
+      run: |
           dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --framework net8.0-android --no-restore
+
 
     #- name: Build App.Cross.Droid.Sample
     #  run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --runtime android-x64
