@@ -4,7 +4,8 @@
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-
+    <UseWinUI>true</UseWinUI>
+    
     <Title>Nivaes Timeline WinUI</Title>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <Product>TimeLine for Windows</Product>
@@ -22,7 +23,7 @@
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for UAP</Description>
     <PackageId>Nivaes.TimeLine.WinUI</PackageId>
-    <PackageTags>UAP;WinRT;WinUI;timeline</PackageTags>
+    <PackageTags>WinUI;;WinUI3;timeline</PackageTags>
     <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine</RepositoryUrl>
@@ -31,8 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" />
-
-    <PackageReference Include="Microsoft.DotNet.PackageValidation" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
   </ItemGroup>
 
 </Project>

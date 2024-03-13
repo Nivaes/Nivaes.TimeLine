@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Nivaes.TimeLine.WinUI.Windows.Sample (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Nivaes.TimeLine.WinUI.Windows.Sample (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
