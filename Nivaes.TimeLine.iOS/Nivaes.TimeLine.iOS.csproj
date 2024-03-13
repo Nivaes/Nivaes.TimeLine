@@ -24,6 +24,10 @@
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Runtime" />
+  </ItemGroup>
+
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <Description>Time Line packages for Xamarin iOS</Description>
     <PackageId>Nivaes.TimeLine.iOS</PackageId>
@@ -33,9 +37,5 @@
     <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine</RepositoryUrl>
     <DesignTimeBuild>true</DesignTimeBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.PackageValidation" />
-  </ItemGroup>
 
 </Project>
