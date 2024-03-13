@@ -16,7 +16,8 @@ env:
 
 jobs:
   build-Android:
-    runs-on: windows-2022
+    # runs-on: windows-2022
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Dump GitHub context
@@ -48,13 +49,15 @@ jobs:
       run: dotnet restore ./Nivaes.TimeLine.Droid/
 
     - name: Build App.Cross.Droid
-      run: dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release -f net8.0-android --no-restore
+      run: |
+          dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release -f net8.0-android --no-restore
+          dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release -f net8.0-android --no-restore
 
     #- name: Build App.Cross.Droid.Sample
     #  run: dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --runtime android-x64
 
   build-iOS:
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     steps:
     - name: Dump GitHub context
@@ -90,8 +93,8 @@ jobs:
 
     - name: Build App.Cross.iOS
       run: |
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release Release -f net8.0-ios --no-restore
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release Release -f net8.0-maccatalyst --no-restore
+          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release -f net8.0-ios --no-restore
+          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release -f net8.0-maccatalyst --no-restore
 
     #- name: Build TimeLine.iOS.Sample
     #  run: dotnet build ./Nivaes.TimeLine.iOS.Sample/ --configuration Release
@@ -122,8 +125,8 @@ jobs:
           dotnet restore ./Nivaes.TimeLine.WinUI/
           dotnet restore ./Nivaes.TimeLine.WinUI.Windows.Sample/
 
-    - name: Build App.Cross.iOS
+    - name: Build App.Cross.WinUI
       run: |
-          dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release Release -f net8.0-windows10.0.19041.0 --no-restore
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release Release -f net8.0-windows10.0.19041.0 --no-restore
+          dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release -f net8.0-windows10.0.19041.0 --no-restore
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release -f net8.0-windows10.0.19041.0 --no-restore
 
