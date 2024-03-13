@@ -38,6 +38,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\ci.yaml = .github\workflows\ci.yaml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{418DADBD-295B-4DD4-8F9C-6F6BA72A3C8A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|arm64 = Debug|arm64
@@ -172,7 +177,8 @@ Global
 		{CDB44160-CD6B-4251-96BA-E315A89780DA} = {59958218-1EDC-47D9-9962-7EB66FDEBB44}
 		{5EEE76DF-3FCC-49D5-AC39-0F0EA3B4B69E} = {1FE46DDD-FDC8-4F56-9AE5-67506CFD1AD9}
 		{CBAB1551-D061-4123-8775-B34438C66BE5} = {59958218-1EDC-47D9-9962-7EB66FDEBB44}
-		{45197461-6EEF-41BA-AE2F-95DDAF34AD34} = {2D882ED8-BDF5-48B3-9D57-D8A51B32484C}
+		{45197461-6EEF-41BA-AE2F-95DDAF34AD34} = {418DADBD-295B-4DD4-8F9C-6F6BA72A3C8A}
+		{418DADBD-295B-4DD4-8F9C-6F6BA72A3C8A} = {2D882ED8-BDF5-48B3-9D57-D8A51B32484C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B86F2E8-EE7B-401A-BC63-D0A16E11471C}
