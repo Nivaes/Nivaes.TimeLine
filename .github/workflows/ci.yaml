@@ -61,13 +61,12 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
+        name: android-ci-build
         path: |
           ./**/*.*
           # ./**/*.aab
           # ./**/*.apk
           
-
-
   build-iOS:
     runs-on: macos-latest
 
@@ -118,6 +117,7 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
+        name: ios-ci-build
         path: |
             ./**/*.*
             # '**/*.ipa'
