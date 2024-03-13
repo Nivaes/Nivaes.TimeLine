@@ -97,16 +97,14 @@ jobs:
     # https://github.com/Apple-Actions/Example-iOS/blob/master/.github/workflows/test.yml
     # https://calvium.com/how-to-make-a-p12-file/
     # https://www.andreasnesheim.no/setting-up-ci-for-your-net-maui-ios-app-with-github-actions/
-    - name: Import Code-Signing Certificates
-      uses: Apple-Actions/import-codesign-certs@v2
-      with:
-        p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-        p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+    # - name: Import Code-Signing Certificates
+    #   uses: Apple-Actions/import-codesign-certs@v2
+    #   with:
+    #     p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+    #     p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
 
     - name: Restore Dependencies
       run: dotnet restore ./Nivaes.TimeLine.iOS/
-    #- name: Build App.Cross.iOS
-    #  run: dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --runtime iossimulator-x64
 
     - name: Build App.Cross.iOS
       run: |
