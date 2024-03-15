@@ -46,12 +46,12 @@ jobs:
 
     - name: Restore Dependencies
       run: |
-          dotnet restore ./Nivaes.TimeLine.Droid/
+          dotnet restore ./Nivaes.TimeLine/
           dotnet restore ./Nivaes.TimeLine.Droid.Sample/
 
     - name: Build App.Cross.Droid
       run: |
-          dotnet build ./Nivaes.TimeLine.Droid/ --configuration Release --framework net8.0-android --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-android --no-restore
 
     - name: Build App.Cross.Droid.Sample
       run: |
