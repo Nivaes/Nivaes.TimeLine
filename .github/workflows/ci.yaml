@@ -67,58 +67,58 @@ jobs:
           # ./**/*.aab
           # ./**/*.apk
           
-  build-iOS:
-    runs-on: macos-latest
+  # build-iOS:
+  #   runs-on: macos-latest
 
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+  #   steps:
+  #   - name: Dump GitHub context
+  #     env:
+  #       GITHUB_CONTEXT: ${{ toJson(github) }}
+  #     run: echo "$GITHUB_CONTEXT"
 
-    - name: Checkout
-      uses: actions/checkout@v3
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3 
-      with:
-        dotnet-version: ${{ env.net_core_version }}
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  #   - name: Setup .NET Core
+  #     uses: actions/setup-dotnet@v3 
+  #     with:
+  #       dotnet-version: ${{ env.net_core_version }}
+  #     env:
+  #       NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - name: Install workload
-      shell: pwsh
-      run: |
-        dotnet workload install ios
-        dotnet workload install macos
-        dotnet workload install maccatalyst
-        dotnet workload install tvos
+  #   - name: Install workload
+  #     shell: pwsh
+  #     run: |
+  #       dotnet workload install ios
+  #       dotnet workload install macos
+  #       dotnet workload install maccatalyst
+  #       dotnet workload install tvos
 
-    # https://github.com/Apple-Actions/Example-iOS/blob/master/.github/workflows/test.yml
-    # https://calvium.com/how-to-make-a-p12-file/
-    # https://www.andreasnesheim.no/setting-up-ci-for-your-net-maui-ios-app-with-github-actions/
-    # - name: Import Code-Signing Certificates
-    #   uses: Apple-Actions/import-codesign-certs@v2
-    #   with:
-    #     p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-    #     p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+  #   # https://github.com/Apple-Actions/Example-iOS/blob/master/.github/workflows/test.yml
+  #   # https://calvium.com/how-to-make-a-p12-file/
+  #   # https://www.andreasnesheim.no/setting-up-ci-for-your-net-maui-ios-app-with-github-actions/
+  #   # - name: Import Code-Signing Certificates
+  #   #   uses: Apple-Actions/import-codesign-certs@v2
+  #   #   with:
+  #   #     p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+  #   #     p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
 
-    - name: Restore Dependencies
-      run: dotnet restore ./Nivaes.TimeLine.iOS/
+  #   - name: Restore Dependencies
+  #     run: dotnet restore ./Nivaes.TimeLine.iOS/
 
-    - name: Build App.Cross.iOS
-      run: |
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-ios --no-restore
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-maccatalyst --no-restore
-          # /p:ArchiveOnBuild=true /p:EnableAssemblyILStripping=false
+  #   - name: Build App.Cross.iOS
+  #     run: |
+  #         dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-ios --no-restore
+  #         dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-maccatalyst --no-restore
+  #         # /p:ArchiveOnBuild=true /p:EnableAssemblyILStripping=false
     
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ios-ci-build
-        path: |
-            ./**/*.*
-            # '**/*.ipa'
+  #   - name: Upload a Build Artifact
+  #     uses: actions/upload-artifact@v4
+  #     with:
+  #       name: ios-ci-build
+  #       path: |
+  #           ./**/*.*
+  #           # '**/*.ipa'
 
   build-Windows:
     runs-on: windows-2022
