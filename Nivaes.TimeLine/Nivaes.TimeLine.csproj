@@ -46,20 +46,8 @@
   
   </ItemGroup>
 
-  <!--<ItemGroup Condition=" '$(_MvxTargetPlatformIsiOS)' == 'True' Or '$(_MvxTargetPlatformIsMacCatalyst)' == 'True' ">
-    <Compile Include="Platforms\Apple\**\*.cs" />
-    <Compile Include="Platforms\iOS\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />
-
-    <ProjectReference Include="..\Nivaes.TimeLine.iOS\Nivaes.TimeLine.iOS.csproj" />
-  </ItemGroup>-->
-
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' Or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
-    <!--<Compile Include="Platforms\Apple\**\*.cs" />
-    <Compile Include="Platforms\Mac\**\*.cs" />
-    <Compile Include="Platforms\Xamarin\**\*.cs" />-->
-
-    <!--<ProjectReference Include="..\Nivaes.TimeLine.iOS\Nivaes.TimeLine.iOS.csproj" />-->
+    <Compile Include="Platforms\iOS\**\*.cs" />
   </ItemGroup>
 
   <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
@@ -84,10 +72,6 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
   
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Platforms\iOS\" />
   </ItemGroup>
 
 </Project>

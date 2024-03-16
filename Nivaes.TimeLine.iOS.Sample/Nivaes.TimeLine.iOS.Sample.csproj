@@ -24,6 +24,6 @@
 
   
   <ItemGroup>
-    <ProjectReference Include="..\Nivaes.TimeLine.iOS\Nivaes.TimeLine.iOS.csproj" />
+    <ProjectReference Include="..\Nivaes.TimeLine\Nivaes.TimeLine.csproj" />
   </ItemGroup>
 </Project>
