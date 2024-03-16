@@ -106,13 +106,13 @@ jobs:
 
     - name: Restore Dependencies
       run: |
-          dotnet restore ./Nivaes.TimeLine.iOS/
+          dotnet restore ./Nivaes.TimeLine/
           dotnet restore ./Nivaes.TimeLine.iOS.Sample/
 
     - name: Build Nivaes.TimeLine
       run: |
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-ios --no-restore
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-maccatalyst --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-ios --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-maccatalyst --no-restore
 
     - name: Build Nivaes.TimeLine.iOS.Sample
       run: |
