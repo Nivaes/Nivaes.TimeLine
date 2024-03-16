@@ -154,11 +154,12 @@ jobs:
           dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 --no-restore
           dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 --no-restore
 
+
     - name: Build Nivaes.TimeLine.Windows.Sample
       run: |
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x64 --no-restore
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 --no-restore
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 --no-restore
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x64 /p:Platform=x64 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 /p:Platform=x86 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 /p:Platform=ARM64 --no-restore --self-contained
 
     #https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet-windows.yml
 
