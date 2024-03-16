@@ -44,9 +44,7 @@ jobs:
       run: |
         dotnet workload install android --ignore-failed-sources --verbosity detailed
         dotnet workload install ios --ignore-failed-sources
-        dotnet workload install macos --ignore-failed-sources
         dotnet workload install maccatalyst --ignore-failed-sources
-        dotnet workload install tvos --ignore-failed-sources
 
     - name: Restore Dependencies
       run: |
@@ -142,26 +140,26 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v2
+    # - name: Setup MSBuild
+    #   uses: microsoft/setup-msbuild@v2
 
     - name: Restore Dependencies
       run: |
           dotnet restore ./Nivaes.TimeLine/
           dotnet restore ./Nivaes.TimeLine.WinUI.Windows.Sample/
 
-    # - name: Build App.Cross.WinUI
-    #   run: |
-    #       dotnet build ./Nivaes.TimeLine.WinUI/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
-    #       dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
+    - name: Build App.Cross.WinUI
+      run: |
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
 
     #https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet-windows.yml
 
-    - name: Build App.Cross.WinUI
-      run: |
-          msbuild /m /p:Configuration=Release,Platform=x86 ./Nivaes.TimeLine/
-          msbuild /m /p:Configuration=Release,Platform=x64 ./Nivaes.TimeLine/
-          msbuild /m /p:Configuration=Release,Platform=ARM64 ./Nivaes.TimeLine/
+    # - name: Build App.Cross.WinUI
+    #   run: |
+    #       msbuild /m /p:Configuration=Release,Platform=x86 ./Nivaes.TimeLine/
+    #       msbuild /m /p:Configuration=Release,Platform=x64 ./Nivaes.TimeLine/
+    #       msbuild /m /p:Configuration=Release,Platform=ARM64 ./Nivaes.TimeLine/
 
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v4

@@ -68,8 +68,10 @@
     <Platforms>x86;x64;arm64</Platforms>
     <UseWinUI>true</UseWinUI>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
 
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
