@@ -1,5 +1,5 @@
 # Nivaes.TimeLine
-Xamarin TimeLine control
+TimeLine for Android, iOS and Windows
 
 ### Continuous Integration
 
