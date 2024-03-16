@@ -86,7 +86,7 @@ jobs:
       with:
         dotnet-version: ${{ env.net_core_version }}
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install workload
       shell: pwsh
@@ -144,7 +144,7 @@ jobs:
       with:
         dotnet-version: ${{ env.net_core_version }}
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Restore Dependencies
       run: |
@@ -197,7 +197,7 @@ jobs:
       with:
         dotnet-version: ${{ env.net_core_version }}
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Java
       uses: actions/setup-java@v2
