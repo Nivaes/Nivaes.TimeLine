@@ -56,14 +56,14 @@ jobs:
           dotnet restore ./Nivaes.TimeLine/
 
     - name: Build
-      run: dotnet build --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+      run: dotnet build ./Nivaes.TimeLine/ --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
 
     - name: Test
       run: dotnet test --configuration Release --no-build --verbosity normal
 
     - name: Pack
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
-      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} 
+      run: dotnet pack ./Nivaes.TimeLine/ --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} 
 
     - name: Create Release
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
