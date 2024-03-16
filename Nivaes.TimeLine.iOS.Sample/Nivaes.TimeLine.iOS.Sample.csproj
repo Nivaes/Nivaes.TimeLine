@@ -6,6 +6,7 @@
     <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
     <EnableAssemblyILStripping>false</EnableAssemblyILStripping>
     <MtouchLink>None</MtouchLink>
+    <PublishTrimmed>false</PublishTrimmed>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -19,7 +20,6 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Any CPU' ">
     <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
   </PropertyGroup>
-
   
   <ItemGroup>
     <ProjectReference Include="..\Nivaes.TimeLine\Nivaes.TimeLine.csproj" />
