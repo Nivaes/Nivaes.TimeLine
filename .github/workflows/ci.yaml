@@ -156,7 +156,9 @@ jobs:
 
     - name: Build Nivaes.TimeLine.Windows.Sample
       run: |
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x64 --no-restore
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 --no-restore
+          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 --no-restore
 
     #https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet-windows.yml
 
@@ -222,7 +224,7 @@ jobs:
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: windows-ci-build
+        name: NuGet-ci-build
         path: |
             ./**/*.*
         # ./Nivaes.TimeLine.WinUI.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
