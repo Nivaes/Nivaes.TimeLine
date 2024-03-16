@@ -42,12 +42,14 @@ jobs:
     - name: Install workload
       run: |
         dotnet workload install android --ignore-failed-sources --verbosity detailed
-        dotnet workload install ios --ignore-failed-sources
-        dotnet workload install maccatalyst --ignore-failed-sources
 
     - name: Restore Dependencies
       run: |
           dotnet restore ./Nivaes.TimeLine/
+
+    - name: Build Nivaes.TimeLine
+      run: |
+          dotnet build ./Nivaes.TimeLine/ --configuration Release  --no-restore
 
     - name: Build Nivaes.TimeLine android
       run: |
