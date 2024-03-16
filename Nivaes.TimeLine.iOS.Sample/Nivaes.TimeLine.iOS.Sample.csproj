@@ -8,7 +8,7 @@
     <MtouchLink>None</MtouchLink>
     <PublishTrimmed>false</PublishTrimmed>-->
   </PropertyGroup>
-
+ 
   <!--<ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
