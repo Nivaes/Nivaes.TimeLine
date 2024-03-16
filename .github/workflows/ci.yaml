@@ -15,7 +15,55 @@ env:
     net_core_version: 8.0.201
 
 jobs:
-  build-Android:
+  build-TimeLine:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.net_core_version }}
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'microsoft'
+        java-version: '17'
+
+    - name: Install workload
+      run: |
+        dotnet workload install android --ignore-failed-sources --verbosity detailed
+        dotnet workload install ios --ignore-failed-sources
+        dotnet workload install maccatalyst --ignore-failed-sources
+
+    - name: Restore Dependencies
+      run: |
+          dotnet restore ./Nivaes.TimeLine/
+
+    - name: Build Nivaes.TimeLine android
+      run: |
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-android --no-restore
+
+    - name: Build Nivaes.TimeLine iOS
+      run: |
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-ios --no-restore
+
+    - name: Build Nivaes.TimeLine Windows
+      run: |
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
+
+
+  build-TimeLine-Android:
+    needs: build-TimeLine
     runs-on: windows-2022
 
     steps:
@@ -69,7 +117,8 @@ jobs:
           # ./**/*.aab
           # ./**/*.apk
           
-  build-iOS:
+  build-TimeLine-iOS:
+    needs: build-TimeLine
     runs-on: macos-latest
 
     steps:
@@ -126,8 +175,10 @@ jobs:
             ./**/*.*
             # '**/*.ipa'
 
-  build-Windows:
+  build-TimeLine-Windows:
+    needs: build-TimeLine
     runs-on: windows-2022
+
     steps:
     - name: Dump GitHub context
       env:
