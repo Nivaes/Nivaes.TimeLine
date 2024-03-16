@@ -15,57 +15,7 @@ env:
     net_core_version: 8.0.203
 
 jobs:
-  build-TimeLine:
-    runs-on: ubuntu-22.04
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ env.net_core_version }}
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-    - name: Setup Java
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'microsoft'
-        java-version: '17'
-
-    - name: Install workload
-      run: |
-        dotnet workload install android --ignore-failed-sources --verbosity detailed
-
-    - name: Restore Dependencies
-      run: |
-          dotnet restore ./Nivaes.TimeLine/
-
-    - name: Build Nivaes.TimeLine
-      run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release  --no-restore
-
-    - name: Build Nivaes.TimeLine android
-      run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-android --no-restore
-
-    - name: Build Nivaes.TimeLine iOS
-      run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-ios --no-restore
-
-    - name: Build Nivaes.TimeLine Windows
-      run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --no-restore
-
-
-  build-TimeLine-Android:
-    needs: build-TimeLine
+  build-Android:
     runs-on: windows-2022
 
     steps:
@@ -119,8 +69,7 @@ jobs:
           # ./**/*.aab
           # ./**/*.apk
           
-  build-TimeLine-iOS:
-    needs: build-TimeLine
+  build-iOS:
     runs-on: macos-latest
 
     steps:
@@ -157,13 +106,13 @@ jobs:
 
     - name: Restore Dependencies
       run: |
-          dotnet restore ./Nivaes.TimeLine.iOS/
+          dotnet restore ./Nivaes.TimeLine/
           dotnet restore ./Nivaes.TimeLine.iOS.Sample/
 
     - name: Build Nivaes.TimeLine
       run: |
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-ios --no-restore
-          dotnet build ./Nivaes.TimeLine.iOS/ --configuration Release --framework net8.0-maccatalyst --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-ios --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-maccatalyst --no-restore
 
     - name: Build Nivaes.TimeLine.iOS.Sample
       run: |
@@ -177,10 +126,8 @@ jobs:
             ./**/*.*
             # '**/*.ipa'
 
-  build-TimeLine-Windows:
-    needs: build-TimeLine
+  build-Windows:
     runs-on: windows-2022
-
     steps:
     - name: Dump GitHub context
       env:
