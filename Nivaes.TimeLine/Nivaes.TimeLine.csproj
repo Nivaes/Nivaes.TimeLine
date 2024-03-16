@@ -38,8 +38,8 @@
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
     
-    <Compile Include="Platforms\Android\**\*.cs" />
-    <AndroidResource Include="Platforms\Android\Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
+    <Compile Include="Platforms\Droid\**\*.cs" />
+    <AndroidResource Include="Platforms\Droid\Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
 
     <PackageReference Include="Xamarin.AndroidX.RecyclerView" />
     <PackageReference Include="Xamarin.AndroidX.VectorDrawable" />
