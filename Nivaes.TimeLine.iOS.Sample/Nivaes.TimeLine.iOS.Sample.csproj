@@ -9,15 +9,6 @@
     <PublishTrimmed>false</PublishTrimmed>-->
   </PropertyGroup>
  
-  <!--<ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Xamarin.iOS" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors" />
-  </ItemGroup>-->
-
   <!--<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>

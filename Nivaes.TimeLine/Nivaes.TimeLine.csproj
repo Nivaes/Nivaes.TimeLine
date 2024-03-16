@@ -51,11 +51,6 @@
     <InterfaceDefinition Include="Platforms\iOS\**\*.storyboard" />
     <Compile Include="Platforms\iOS\**\*.cs" />
 
-    <!--<PackageReference Include="System.Runtime" />-->
-    <!--<Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Xamarin.iOS" />-->
   </ItemGroup>
 
   <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
