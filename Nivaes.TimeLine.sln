@@ -27,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{5995
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{45197461-6EEF-41BA-AE2F-95DDAF34AD34}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build_release.yaml = .github\workflows\build_release.yaml
 		.github\workflows\ci.yaml = .github\workflows\ci.yaml
+		.github\workflows\publish_release.yaml = .github\workflows\publish_release.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{418DADBD-295B-4DD4-8F9C-6F6BA72A3C8A}"

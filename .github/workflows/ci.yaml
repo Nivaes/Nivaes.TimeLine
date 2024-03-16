@@ -93,9 +93,7 @@ jobs:
       run: |
         dotnet workload install android
         dotnet workload install ios
-        dotnet workload install macos
         dotnet workload install maccatalyst
-        dotnet workload install tvos
 
     # https://github.com/Apple-Actions/Example-iOS/blob/master/.github/workflows/test.yml
     # https://calvium.com/how-to-make-a-p12-file/

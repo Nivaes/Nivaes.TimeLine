@@ -1,0 +1,89 @@
+name: Build Release
+
+on:
+  #create:
+  #  branches:              # Not filter wiht branches name of chreate.
+  #  - 'release/**'
+  push:
+    branches:
+    - 'release/**'
+    paths-ignore:
+    - '**/*.md'
+    - '**/*.sln'
+  #pull_request:
+  #  types: [opened, synchronize, reopened]
+  #  branches: [ master ]
+  #  paths-ignore:
+  #  - '**/*.md'
+
+jobs:
+  build_release:
+
+    runs-on: windows-2022
+
+    steps:
+    - name: Get Version
+      uses: nivaes/version-run-number@develop
+      id: version_run_number
+      
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'microsoft'
+        java-version: '17'
+
+    - name: Install workload
+      run: |
+        dotnet workload install android --ignore-failed-sources --verbosity detailed
+        dotnet workload install ios --ignore-failed-sources
+        dotnet workload install maccatalyst --ignore-failed-sources
+          
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Restore Dependencies
+      run: |
+          dotnet restore ./Nivaes.TimeLine/
+
+    - name: Build
+      run: dotnet build --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+
+    - name: Pack
+      if: github.event_name == 'push' || (github.event_name != 'pull_request')
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} 
+
+    - name: Create Release
+      if: github.event_name == 'push' || (github.event_name != 'pull_request')
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: release/v${{ steps.version_run_number.outputs.version }}
+        release_name: Release Version ${{ steps.version_run_number.outputs.version }}
+        body: |
+          Automatic Release ${{ steps.version_run_number.outputs.version }}  
+          - Release automatically generated.
+        draft: true
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: nivaes/upload-release-assets@master
+      env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+         upload_url: ${{ steps.create_release.outputs.upload_url }}
+         targets: ./Artifacts/*.nupkg
