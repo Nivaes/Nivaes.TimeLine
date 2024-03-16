@@ -75,8 +75,7 @@
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
 
     <Compile Include="Platforms\Windows\**\*.cs" />
-    <Compile Include="Platforms\WinUI\**\*.cs" />
-    <Page Include="Platforms\WinUI\**\*.xaml" SubType="Designer" XamlRuntime="$(DefaultXamlRuntime)" Generator="MSBuild:Compile" />
+    <Page Include="Platforms\Windows\**\*.xaml" SubType="Designer" XamlRuntime="$(DefaultXamlRuntime)" Generator="MSBuild:Compile" />
     <None Update="**\*.xaml.cs" DependentUpon="%(Filename)" />
     <Compile Update="**\*.xaml.cs" DependentUpon="%(Filename)" />
     
