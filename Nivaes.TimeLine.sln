@@ -86,9 +86,9 @@ Global
 		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|arm64.ActiveCfg = Debug|Any CPU
 		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|arm64.Build.0 = Debug|Any CPU
 		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|arm64.Deploy.0 = Debug|Any CPU
-		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|Developer.ActiveCfg = Debug|Any CPU
-		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|Developer.Build.0 = Debug|Any CPU
-		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|Developer.Deploy.0 = Debug|Any CPU
+		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|Developer.ActiveCfg = Debug|iPhoneSimulator
+		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|Developer.Build.0 = Debug|iPhoneSimulator
+		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|Developer.Deploy.0 = Debug|iPhoneSimulator
 		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|x64.Build.0 = Debug|Any CPU
 		{CDB44160-CD6B-4251-96BA-E315A89780DA}.Debug|x64.Deploy.0 = Debug|Any CPU

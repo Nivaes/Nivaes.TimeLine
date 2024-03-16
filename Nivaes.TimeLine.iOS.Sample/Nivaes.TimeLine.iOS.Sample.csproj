@@ -3,13 +3,22 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-ios</TargetFramework>
     <!--<RuntimeIdentifiers>iossimulator-x64;iossimulator-x86;ios-x64;ios-arm;ios-arm64</RuntimeIdentifiers>-->
-    <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
-    <EnableAssemblyILStripping>false</EnableAssemblyILStripping>
+    <Platforms>iPhone;iPhoneSimulator</Platforms>
+    <!--<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
     <MtouchLink>None</MtouchLink>
-    <PublishTrimmed>false</PublishTrimmed>
+    <PublishTrimmed>false</PublishTrimmed>-->
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+  <!--<ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>-->
+
+  <!--<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>
 
@@ -19,7 +28,7 @@
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Any CPU' ">
     <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
-  </PropertyGroup>
+  </PropertyGroup>-->
   
   <ItemGroup>
     <ProjectReference Include="..\Nivaes.TimeLine\Nivaes.TimeLine.csproj" />
