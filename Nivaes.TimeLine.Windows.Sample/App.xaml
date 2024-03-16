@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="Nivaes.TimeLine.WinUI.Windows.Sample.App"
+    x:Class="Nivaes.TimeLine.Windows.Sample.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Nivaes.TimeLine.WinUI.Windows.Sample" >
+    xmlns:local="using:Nivaes.TimeLine.Windows.Sample" >
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

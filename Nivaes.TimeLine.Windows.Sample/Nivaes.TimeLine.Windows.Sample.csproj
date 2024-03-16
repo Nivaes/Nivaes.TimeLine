@@ -11,8 +11,8 @@
 
     <!--<ApplicationManifest>app.manifest</ApplicationManifest>-->
 
-    <RootNamespace>Nivaes.TimeLine.WinUI.Windows.Sample</RootNamespace>
-    <AssemblyName>Nivaes.TimeLine.WinUI.Windows.Sample</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.Windows.Sample</RootNamespace>
+    <AssemblyName>Nivaes.TimeLine.Windows.Sample</AssemblyName>
 
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>

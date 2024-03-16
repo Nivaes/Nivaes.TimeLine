@@ -31,27 +31,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
-  <!--<PropertyGroup>
-    <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))</RepoRoot>
-    <BaseOutputPath>$(RepoRoot)Artifacts\$(Configuration)\bin\$(Platform)\$(MSBuildProjectName)\</BaseOutputPath>
-    <BaseIntermediateOutputPath>$(RepoRoot)Artifacts\$(Configuration)\obj\$(Platform)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-  </PropertyGroup>-->
-
-  <!--<PropertyGroup>
-    <SolutionDirPath Condition=" '$(SolutionDir)' != '' ">$(SolutionDir)ArtifactsVS\</SolutionDirPath>
-    <SolutionDirPath Condition=" '$(SolutionDir)' == '' ">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))Artifacts\</SolutionDirPath>
-
-    --><!-- Output paths --><!--
-    <BaseIntermediateOutputPath>$(SolutionDirPath)obj\$(Configuration)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(SolutionDirPath)obj\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
-    <MSBuildProjectExtensionsPath>$(IntermediateOutputPath)\</MSBuildProjectExtensionsPath>
-    <OutputPath>$(SolutionDirPath)bin\$(MSBuildProjectName)\</OutputPath>
-    --><!--<OutDir>$(OutputPath)</OutDir>--><!--
-    <DocumentationFile>$(SolutionDirPath)doc\$(Configuration)\$(MSBuildProjectName).xml</DocumentationFile>
-  </PropertyGroup>-->
-
   <PropertyGroup>
-    <!--<LangVersion>latest</LangVersion>-->
     <Nullable>enable</Nullable>
     <NoWarn>$(NoWarn);1591;1701;1702;1705;VSX1000</NoWarn>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
@@ -59,7 +39,5 @@
     <DebugType>full</DebugType>
     <IsTestProject>$(MSBuildProjectName.Contains('UnitTest'))</IsTestProject>
   </PropertyGroup>
-
-
 
 </Project>

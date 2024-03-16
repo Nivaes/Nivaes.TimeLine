@@ -3,6 +3,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-android</TargetFramework>
 
+    <AssemblyName>Nivaes.TimeLine.Droid.Sample</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.Droid.Sample</RootNamespace>
+    
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
   </PropertyGroup>
 

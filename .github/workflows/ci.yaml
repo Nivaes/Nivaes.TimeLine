@@ -140,13 +140,10 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    # - name: Setup MSBuild
-    #   uses: microsoft/setup-msbuild@v2
-
     - name: Restore Dependencies
       run: |
           dotnet restore ./Nivaes.TimeLine/
-          dotnet restore ./Nivaes.TimeLine.WinUI.Windows.Sample/
+          dotnet restore ./Nivaes.TimeLine.Windows.Sample/
 
     - name: Build Nivaes.TimeLine
       run: |
@@ -157,17 +154,11 @@ jobs:
 
     - name: Build Nivaes.TimeLine.Windows.Sample
       run: |
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x64 /p:Platform=x64 --no-restore --self-contained
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 /p:Platform=x86 --no-restore --self-contained
-          dotnet build ./Nivaes.TimeLine.WinUI.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 /p:Platform=ARM64 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x64 /p:Platform=x64 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 /p:Platform=x86 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 /p:Platform=ARM64 --no-restore --self-contained
 
     #https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet-windows.yml
-
-    # - name: Build App.Cross.WinUI
-    #   run: |
-    #       msbuild /m /p:Configuration=Release,Platform=x86 ./Nivaes.TimeLine/
-    #       msbuild /m /p:Configuration=Release,Platform=x64 ./Nivaes.TimeLine/
-    #       msbuild /m /p:Configuration=Release,Platform=ARM64 ./Nivaes.TimeLine/
 
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v4
@@ -175,7 +166,7 @@ jobs:
         name: windows-ci-build
         path: |
             ./**/*.*
-        # ./Nivaes.TimeLine.WinUI.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
+        # ./Nivaes.TimeLine.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
 
     # - name: Upload Build Artifacts
     #   uses: actions/upload-artifact@v4
@@ -222,13 +213,12 @@ jobs:
       run: |
           dotnet build ./Nivaes.TimeLine/ --configuration Release --no-restore
 
-    - name: Upload Windows Artifact
+    - name: Upload NuGet Artifact
       uses: actions/upload-artifact@v4
       with:
         name: NuGet-ci-build
         path: |
             ./**/*.*
-        # ./Nivaes.TimeLine.WinUI.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
 
     # - name: Upload Build Artifacts
     #   uses: actions/upload-artifact@v4

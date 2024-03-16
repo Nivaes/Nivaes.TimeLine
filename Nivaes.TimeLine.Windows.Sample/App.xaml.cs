@@ -1,6 +1,6 @@
 ﻿using Windows.ApplicationModel;
 
-namespace Nivaes.TimeLine.WinUI.Windows.Sample
+namespace Nivaes.TimeLine.Windows.Sample
 {
     
     using Microsoft.UI.Xaml;
