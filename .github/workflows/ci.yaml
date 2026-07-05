@@ -16,7 +16,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: linux-latest
 
     steps:
     - name: Dump GitHub context
@@ -42,10 +42,12 @@ jobs:
 
     - name: Install workload
       run: |
-        dotnet workload install android --ignore-failed-sources --verbosity detailed
-        dotnet workload install ios --ignore-failed-sources
-        dotnet workload install maccatalyst --ignore-failed-sources
-        dotnet workload install tvos --ignore-failed-sources
+          dotnet workload install android ios, maccatalyst tvos
+      # run: |
+        # dotnet workload install android --ignore-failed-sources --verbosity detailed
+        # dotnet workload install ios --ignore-failed-sources
+        # dotnet workload install maccatalyst --ignore-failed-sources
+        # dotnet workload install tvos --ignore-failed-sources
 
     - name: Restore Dependencies
       run: |
