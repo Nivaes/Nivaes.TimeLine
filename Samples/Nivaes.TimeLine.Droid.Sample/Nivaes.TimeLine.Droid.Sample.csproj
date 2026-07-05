@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Packeges\Nivaes.TimeLine.csproj" />
+    <ProjectReference Include="..\..\Packets\Nivaes.TimeLine.csproj" />
   </ItemGroup>
 
 </Project>
