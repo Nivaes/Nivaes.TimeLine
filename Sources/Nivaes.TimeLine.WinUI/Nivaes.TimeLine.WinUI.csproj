@@ -12,16 +12,8 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
   </ItemGroup>
-  
-  <!--<ItemGroup>
-    <None Update="Components\TimeLineMarkerView\TimeLineMarkerView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Components\TimeLineView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>-->
+
+  <PropertyGroup Condition="'$(Configuration)'!='Debug'">
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
 </Project>

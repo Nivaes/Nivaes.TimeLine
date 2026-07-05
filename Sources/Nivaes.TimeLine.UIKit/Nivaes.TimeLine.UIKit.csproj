@@ -11,4 +11,8 @@
     <IsTrimmable>true</IsTrimmable>
     <RunAOTAnalysis>true</RunAOTAnalysis>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'!='Debug'">
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
 </Project>

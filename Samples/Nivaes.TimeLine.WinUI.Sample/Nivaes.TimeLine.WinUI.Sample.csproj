@@ -18,8 +18,11 @@
 
 		<OptimizationPreference>Speed</OptimizationPreference>
 		<IsTrimmable>true</IsTrimmable>
-		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
 
 	<ItemGroup>
 		<Content Include="Assets\SplashScreen.scale-200.png" />

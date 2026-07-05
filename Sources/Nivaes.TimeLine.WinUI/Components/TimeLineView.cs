@@ -8,7 +8,7 @@ using Windows.Foundation.Collections;
 
 namespace Nivaes.TimeLine.WinUI
 {
-    public class TimeLineView
+    public partial class TimeLineView
         : ItemsControl
     {
         #region Properties
@@ -148,7 +148,6 @@ namespace Nivaes.TimeLine.WinUI
 
             base.Items.VectorChanged += Items_VectorChanged;
         }
-
 
         private void Items_VectorChanged(IObservableVector<object> sender, IVectorChangedEventArgs @event)
         {
