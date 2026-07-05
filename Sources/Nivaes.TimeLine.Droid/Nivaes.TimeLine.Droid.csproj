@@ -3,7 +3,7 @@
     <TargetFramework>net10.0-android</TargetFramework>
 
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
-    
+
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <!--
@@ -11,16 +11,22 @@
       To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/prepare-libraries-for-trimming
     -->
     <IsTrimmable>true</IsTrimmable>
-    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IsAotCompatible>true</IsAotCompatible>
     <RunAOTAnalysis>true</RunAOTAnalysis>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <IsPackable>true</IsPackable>
   </PropertyGroup>
-  
+
+  <ItemGroup>
+    <None Include="Images\icon.png" Pack="true" PackagePath="\" />
+    <None Include="Docs\Readme.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.RecyclerView" />
     <PackageReference Include="Xamarin.AndroidX.VectorDrawable" />
   </ItemGroup>
+
 </Project>

@@ -16,7 +16,7 @@ env:
 
 jobs:
   build-Android:
-    runs-on: windows-2022
+    runs-on: windows-lat
 
     steps:
     - name: Dump GitHub context

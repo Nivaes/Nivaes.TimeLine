@@ -17,24 +17,16 @@
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
-    <Title>Nivaes Timeline</Title>
-    <Product>TimeLine</Product>
-    <Description>Time Line packages for Android, iOS, maccatalyst and WinUI3</Description>
-    <Summary>???</Summary>
-    <PackageId>Nivaes.TimeLine</PackageId>
-    <PackageTags>xamarin;android;iOS;Windows;WinUI;WinUI3;timeline</PackageTags>
-    <PackageReleaseNotes>https://www.nivaes.com</PackageReleaseNotes>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/Nivaes/Nivaes.TimeLine</RepositoryUrl>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ApplicationDefinition Remove="**\*.xaml" /> 
+    <None Include="Docs\Readme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">
