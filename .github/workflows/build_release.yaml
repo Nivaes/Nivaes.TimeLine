@@ -62,6 +62,7 @@ jobs:
       run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
 
     - name: Remove SourceGenerator symbols
+      shell: bash
       run: |
         rm -f ./Artifacts/*.SourceGenerator.*.snupkg
 
