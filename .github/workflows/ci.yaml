@@ -11,12 +11,9 @@ on:
     paths-ignore:
     - '**/*.md'
 
-env:
-    net_core_version: 10.0.301
-
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Dump GitHub context
@@ -34,20 +31,9 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    # - name: Setup Java
-    #   uses: actions/setup-java@v2
-    #   with:
-    #     distribution: 'microsoft'
-    #     java-version: '17'
-
     - name: Install workload
       run: |
           dotnet workload install android ios, maccatalyst tvos
-      # run: |
-        # dotnet workload install android --ignore-failed-sources --verbosity detailed
-        # dotnet workload install ios --ignore-failed-sources
-        # dotnet workload install maccatalyst --ignore-failed-sources
-        # dotnet workload install tvos --ignore-failed-sources
 
     - name: Restore Dependencies
       run: |

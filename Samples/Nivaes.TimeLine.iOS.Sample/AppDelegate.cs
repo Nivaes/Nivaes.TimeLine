@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using System.Linq;
+using Foundation;
 using UIKit;
 
 namespace Nivaes.TimeLine.iOS.Sample
@@ -10,16 +11,20 @@ namespace Nivaes.TimeLine.iOS.Sample
     {
         // class-level declarations
 
-        public override UIWindow Window
+        public override UIWindow? Window
         {
             get;
             set;
         }
 
-        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+        public override bool FinishedLaunching(UIApplication application, NSDictionary? launchOptions)
         {
+            var scene = UIApplication.SharedApplication
+               .ConnectedScenes
+               .OfType<UIWindowScene>()
+               .First(s => s.ActivationState == UISceneActivationState.ForegroundActive);
             // create a new window instance based on the screen size
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            Window = new UIWindow(scene);
             Window.RootViewController = new UIViewController();
 
             // make the window visible
