@@ -33,7 +33,7 @@ jobs:
 
     - name: Install workload
       run: |
-          dotnet workload install android ios, maccatalyst tvos
+          dotnet workload install android ios maccatalyst tvos
 
     - name: Restore Dependencies
       run: |
