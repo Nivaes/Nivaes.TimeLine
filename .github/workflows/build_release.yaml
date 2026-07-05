@@ -47,10 +47,6 @@ jobs:
       with:
         prerelease: ${{ inputs.prerelease }}
 
-    - name: Install workload
-      run: |
-          dotnet workload install android ios maccatalyst tvos
-
     - name: Restore Dependencies
       run: |
           dotnet restore
