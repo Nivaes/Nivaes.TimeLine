@@ -16,7 +16,7 @@ env:
 
 jobs:
   build:
-    runs-on: linux-latest
+    runs-on: windows-latest
 
     steps:
     - name: Dump GitHub context
@@ -49,10 +49,7 @@ jobs:
 
     - name: Restore Dependencies
       run: |
-          dotnet restore ./Sources/Nivaes.TimeLine.Droid/
-          dotnet restore ./Sources/Nivaes.TimeLine.UIKit/
-          dotnet restore ./Sources/Nivaes.TimeLine.WinUI/
-          dotnet restore ./Packets/Nivaes.TimeLine/
+          dotnet restore
 
     - name: Build
       run: |
