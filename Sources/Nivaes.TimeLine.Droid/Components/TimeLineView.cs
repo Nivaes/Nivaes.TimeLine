@@ -1,20 +1,16 @@
-﻿namespace Nivaes.TimeLine.Droid
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-    using System.Windows.Input;
-    using Android.Content;
-    using Android.Content.Res;
-    using Android.Graphics;
-    using Android.Runtime;
-    using Android.Util;
-    using Android.Views;
-    using Android.Widget;
-    using AndroidX.RecyclerView.Widget;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Windows.Input;
+using Android.Content;
+using Android.Content.Res;
+using Android.Graphics;
+using Android.Runtime;
+using Android.Util;
+using Android.Views;
+using AndroidX.RecyclerView.Widget;
 
+namespace Nivaes.TimeLine.Droid
+{
     [Register("com.nivaes.TimeLineView")]
     public sealed class TimeLineView
         : RecyclerView

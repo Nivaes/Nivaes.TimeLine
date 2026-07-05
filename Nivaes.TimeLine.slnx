@@ -1,12 +1,16 @@
 <Solution>
   <Folder Name="/Packets/">
-    <Project Path="Packeges/Nivaes.TimeLine.csproj" />
+    <Project Path="Packets/Nivaes.TimeLine.csproj" />
   </Folder>
   <Folder Name="/Samples/">
-    <Project Path="Samples/Nivaes.TimeLine.Droid.Sample/Nivaes.TimeLine.Droid.Sample.csproj" />
+    <Project Path="Samples/Nivaes.TimeLine.Droid.Sample/Nivaes.TimeLine.Droid.Sample.csproj" >
+      <Deploy />
+    </Project>
     <Project Path="Samples/Nivaes.TimeLine.iOS.Sample/Nivaes.TimeLine.iOS.Sample.csproj">
+      <Deploy />
     </Project>
     <Project Path="Samples/Nivaes.TimeLine.WinUI.Sample/Nivaes.TimeLine.WinUI.Sample.csproj">
+      <Platform Project="x64" />
       <Deploy />
     </Project>
   </Folder>
