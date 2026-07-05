@@ -1,8 +1,8 @@
-﻿namespace Nivaes.TimeLine.WinUI
-{
-    using System.Windows.Input;
-    using Microsoft.UI.Xaml;
+﻿using System.Windows.Input;
+using Microsoft.UI.Xaml;
 
+namespace Nivaes.TimeLine.WinUI
+{
     public interface ITimeLineItem
     {
         string MarkerText { get; set; }

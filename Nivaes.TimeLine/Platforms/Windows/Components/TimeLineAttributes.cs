@@ -1,7 +1,7 @@
-﻿namespace Nivaes.TimeLine.WinUI
-{
-    using System.Drawing;
+﻿using System.Drawing;
 
+namespace Nivaes.TimeLine.WinUI
+{
     internal class TimeLineAttributes
     {
         internal Color LineColor { get; set; }

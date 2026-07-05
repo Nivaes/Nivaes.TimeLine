@@ -1,11 +1,11 @@
-﻿namespace Nivaes.TimeLine.WinUI
-{
-    using System;
-    using Microsoft.UI.Xaml;
-    using Microsoft.UI.Xaml.Controls;
-    using Microsoft.UI.Xaml.Media;
-    using Microsoft.UI.Xaml.Shapes;
+﻿using System;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
 
+namespace Nivaes.TimeLine.WinUI
+{
     [TemplatePart(Name = "Circle", Type = typeof(Ellipse))]
     [TemplatePart(Name = "Text", Type = typeof(TextBlock))]
     [TemplatePart(Name = "StartLine", Type = typeof(UIElement))]
