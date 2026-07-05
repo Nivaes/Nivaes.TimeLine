@@ -43,7 +43,7 @@
         #endregion
 
         #region Constructors
-        public TimeLineMarkerView(Context context)
+        protected TimeLineMarkerView(Context context)
             : base(context)
         {
         }
@@ -130,7 +130,7 @@
             }
         }
 
-        protected override void OnDraw(Canvas? canvas)
+        protected override void OnDraw(Canvas canvas)
         {
             base.OnDraw(canvas);
 

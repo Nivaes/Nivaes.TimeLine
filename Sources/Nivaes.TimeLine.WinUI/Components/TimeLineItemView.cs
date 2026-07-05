@@ -14,11 +14,11 @@ namespace Nivaes.TimeLine.WinUI
         : ListViewItem
     {
         #region Properties
-        private ITimeLineItem mTimeLineItem;
-        private TimeLineMarkerView mLeftTimeLineMarker;
-        private TimeLineMarkerView mRithTimeLineMarker;
-        private UIElement mLeftIcon;
-        private UIElement mRithIcon;
+        private ITimeLineItem? mTimeLineItem;
+        private TimeLineMarkerView? mLeftTimeLineMarker;
+        private TimeLineMarkerView? mRithTimeLineMarker;
+        private UIElement? mLeftIcon;
+        private UIElement? mRithIcon;
 
         #region MarkerType
         public TimeLineMarkerType MarkerType
@@ -133,7 +133,7 @@ namespace Nivaes.TimeLine.WinUI
         #endregion
 
         #region Icon
-        public DependencyObject Icon
+        public DependencyObject? Icon
         {
             get => (DependencyObject)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
@@ -252,13 +252,10 @@ namespace Nivaes.TimeLine.WinUI
         {
             base.OnTapped(e);
 
-            ICommand command = mTimeLineItem?.Click;
-            if(command != null)
+            ICommand? command = mTimeLineItem?.Click;
+            if (command != null && command.CanExecute(mTimeLineItem))
             {
-                if(command.CanExecute(mTimeLineItem))
-                {
-                    command.Execute(mTimeLineItem);
-                }
+                command.Execute(mTimeLineItem);
             }
         }
 
@@ -266,13 +263,10 @@ namespace Nivaes.TimeLine.WinUI
         {
             base.OnDoubleTapped(e);
 
-            ICommand command = mTimeLineItem?.LongClick;
-            if (command != null)
+            ICommand? command = mTimeLineItem?.LongClick;
+            if (command != null && command.CanExecute(mTimeLineItem))
             {
-                if (command.CanExecute(mTimeLineItem))
-                {
-                    command.Execute(mTimeLineItem);
-                }
+                command.Execute(mTimeLineItem);
             }
         }
     }

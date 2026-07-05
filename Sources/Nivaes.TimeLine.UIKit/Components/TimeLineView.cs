@@ -108,7 +108,7 @@
             base.SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine;
             base.SeparatorColor = mTimeLineAttributes!.LineColor;
 #endif
-            base.SeparatorInset = new UIEdgeInsets(0, mTimeLineAttributes.MarkerSize + 20, 0, 0);
+            base.SeparatorInset = new UIEdgeInsets(0, mTimeLineAttributes?.MarkerSize ?? 0 + 20, 0, 0);
             base.TableFooterView = new UIView();
         }
 
@@ -119,7 +119,7 @@
             source.TimeLineAttributes = mTimeLineAttributes;
         }
 
-        private class TimeLineTableViewCell
+        private sealed class TimeLineTableViewCell
             : UITableViewCell
         {
             #region Properties
@@ -137,7 +137,7 @@
             {
                 mTimeLineAttributes = timeLineAttributes;
 
-                switch (timeLineAttributes.MarkerType)
+                switch (timeLineAttributes?.MarkerType)
                 {
                     case TimeLineMarkerType.TextMarker:
                         var marketFrame = new CGRect(0, 0, mTimeLineAttributes.MarkerSize, rowHeight);
@@ -156,9 +156,9 @@
                         break;
                 }
                 
-                base.ContentView.Add(mTimeLineView);
+                base.ContentView.Add(mTimeLineView!);
 
-                if (mTimeLineAttributes.MarkerInCenter || timeLineAttributes.MarkerType == TimeLineMarkerType.Icon)
+                if (mTimeLineAttributes.MarkerInCenter || timeLineAttributes!.MarkerType == TimeLineMarkerType.Icon)
                 {
                     base.ContentView.AddConstraint(NSLayoutConstraint.Create(mTimeLineView, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, base.ContentView, NSLayoutAttribute.CenterY, 1.0f, 0.0f));
                 }
@@ -193,7 +193,7 @@
                 mContectView.ContentMode = UIViewContentMode.ScaleAspectFill;
                 base.ContentView.Add(mContectView);
 
-                base.ContentView.AddConstraint(NSLayoutConstraint.Create(mContectView, NSLayoutAttribute.Leading, NSLayoutRelation.Equal, mTimeLineView, NSLayoutAttribute.Trailing, 1.0f, mTimeLineAttributes.MarginSize));
+                base.ContentView.AddConstraint(NSLayoutConstraint.Create(mContectView, NSLayoutAttribute.Leading, NSLayoutRelation.Equal, mTimeLineView, NSLayoutAttribute.Trailing, 1.0f, mTimeLineAttributes!.MarginSize));
 
                 base.ContentView.AddConstraints(new NSLayoutConstraint[]
                 {
@@ -237,16 +237,16 @@
             internal TimeLineAttributes? TimeLineAttributes { get; set; }
             private nfloat mRowHeight;
 
-            private TimeLineItem[] mTimeLines;
+            private readonly TimeLineItem[] mTimeLines;
             #endregion
 
-            public TimeLineTableViewSource(TimeLineItem[] timeLineItems, nfloat rowHeight)
+            protected TimeLineTableViewSource(TimeLineItem[] timeLineItems, nfloat rowHeight)
             {
                 mTimeLines = timeLineItems;
                 mRowHeight = rowHeight;
             }
 
-            public override nint RowsInSection(UITableView tableview, nint section)
+            public override nint RowsInSection(UITableView tableView, nint section)
             {
                 return mTimeLines.Length;
             }
@@ -277,7 +277,7 @@
                 {
                     TimeLineItemType timeLineType = BindingTypeLineMarker(indexPath);
 
-                    cell = new TimeLineTableViewCell(cellIdentifier, TimeLineAttributes, timeLineType,
+                    cell = new TimeLineTableViewCell(cellIdentifier, TimeLineAttributes!, timeLineType,
                         mTimeLines[indexPath.Row].ShowMarker, mRowHeight);
                 }
 

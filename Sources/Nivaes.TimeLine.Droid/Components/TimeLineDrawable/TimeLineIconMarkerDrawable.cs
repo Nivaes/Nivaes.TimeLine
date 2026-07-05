@@ -103,18 +103,20 @@ namespace Nivaes.TimeLine.Droid
             {
                 if (MarketPosition != TimeLinePositionType.NoMarket)
                 {
-                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(Color.White, PorterDuff.Mode.SrcIn!));
+                    mPorterDuffColorFilter = new PorterDuffColorFilter(Color.White, PorterDuff.Mode.SrcIn!);
+                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter);
                 }
                 else
                 {
-                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter = new PorterDuffColorFilter(base.Color, PorterDuff.Mode.SrcIn!));
+                    mPorterDuffColorFilter = new PorterDuffColorFilter(base.Color, PorterDuff.Mode.SrcIn!);
+                    mVectorDrawable.SetColorFilter(mPorterDuffColorFilter);
                 }
 
                 var bounds = base.Bounds;
                 var reduction = System.Math.Min(bounds.Right - bounds.Left, bounds.Bottom - bounds.Top) / 5;
 
                 mVectorDrawable.SetBounds(bounds.Left + reduction, bounds.Top + reduction, bounds.Right - reduction, bounds.Bottom - reduction);
-                mVectorDrawable.Draw(canvas);
+                mVectorDrawable.Draw(canvas!);
             }
         }
 

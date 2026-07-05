@@ -52,9 +52,12 @@
             };
 
             mTestTimeLineAdapter = new TestTimeLineAdapter(items, true);
-            timeLine.SetAdapter(mTestTimeLineAdapter);
-            timeLine.MarkerType = TimeLineMarkerType.Icon;
-            timeLine.TimeLinePositioin = -1;
+            if (timeLine != null)
+            {
+                timeLine.SetAdapter(mTestTimeLineAdapter);
+                timeLine.MarkerType = TimeLineMarkerType.Icon;
+                timeLine.TimeLinePositioin = -1;
+            }
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -74,7 +77,7 @@
             base.Dispose(disposing);
         }
 
-        private class TestTimeLineAdapter
+        private sealed class TestTimeLineAdapter
             : TimeLineView.TimeLineAdapter
         {
             private readonly bool mShowImageNext;
@@ -97,19 +100,19 @@
 
                 if (timeLineViewHolder != null)
                 {
-                    timeLineViewHolder.Title.Text = timeLineItem.Title;
+                    timeLineViewHolder.Title!.Text = timeLineItem.Title;
 
                     if (string.IsNullOrEmpty(timeLineItem.Message))
                     {
-                        timeLineViewHolder.Message.Visibility = ViewStates.Gone;
+                        timeLineViewHolder.Message!.Visibility = ViewStates.Gone;
                     }
                     else
                     {
-                        timeLineViewHolder.Message.Visibility = ViewStates.Visible;
-                        timeLineViewHolder.Message.Text = timeLineItem.Message;
+                        timeLineViewHolder.Message!.Visibility = ViewStates.Visible;
+                        timeLineViewHolder.Message!.Text = timeLineItem.Message;
                     }
 
-                    timeLineViewHolder.ImageNext.Visibility = mShowImageNext ? ViewStates.Visible : ViewStates.Gone;
+                    timeLineViewHolder.ImageNext!.Visibility = mShowImageNext ? ViewStates.Visible : ViewStates.Gone;
                 }
             }
 
@@ -117,29 +120,29 @@
             {
                 var context = parent.Context;
                 var layoutInflater = LayoutInflater.From(context);
-                View view = layoutInflater?.Inflate(Resource.Layout.time_line_button_title_message, parent, false);
+                View? view = layoutInflater?.Inflate(Resource.Layout.time_line_button_title_message, parent, false);
 
-                return new TestDetailViewHolder(view);
+                return new TestDetailViewHolder(view!);
             }
         }
 
-        private class TestDetailViewHolder
+        private sealed class TestDetailViewHolder
             : TimeLineView.TimeLineContentViewHolder
         {
-            public TextView Title { get; private set; }
-            public TextView Message { get; private set; }
-            public View ImageNext { get; private set; }
+            public TextView? Title { get; private set; }
+            public TextView? Message { get; private set; }
+            public View? ImageNext { get; private set; }
 
             public TestDetailViewHolder(View view)
                 : base(view)
             {
-                Title = view.FindViewById<TextView>(Resource.Id.time_line_title);
-                Message = view.FindViewById<TextView>(Resource.Id.time_line_message);
-                ImageNext = view.FindViewById<View>(Resource.Id.image_next);
+                Title = view?.FindViewById<TextView>(Resource.Id.time_line_title);
+                Message = view?.FindViewById<TextView>(Resource.Id.time_line_message);
+                ImageNext = view?.FindViewById<View>(Resource.Id.image_next);
             }
         }
 
-        private class TestTimeLineItem
+        private sealed class TestTimeLineItem
             : TimeLineItem, ITimeLineItem
         {
             public string Title { get; set; } = string.Empty;

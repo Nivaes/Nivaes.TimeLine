@@ -14,12 +14,12 @@ namespace Nivaes.TimeLine.WinUI
         : Control
     {
         #region Properties
-        private Ellipse mClircle;
-        private TextBlock mText;
-        private UIElement mStartLine;
-        private UIElement mEndLine;
-        private RowDefinition mStartRow;
-        private RowDefinition mEndRow;
+        private Ellipse? mClircle;
+        private TextBlock? mText;
+        private UIElement? mStartLine;
+        private UIElement? mEndLine;
+        private RowDefinition? mStartRow;
+        private RowDefinition? mEndRow;
 
         #region MarketColor
         public Brush MarketColor
@@ -149,7 +149,10 @@ namespace Nivaes.TimeLine.WinUI
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs sizeChangedEventArgs)
         {
-            mEndRow.Height = new GridLength(Math.Max(sizeChangedEventArgs.NewSize.Height - mStartRow.ActualHeight - 20, 0));
+            if (mEndRow != null)
+            {
+                mEndRow.Height = new GridLength(Math.Max(sizeChangedEventArgs.NewSize.Height - mStartRow?.ActualHeight - 20 ?? 0, 0));
+            }
         }
 
         private void ProcessItemType(TimeLineItemType itemType)
@@ -160,32 +163,32 @@ namespace Nivaes.TimeLine.WinUI
             switch (itemType)
             {
                 case TimeLineItemType.Begin:
-                    mClircle.Opacity = 1;
-                    mText.Visibility = Visibility.Visible;
+                    mClircle!.Opacity = 1;
+                    mText!.Visibility = Visibility.Visible;
                     mStartLine.Visibility = Visibility.Collapsed;
                     mEndLine.Visibility = Visibility.Visible;
                     break;
                 case TimeLineItemType.Normal:
-                    mClircle.Opacity = 1;
-                    mText.Visibility = Visibility.Visible;
+                    mClircle!.Opacity = 1;
+                    mText!.Visibility = Visibility.Visible;
                     mStartLine.Visibility = Visibility.Visible;
                     mEndLine.Visibility = Visibility.Visible;
                     break;
                 case TimeLineItemType.End:
-                    mClircle.Opacity = 1;
-                    mText.Visibility = Visibility.Visible;
+                    mClircle!.Opacity = 1;
+                    mText!.Visibility = Visibility.Visible;
                     mStartLine.Visibility = Visibility.Visible;
                     mEndLine.Visibility = Visibility.Collapsed;
                     break;
                 case TimeLineItemType.OnlyOne:
-                    mClircle.Opacity = 1;
-                    mText.Visibility = Visibility.Visible;
+                    mClircle!.Opacity = 1;
+                    mText!.Visibility = Visibility.Visible;
                     mStartLine.Visibility = Visibility.Collapsed;
                     mEndLine.Visibility = Visibility.Collapsed;
                     break;
                 case TimeLineItemType.None:
-                    mClircle.Opacity = 0;
-                    mText.Visibility = Visibility.Collapsed;
+                    mClircle!.Opacity = 0;
+                    mText!.Visibility = Visibility.Collapsed;
                     mStartLine.Visibility = Visibility.Collapsed;
                     mEndLine.Visibility = Visibility.Collapsed;
                     break;

@@ -70,11 +70,18 @@
             base.OverScrollMode = OverScrollMode.Never;
 
             if (mTimeLineAttributes.LineOrientation == TimeLineOrientation.VerticalLeft || mTimeLineAttributes.LineOrientation == TimeLineOrientation.VerticalRight)
-                base.SetLayoutManager(mLinearLayoutManager = new LinearLayoutManager(base.Context, LinearLayoutManager.Vertical, false));
+            {
+                mLinearLayoutManager = new LinearLayoutManager(base.Context, LinearLayoutManager.Vertical, false);
+                base.SetLayoutManager(mLinearLayoutManager);
+            }
             else
-                base.SetLayoutManager(mLinearLayoutManager = new LinearLayoutManager(base.Context, LinearLayoutManager.Horizontal, false));
+            {
+                mLinearLayoutManager = new LinearLayoutManager(base.Context, LinearLayoutManager.Horizontal, false);
+                base.SetLayoutManager(mLinearLayoutManager);
+            }
 
-            base.SetItemAnimator(mDefaultItemAnimator = new DefaultItemAnimator());
+            mDefaultItemAnimator = new DefaultItemAnimator();
+            base.SetItemAnimator(mDefaultItemAnimator);
         }
 
         private void InitView(IAttributeSet attrs)
@@ -95,7 +102,7 @@
         #endregion
 
         #region Methods
-        public override void SetAdapter(Adapter adapter)
+        public override void SetAdapter(Adapter? adapter)
         {
             if (adapter is TimeLineAdapter timeLineAdapter)
             {
@@ -119,7 +126,7 @@
         public abstract class TimeLineAdapter
             : RecyclerView.Adapter
         {
-            public IEnumerable<ITimeLineItem> Items { get; private set; }
+            public IEnumerable<ITimeLineItem> Items { get; }
 
             internal TimeLineAttributes? TimeLineAttributes { get; set; }
 
@@ -139,7 +146,7 @@
 
             public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
             {
-                if (holder == null) throw new ArgumentNullException(nameof(holder));
+                ArgumentNullException.ThrowIfNull(holder);
 
                 var timeLineViewHolder = (TimeLineMarketViewHolder)holder;
 
@@ -152,11 +159,16 @@
                 {
                     timeLineViewHolder.Image?.SetImageResource(timeLineItem.IconResource);
 
-#if false
-                    //ToDo: Para quitar SetColorFilter obsoleta hay que solucionar el error. Java.Lang.ClassNotFoundException: 'Didn't find class "android.graphics.BlendMode" on path: 
-                    timeLineViewHolder.Image?.Drawable?.SetColorFilter(mBlendModeColorFilter = new BlendModeColorFilter(TimeLineAttributes!.LineColor, BlendMode.SrcIn));
-#endif
-                    timeLineViewHolder.Image?.Drawable?.SetColorFilter(TimeLineAttributes.LineColor, PorterDuff.Mode.SrcIn!);
+                    if (OperatingSystem.IsAndroidVersionAtLeast(29))
+                    {
+                        timeLineViewHolder.Image?.Drawable?.SetColorFilter(
+                            new BlendModeColorFilter(TimeLineAttributes.LineColor, BlendMode.SrcIn!));
+                    }
+                    else
+                    {
+                        timeLineViewHolder.Image?.Drawable?.SetColorFilter(
+                            TimeLineAttributes.LineColor, PorterDuff.Mode.SrcIn!);
+                    }
 
                 }
                 else if (!timeLineItem.ShowMarker)
@@ -242,7 +254,7 @@
 
             public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
             {
-                if (parent == null) throw new ArgumentNullException(nameof(parent));
+                ArgumentNullException.ThrowIfNull(parent);
 
                 using var linearLayout = new LinearLayout(parent.Context);
 
@@ -276,7 +288,7 @@
 
             internal ImageView? Image { get; set; }
 
-            private FrameLayout.LayoutParams? mMarkerLayoutParams;
+            private readonly FrameLayout.LayoutParams? mMarkerLayoutParams;
 
             public TimeLineMarketViewHolder(Context context, LinearLayout linearLayout,
                 TimeLineContentViewHolder timeLineContentViewHolder, TimeLineAttributes? timeLineAttributes)
@@ -285,11 +297,6 @@
                 switch (timeLineAttributes!.LineOrientation)
                 {
                     case TimeLineOrientation.VerticalLeft:
-                        linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
-                        linearLayout.Orientation = Android.Widget.Orientation.Horizontal;
-                        linearLayout.SetPadding(20, 0, 20, 0);
-                        mMarkerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
-                        break;
                     case TimeLineOrientation.VerticalRight:
                         linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
                         linearLayout.Orientation = Android.Widget.Orientation.Horizontal;
@@ -297,11 +304,6 @@
                         mMarkerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
                         break;
                     case TimeLineOrientation.HorizontalTop:
-                        linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
-                        linearLayout.Orientation = Android.Widget.Orientation.Vertical;
-                        linearLayout.SetPadding(0, 20, 0, 20);
-                        mMarkerLayoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
-                        break;
                     case TimeLineOrientation.HorizontalBottom:
                         linearLayout.LayoutParameters = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, LinearLayout.LayoutParams.MatchParent);
                         linearLayout.Orientation = Android.Widget.Orientation.Vertical;
@@ -315,7 +317,6 @@
                 linearLayout.Clickable = true;
 
                 using TypedValue tv = new TypedValue();
-                //context.Theme.ResolveAttribute(Resource.Attribute.selectableItemBackground, tv, true);
                 linearLayout.SetBackgroundResource(tv.ResourceId);
 
                 TimeLineContentViewHolder = timeLineContentViewHolder;
@@ -364,17 +365,11 @@
                 switch (timeLineAttributes.LineOrientation)
                 {
                     case TimeLineOrientation.VerticalLeft:
-                        TimeLineMarker?.SetPadding(20, 0, 20, 0);
-                        Image?.SetPadding(20, 0, 20, 0);
-                        break;
                     case TimeLineOrientation.VerticalRight:
                         TimeLineMarker?.SetPadding(20, 0, 20, 0);
                         Image?.SetPadding(20, 0, 20, 0);
                         break;
                     case TimeLineOrientation.HorizontalTop:
-                        TimeLineMarker?.SetPadding(0, 20, 0, 20);
-                        Image?.SetPadding(0, 20, 0, 20);
-                        break;
                     case TimeLineOrientation.HorizontalBottom:
                         TimeLineMarker?.SetPadding(0, 20, 0, 20);
                         Image?.SetPadding(0, 20, 0, 20);
@@ -387,15 +382,9 @@
                     linearLayout.AddView(timeLineContentViewHolder.ItemView);
                 }
 
-                linearLayout.Click += (o, e) =>
-                {
-                    ExecuteCommandOnItem(Click);
-                };
+                linearLayout.Click += (o, e) => ExecuteCommandOnItem(Click);
 
-                linearLayout.LongClick += (o, e) =>
-                {
-                    ExecuteCommandOnItem(LongClick);
-                };
+                linearLayout.LongClick += (o, e) => ExecuteCommandOnItem(LongClick);
             }
 
             protected virtual void ExecuteCommandOnItem(ICommand? command)

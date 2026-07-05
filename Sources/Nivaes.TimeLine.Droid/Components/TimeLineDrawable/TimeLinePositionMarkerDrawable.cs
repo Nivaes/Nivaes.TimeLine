@@ -8,7 +8,7 @@
         : TimeLineMarkerDrawable
     {
         #region Properties
-        private Paint mPaintPosition;
+        private readonly Paint mPaintPosition;
         #endregion
 
         public TimeLinePositionMarkerDrawable(Resources res)
@@ -32,7 +32,7 @@
                 mPaintPosition.SetStyle(Paint.Style.Stroke);
                 mPaintPosition.Color = Color;
 
-                canvas.DrawOval(bounds.Left + LineStroke, bounds.Top + LineStroke, bounds.Right - LineStroke, bounds.Bottom - LineStroke, mPaintPosition);
+                canvas!.DrawOval(bounds.Left + LineStroke, bounds.Top + LineStroke, bounds.Right - LineStroke, bounds.Bottom - LineStroke, mPaintPosition);
 
                 mPaintPosition.SetStyle(Paint.Style.Fill);
 

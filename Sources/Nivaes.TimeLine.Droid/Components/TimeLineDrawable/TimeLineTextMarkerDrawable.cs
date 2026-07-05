@@ -11,7 +11,7 @@
         #region Properties
         private static int sDefaultTextSize = 12;
 
-        private Paint mPaintText;
+        private readonly Paint mPaintText;
 
         private string mText = string.Empty;
 

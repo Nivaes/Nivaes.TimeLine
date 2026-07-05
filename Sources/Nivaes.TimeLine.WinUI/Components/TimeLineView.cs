@@ -158,11 +158,6 @@ namespace Nivaes.TimeLine.WinUI
             }
         }
 
-        protected override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-        }
-
         protected override DependencyObject GetContainerForItemOverride()
         {
             return new TimeLineItemView
