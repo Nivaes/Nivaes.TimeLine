@@ -1,10 +1,10 @@
-﻿namespace Nivaes.TimeLine.Droid
-{
-    using Android.Content.Res;
-    using Android.Graphics;
-    using Android.Graphics.Drawables;
-    using AndroidX.VectorDrawable.Graphics.Drawable;
+﻿using Android.Content.Res;
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using AndroidX.VectorDrawable.Graphics.Drawable;
 
+namespace Nivaes.TimeLine.Droid
+{
     /// <summary>Text drawable.</summary>
     internal sealed class TimeLineIconMarkerDrawable
         : TimeLineMarkerDrawable

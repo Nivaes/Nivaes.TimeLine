@@ -104,8 +104,10 @@
         private void SetupContent()
         {
             base.AutoresizingMask = UIViewAutoresizing.All;
+#if IOS || MACCATALYST
             base.SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine;
             base.SeparatorColor = mTimeLineAttributes!.LineColor;
+#endif
             base.SeparatorInset = new UIEdgeInsets(0, mTimeLineAttributes.MarkerSize + 20, 0, 0);
             base.TableFooterView = new UIView();
         }

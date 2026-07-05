@@ -1,36 +1,12 @@
 <Solution>
-  <Configurations>
-    <Platform Name="Any CPU" />
-    <Platform Name="arm64" />
-    <Platform Name="Developer" />
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
+  <Folder Name="/Packets/">
+    <Project Path="Packeges/Nivaes.TimeLine.csproj" />
+  </Folder>
   <Folder Name="/Samples/">
-    <Project Path="Nivaes.TimeLine.Droid.Sample/Nivaes.TimeLine.Droid.Sample.csproj">
-      <Deploy />
+    <Project Path="Samples/Nivaes.TimeLine.Droid.Sample/Nivaes.TimeLine.Droid.Sample.csproj" />
+    <Project Path="Samples/Nivaes.TimeLine.iOS.Sample/Nivaes.TimeLine.iOS.Sample.csproj">
     </Project>
-    <Project Path="Nivaes.TimeLine.iOS.Sample/Nivaes.TimeLine.iOS.Sample.csproj">
-      <Platform Solution="Debug|Developer" Project="iPhoneSimulator" />
-      <Platform Solution="Release|arm64" Project="iPhoneSimulator" />
-      <Platform Solution="Release|Developer" Project="iPhone" />
-      <Platform Solution="Release|x64" Project="iPhoneSimulator" />
-      <Platform Solution="Release|x86" Project="iPhoneSimulator" />
-      <Build Solution="Release|arm64" Project="false" />
-      <Build Solution="Release|Developer" Project="false" />
-      <Build Solution="Release|x64" Project="false" />
-      <Build Solution="Release|x86" Project="false" />
-      <Deploy Solution="Debug|arm64" />
-      <Deploy Solution="Debug|Developer" />
-      <Deploy Solution="Debug|x64" />
-      <Deploy Solution="Debug|x86" />
-    </Project>
-    <Project Path="Nivaes.TimeLine.WinUI.Sample/Nivaes.TimeLine.WinUI.Sample.csproj">
-      <Platform Solution="*|Any CPU" Project="x64" />
-      <Platform Solution="*|arm64" Project="arm64" />
-      <Platform Solution="*|Developer" Project="x64" />
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
+    <Project Path="Samples/Nivaes.TimeLine.WinUI.Sample/Nivaes.TimeLine.WinUI.Sample.csproj">
       <Deploy />
     </Project>
   </Folder>
@@ -54,6 +30,8 @@
     <File Path=".github/workflows/publish_release.yaml" />
   </Folder>
   <Folder Name="/Sources/">
-    <Project Path="Nivaes.TimeLine/Nivaes.TimeLine.csproj" />
+    <Project Path="Sources/Nivaes.TimeLine.Droid/Nivaes.TimeLine.Droid.csproj" Id="779314da-6b65-4654-b9f0-a6c1348857af" />
+    <Project Path="Sources/Nivaes.TimeLine.UIKit/Nivaes.TimeLine.UIKit.csproj" Id="8cffedfe-bba4-409e-a7b7-833387001e19" />
+    <Project Path="Sources/Nivaes.TimeLine.WinUI/Nivaes.TimeLine.WinUI.csproj" Id="f2859287-fde1-45f6-90a8-474b6361995e" />
   </Folder>
 </Solution>

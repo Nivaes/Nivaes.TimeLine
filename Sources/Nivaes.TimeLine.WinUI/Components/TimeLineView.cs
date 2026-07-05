@@ -1,14 +1,13 @@
-﻿using Windows.Foundation.Collections;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Windows.Foundation.Collections;
 
 namespace Nivaes.TimeLine.WinUI
 {
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.UI;
-    using Microsoft.UI.Xaml;
-    using Microsoft.UI.Xaml.Controls;
-    using Microsoft.UI.Xaml.Media;
-
     public class TimeLineView
         : ItemsControl
     {
@@ -183,7 +182,7 @@ namespace Nivaes.TimeLine.WinUI
 
         private void BindingTypeLineMarker()
         {
-            List<Tuple<ITimeLineItem, TimeLineItemView>> items = new List<Tuple<ITimeLineItem, TimeLineItemView>>();
+            List<(ITimeLineItem, TimeLineItemView)> items = new List<(ITimeLineItem, TimeLineItemView)>();
 
             for (int i = 0; i < base.Items.Count; i++)
             {
@@ -192,7 +191,7 @@ namespace Nivaes.TimeLine.WinUI
                 if (timeLineItemView != null)
                 {
                     var timeLineItem = (ITimeLineItem)ItemFromContainer(timeLineItemView);
-                    items.Add(new Tuple<ITimeLineItem, TimeLineItemView>(timeLineItem, timeLineItemView));
+                    items.Add(new (timeLineItem, timeLineItemView));
                 }
             }
 
@@ -202,7 +201,7 @@ namespace Nivaes.TimeLine.WinUI
             }
         }
 
-        private void BindingTypeLineMarker(List<Tuple<ITimeLineItem, TimeLineItemView>> items)
+        private void BindingTypeLineMarker(List<(ITimeLineItem, TimeLineItemView)> items)
         {
             for (int i = 0; i < items.Count; i++)
             {

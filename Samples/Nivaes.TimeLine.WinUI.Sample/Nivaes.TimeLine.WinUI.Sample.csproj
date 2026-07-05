@@ -23,6 +23,11 @@
 
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     <EnableMsixTooling>true</EnableMsixTooling>
+
+    <OptimizationPreference>Speed</OptimizationPreference>
+    <IsTrimmable>true</IsTrimmable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <RunAOTAnalysis>true</RunAOTAnalysis>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Nivaes.TimeLine\Nivaes.TimeLine.csproj" />
+    <ProjectReference Include="..\..\Packeges\Nivaes.TimeLine.csproj" />
   </ItemGroup>
   
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
