@@ -16,7 +16,7 @@ env:
 
 jobs:
   build-Android:
-    runs-on: windows-lat
+    runs-on: windows-latest
 
     steps:
     - name: Dump GitHub context
@@ -25,10 +25,10 @@ jobs:
       run: echo "$GITHUB_CONTEXT"
 
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ env.net_core_version }}
       env:
@@ -45,187 +45,28 @@ jobs:
         dotnet workload install android --ignore-failed-sources --verbosity detailed
         dotnet workload install ios --ignore-failed-sources
         dotnet workload install maccatalyst --ignore-failed-sources
+        dotnet workload install tvos --ignore-failed-sources
 
     - name: Restore Dependencies
       run: |
-          dotnet restore ./Nivaes.TimeLine/
-          dotnet restore ./Nivaes.TimeLine.Droid.Sample/
+          dotnet restore ./Sources/Nivaes.TimeLine.Droid/
+          dotnet restore ./Sources/Nivaes.TimeLine.UIKit/
+          dotnet restore ./Sources/Nivaes.TimeLine.WinUI/
+          dotnet restore ./Packets/Nivaes.TimeLine/
 
-    - name: Build Nivaes.TimeLine
+    - name: Build
       run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-android --no-restore
+          dotnet build --configuration Release --no-restore
 
-    - name: Build Nivaes.TimeLine.Droid.Sample
+    - name: Build
       run: |
-          dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --framework net10.0-android --no-restore
+          dotnet build --configuration Release --no-restore
 
-    # https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet.yml
-    - name: Upload a Build Artifact
+    - name: Pack
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=0.0.1 --no-restore
+
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: android-ci-build
-        path: |
-          ./**/*.*
-          # ./**/*.aab
-          # ./**/*.apk
-          
-  build-iOS:
-    runs-on: macos-latest
-
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3 
-      with:
-        dotnet-version: ${{ env.net_core_version }}
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Install workload
-      shell: pwsh
-      run: |
-        dotnet workload install android
-        dotnet workload install ios
-        dotnet workload install maccatalyst
-
-    # https://github.com/Apple-Actions/Example-iOS/blob/master/.github/workflows/test.yml
-    # https://calvium.com/how-to-make-a-p12-file/
-    # https://www.andreasnesheim.no/setting-up-ci-for-your-net-maui-ios-app-with-github-actions/
-    # - name: Import Code-Signing Certificates
-    #   uses: Apple-Actions/import-codesign-certs@v2
-    #   with:
-    #     p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-    #     p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
-
-    - name: Restore Dependencies
-      run: |
-          dotnet restore ./Nivaes.TimeLine/
-          dotnet restore ./Nivaes.TimeLine.iOS.Sample/
-
-    - name: Build Nivaes.TimeLine
-      run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-ios --no-restore
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-maccatalyst --no-restore
-
-    - name: Build Nivaes.TimeLine.iOS.Sample
-      run: |
-          dotnet build ./Nivaes.TimeLine.iOS.Sample/ --configuration Release --framework net8.0-ios --no-restore
-    
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ios-ci-build
-        path: |
-            ./**/*.*
-            # '**/*.ipa'
-
-  build-Windows:
-    runs-on: windows-2022
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ env.net_core_version }}
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Restore Dependencies
-      run: |
-          dotnet restore ./Nivaes.TimeLine/
-          dotnet restore ./Nivaes.TimeLine.Windows.Sample/
-
-    - name: Build Nivaes.TimeLine
-      run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x64 --no-restore
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x86 --no-restore
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-arm64 --no-restore
-
-
-    - name: Build Nivaes.TimeLine.Windows.Sample
-      run: |
-          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x64 /p:Platform=x64 --no-restore --self-contained
-          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x86 /p:Platform=x86 --no-restore --self-contained
-          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-arm64 /p:Platform=ARM64 --no-restore --self-contained
-
-    #https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet-windows.yml
-
-    - name: Upload Windows Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: windows-ci-build
-        path: |
-            ./**/*.*
-        # ./Nivaes.TimeLine.Windows.Sample/bin/Release/net8.0-windows*/**/*.msix
-
-    # - name: Upload Build Artifacts
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: windows-ci-build-apppackages
-    #     path: .\**\AppPackages\**\*.*
-
-
-  build-NuGet:
-    runs-on: windows-2022
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ env.net_core_version }}
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Setup Java
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'microsoft'
-        java-version: '17'
-
-    - name: Install workload
-      run: |
-        dotnet workload install android --ignore-failed-sources --verbosity detailed
-        dotnet workload install ios --ignore-failed-sources
-        dotnet workload install maccatalyst --ignore-failed-sources
-
-    - name: Restore Dependencies
-      run: |
-          dotnet restore ./Nivaes.TimeLine/
-
-    - name: Build Nivaes.TimeLine
-      run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --no-restore
-
-    - name: Upload NuGet Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: NuGet-ci-build
-        path: |
-            ./**/*.*
-
-    # - name: Upload Build Artifacts
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: windows-ci-build-apppackages
-    #     path: .\**\AppPackages\**\*.*
+        name: build-output
+        path: ./Artifacts/
