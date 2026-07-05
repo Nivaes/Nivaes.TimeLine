@@ -12,7 +12,7 @@ on:
     - '**/*.md'
 
 env:
-    net_core_version: 8.0.203
+    net_core_version: 10.0.301
 
 jobs:
   build-Android:
@@ -53,11 +53,11 @@ jobs:
 
     - name: Build Nivaes.TimeLine
       run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-android --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-android --no-restore
 
     - name: Build Nivaes.TimeLine.Droid.Sample
       run: |
-          dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --framework net8.0-android --no-restore
+          dotnet build ./Nivaes.TimeLine.Droid.Sample/ --configuration Release --framework net10.0-android --no-restore
 
     # https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet.yml
     - name: Upload a Build Artifact
@@ -111,8 +111,8 @@ jobs:
 
     - name: Build Nivaes.TimeLine
       run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-ios --no-restore
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-maccatalyst --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-ios --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-maccatalyst --no-restore
 
     - name: Build Nivaes.TimeLine.iOS.Sample
       run: |
@@ -151,16 +151,16 @@ jobs:
 
     - name: Build Nivaes.TimeLine
       run: |
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x64 --no-restore
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 --no-restore
-          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x64 --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x86 --no-restore
+          dotnet build ./Nivaes.TimeLine/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-arm64 --no-restore
 
 
     - name: Build Nivaes.TimeLine.Windows.Sample
       run: |
-          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x64 /p:Platform=x64 --no-restore --self-contained
-          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-x86 /p:Platform=x86 --no-restore --self-contained
-          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net8.0-windows10.0.19041.0 --runtime win-arm64 /p:Platform=ARM64 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x64 /p:Platform=x64 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-x86 /p:Platform=x86 --no-restore --self-contained
+          dotnet build ./Nivaes.TimeLine.Windows.Sample/ --configuration Release --framework net10.0-windows10.0.19041.0 --runtime win-arm64 /p:Platform=ARM64 --no-restore --self-contained
 
     #https://github.com/jfversluis/MauiGithubActionsSample/blob/main/.github/workflows/dotnet-windows.yml
 
