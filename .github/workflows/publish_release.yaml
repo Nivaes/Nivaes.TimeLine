@@ -2,23 +2,14 @@ name: Publish Release
 
 on:
   release:
-    #types:[edited]
-    #types: [published]
     types:
       - released
-      - prereleased
-    #types: [deleted]
 
 jobs:
   publish_release:
-    runs-on: ubuntu-22.04
+    runs-on: windows-latest
 
     steps:
-
-    - name: Get Version
-      uses: nivaes/version-run-number@develop
-      id: version_run_number
-
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -32,44 +23,60 @@ jobs:
       if: github.event.action == 'prereleased'
       run: echo Prereleased
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: |
-          8.0.x
+    - name: Checkout
+      uses: actions/checkout@v5
 
-    - name: Setup Java
-      uses: actions/setup-java@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v5
       with:
-        distribution: 'microsoft'
-        java-version: '17'
+        global-json-file: ./global.json
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Install workload
       run: |
-        dotnet workload install android --ignore-failed-sources --verbosity detailed
-        dotnet workload install ios --ignore-failed-sources
-        dotnet workload install maccatalyst --ignore-failed-sources
-          
-    - name: Checkout
-      uses: actions/checkout@v3
+          dotnet workload install android ios maccatalyst tvos
 
+    - name: Release
+      run: |
+        echo "Tag: ${{ github.event.release.ref }}"
+
+    - name: Get Version
+      uses: nivaes/version-pack@v3
+      id: version_pack
+      with:
+        version: ${{ github.ref_name }}
+        
     - name: Restore Dependencies
       run: |
-          dotnet restore ./Nivaes.TimeLine/
+          dotnet restore
 
     - name: Build
-      run: dotnet build ./Nivaes.TimeLine/ --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+      run: dotnet build --configuration Release -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
 
     - name: Test
-      run: dotnet test ./Nivaes.TimeLine/ --configuration Release --no-build --verbosity normal --no-restore
+      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --no-build
 
     - name: Pack
-      run: dotnet pack ./Nivaes.TimeLine/ --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
 
-    #- name: Download Release Asset
-    #  env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #  uses: nivaes/download-release-assets@master
+    - name: Remove SourceGenerator symbols
+      run: |
+        rm -f ./Artifacts/*.SourceGenerator.*.snupkg
+
+    - name: Update release
+      uses: nivaes/update-release@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name }}
+        clean_assets: true
+        files: |
+          ./Artifacts/*.{nupkg,snupkg}
 
     - name: Publish packages
-      run: dotnet nuget push ./**/*.nupkg --skip-duplicate --source nuget.org --api-key ${{secrets.NIVAES_NUGET_TOKEN}}
+      shell: bash
+      run: |
+        shopt -s nullglob
+        dotnet nuget push ./Artifacts/*.nupkg --source nuget.org --skip-duplicate --api-key ${{ secrets.NIVAES_NUGET_TOKEN }}

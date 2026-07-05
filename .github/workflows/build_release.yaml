@@ -1,90 +1,83 @@
 name: Build Release
 
 on:
-  #create:
-  #  branches:              # Not filter wiht branches name of chreate.
-  #  - 'release/**'
-  push:
-    branches:
-    - 'release/**'
-    paths-ignore:
-    - '**/*.md'
-    - '**/*.sln'
-  #pull_request:
-  #  types: [opened, synchronize, reopened]
-  #  branches: [ master ]
-  #  paths-ignore:
-  #  - '**/*.md'
+  workflow_dispatch:
+    inputs:
+      prerelease:
+        description: "Prerelease identifier"
+        type: choice
+        required: false
+        options:
+          - ""
+          - Alpha
+          - Beta
+          - RC  
+          - Release
+        default: ""
 
 jobs:
   build_release:
 
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     steps:
-    - name: Get Version
-      uses: nivaes/version-run-number@develop
-      id: version_run_number
-      
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: |
-            8.0.x
+    - name: Checkout
+      uses: actions/checkout@v5
 
-    - name: Setup Java
-      uses: actions/setup-java@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v5
       with:
-        distribution: 'microsoft'
-        java-version: '17'
+        global-json-file: ./global.json
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Install workload
       run: |
-        dotnet workload install android --ignore-failed-sources --verbosity detailed
-        dotnet workload install ios --ignore-failed-sources
-        dotnet workload install maccatalyst --ignore-failed-sources
-          
-    - name: Checkout
-      uses: actions/checkout@v3
+          dotnet workload install android ios maccatalyst tvos
+  
+    - name: Get Version
+      uses: nivaes/version-pack@v3
+      id: version_pack
+      with:
+        prerelease: ${{ inputs.prerelease }}
+
+    - name: Install workload
+      run: |
+          dotnet workload install android ios maccatalyst tvos
 
     - name: Restore Dependencies
       run: |
-          dotnet restore ./Nivaes.TimeLine/
+          dotnet restore
 
     - name: Build
-      run: dotnet build ./Nivaes.TimeLine/ --configuration Release -p:Version=${{ steps.version_run_number.outputs.version }} --no-restore
+      run: dotnet build --configuration Release -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
 
     - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal
+      run: dotnet test --configuration Release --no-build --verbosity normal --no-restore --no-build
 
     - name: Pack
       if: github.event_name == 'push' || (github.event_name != 'pull_request')
-      run: dotnet pack ./Nivaes.TimeLine/ --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_run_number.outputs.version }} 
+      run: dotnet pack --configuration Release --no-build --verbosity normal --output ./Artifacts/ -p:Version=${{ steps.version_pack.outputs.version-pack }} --no-restore
+
+    - name: Remove SourceGenerator symbols
+      run: |
+        rm -f ./Artifacts/*.SourceGenerator.*.snupkg
 
     - name: Create Release
-      if: github.event_name == 'push' || (github.event_name != 'pull_request')
       id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v3
       with:
-        tag_name: release/v${{ steps.version_run_number.outputs.version }}
-        release_name: Release Version ${{ steps.version_run_number.outputs.version }}
+        tag_name: ${{ steps.version_pack.outputs.version-release }}
+        name: "Release ${{ steps.version_pack.outputs.version-number }}"
         body: |
-          Automatic Release ${{ steps.version_run_number.outputs.version }}  
-          - Release automatically generated.
+          Automatic release generated from GitHub Actions.
         draft: true
         prerelease: false
-
-    - name: Upload Release Asset
-      uses: nivaes/upload-release-assets@master
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-         upload_url: ${{ steps.create_release.outputs.upload_url }}
-         targets: ./Artifacts/*.nupkg
+        files: |
+          ./Artifacts/*.{nupkg,snupkg}
