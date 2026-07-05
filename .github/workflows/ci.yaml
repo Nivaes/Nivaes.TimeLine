@@ -15,7 +15,7 @@ env:
     net_core_version: 10.0.301
 
 jobs:
-  build-Android:
+  build:
     runs-on: windows-latest
 
     steps:
@@ -34,11 +34,11 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - name: Setup Java
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'microsoft'
-        java-version: '17'
+    # - name: Setup Java
+    #   uses: actions/setup-java@v2
+    #   with:
+    #     distribution: 'microsoft'
+    #     java-version: '17'
 
     - name: Install workload
       run: |
