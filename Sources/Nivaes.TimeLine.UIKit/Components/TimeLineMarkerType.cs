@@ -1,4 +1,4 @@
-﻿namespace Nivaes.TimeLine.iOS
+﻿namespace Nivaes.TimeLine.UIKitLib
 {
     public enum TimeLineMarkerType
         : short

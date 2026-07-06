@@ -1,8 +1,7 @@
-﻿namespace Nivaes.TimeLine.iOS
-{
-    using System.Windows.Input;
-    using UIKit;
+﻿using System.Windows.Input;
 
+namespace Nivaes.TimeLine.UIKitLib
+{
     public class TimeLineItem
         : ITimeLineItem
     {

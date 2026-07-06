@@ -1,8 +1,8 @@
-﻿namespace Nivaes.TimeLine.Droid
-{
-    using System.Diagnostics.CodeAnalysis;
-    using System.Windows.Input;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows.Input;
 
+namespace Nivaes.TimeLine.Droid
+{
     public abstract class TimeLineItem
         : ITimeLineItem
     {

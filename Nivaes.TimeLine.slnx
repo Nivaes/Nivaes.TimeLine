@@ -3,7 +3,7 @@
     <Project Path="Packets/Nivaes.TimeLine.csproj" />
   </Folder>
   <Folder Name="/Samples/">
-    <Project Path="Samples/Nivaes.TimeLine.Droid.Sample/Nivaes.TimeLine.Droid.Sample.csproj" >
+    <Project Path="Samples/Nivaes.TimeLine.Droid.Sample/Nivaes.TimeLine.Droid.Sample.csproj">
       <Deploy />
     </Project>
     <Project Path="Samples/Nivaes.TimeLine.iOS.Sample/Nivaes.TimeLine.iOS.Sample.csproj">

@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0-android</TargetFramework>
-
+    <AssemblyName>Nivaes.TimeLine.Droid</AssemblyName>
+    <RootNamespace>Nivaes.TimeLine.Droid</RootNamespace>
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
 
     <Nullable>enable</Nullable>

@@ -1,13 +1,8 @@
-﻿namespace Nivaes.TimeLine.iOS
-{
-    using System;
-    using System.ComponentModel;
-    using System.Linq;
-    using CoreGraphics;
-    using Foundation;
-    using ObjCRuntime;
-    using UIKit;
+﻿using System.ComponentModel;
+using ObjCRuntime;
 
+namespace Nivaes.TimeLine.UIKitLib
+{
     [Preserve(AllMembers = true), DesignTimeVisible(true)]
     public partial class TimeLineView
         : UITableView
@@ -155,7 +150,6 @@
                         };
                         break;
                 }
-                
                 base.ContentView.Add(mTimeLineView!);
 
                 if (mTimeLineAttributes.MarkerInCenter || timeLineAttributes!.MarkerType == TimeLineMarkerType.Icon)
@@ -235,7 +229,7 @@
             #region TimeLines
             private readonly NSString cellIdentifier = new NSString("TimeLineTableCell");
             internal TimeLineAttributes? TimeLineAttributes { get; set; }
-            private nfloat mRowHeight;
+            private readonly nfloat mRowHeight;
 
             private readonly TimeLineItem[] mTimeLines;
             #endregion
@@ -253,15 +247,15 @@
 
             public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
             {
-                if (tableView == null) throw new ArgumentNullException(nameof(tableView));
-                if (indexPath == null) throw new ArgumentNullException(nameof(indexPath));
+                ArgumentNullException.ThrowIfNull(tableView);
+                ArgumentNullException.ThrowIfNull(indexPath);
 
                 tableView.DeselectRow(indexPath, true);
 
                 var item = mTimeLines[indexPath.Row];
 
                 var command = item?.Click;
-                if (command != null && command.CanExecute(null))
+                if (command?.CanExecute(null) == true)
                 {
                     command.Execute(null);
                 }
@@ -269,8 +263,8 @@
 
             public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
             {
-                if (tableView == null) throw new ArgumentNullException(nameof(tableView));
-                if (indexPath == null) throw new ArgumentNullException(nameof(indexPath));
+                ArgumentNullException.ThrowIfNull(tableView);
+                ArgumentNullException.ThrowIfNull(indexPath);
 
 
                 if (!(tableView.DequeueReusableCell(cellIdentifier) is TimeLineTableViewCell cell))

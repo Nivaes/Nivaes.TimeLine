@@ -1,7 +1,7 @@
-﻿namespace Nivaes.TimeLine.iOS
-{
-    using UIKit;
+﻿using UIKit;
 
+namespace Nivaes.TimeLine.UIKitLib
+{
     internal class TimeLineAttributes
     {
         internal UIColor? LineColor { get; set; }
