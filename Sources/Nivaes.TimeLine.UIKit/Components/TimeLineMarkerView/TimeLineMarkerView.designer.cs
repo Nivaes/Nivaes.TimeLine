@@ -8,7 +8,7 @@ using Foundation;
 using System;
 using System.CodeDom.Compiler;
 
-namespace Nivaes.TimeLine.iOS
+namespace Nivaes.TimeLine.UIKitLib
 {
     [Register ("TimeLineMarkerView")]
     partial class TimeLineMarkerView
