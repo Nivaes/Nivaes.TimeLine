@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net10.0-ios;net10.0-maccatalyst;net10.0-tvos</TargetFrameworks>
+    <TargetFrameworks>$(_CrossiOSTargets);$(_CrossMacCatalystTargets);$(_CrossTvOSTargets)</TargetFrameworks>
+    
     <AssemblyName>Nivaes.TimeLine.UIKit</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.UIKitLib</RootNamespace>
     
@@ -14,6 +15,20 @@
     <IsTrimmable>true</IsTrimmable>
     <RunAOTAnalysis>true</RunAOTAnalysis>
   </PropertyGroup>
+
+  <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+    <SupportedOSPlatformVersion>$(_SupportedOSPlatformiOSVersion)</SupportedOSPlatformVersion>
+    <TargetPlatformVersion>$(_TargetPlatformiOSVersion)</TargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
+    <SupportedOSPlatformVersion>$(_SupportedOSPlatformMacCatalystVersion)</SupportedOSPlatformVersion>
+    <TargetPlatformVersion>$(_TargetPlatformMacCatalystVersion)</TargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tvos'">
+    <SupportedOSPlatformVersion>$(_SupportedOSPlatformTvOSVersion)</SupportedOSPlatformVersion>
+    <TargetPlatformVersion>$(_TargetPlatformTvOSVersion)</TargetPlatformVersion>
+  </PropertyGroup>
+
 
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <IncludeSymbols>true</IncludeSymbols>

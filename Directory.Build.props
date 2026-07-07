@@ -18,12 +18,41 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">13.4</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-    <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+    <_SupportedOSPlatformMacOSVersion>13.0</_SupportedOSPlatformMacOSVersion>
+
+    <_SupportedOSPlatformiOSVersion>15.8</_SupportedOSPlatformiOSVersion>
+    <_TargetPlatformiOSVersion>26.0</_TargetPlatformiOSVersion>
+
+    <_SupportedOSPlatformMacCatalystVersion>15.0</_SupportedOSPlatformMacCatalystVersion>
+    <_TargetPlatformMacCatalystVersion>26.0</_TargetPlatformMacCatalystVersion>
+
+    <_SupportedOSPlatformTvOSVersion>15.8</_SupportedOSPlatformTvOSVersion>
+    <_TargetPlatformTvOSVersion>26.0</_TargetPlatformTvOSVersion>
+
+    <_SupportedOSPlatformAndroidVersion>24</_SupportedOSPlatformAndroidVersion>
+
+    <!--<_SupportedOSPlatformWindowsVersion>10.0.22000.0</_SupportedOSPlatformWindowsVersion>-->
+    <_TargetPlatformWinodwsMinVersion>10.0.19041.0</_TargetPlatformWinodwsMinVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <_CrossCommonTargets>net10.0</_CrossCommonTargets>
+    <_CrossAndroidTargets>net10.0-android</_CrossAndroidTargets>
+    <_CrossiOSTargets>net10.0-ios</_CrossiOSTargets>
+    <_CrossMacCatalystTargets>net10.0-maccatalyst</_CrossMacCatalystTargets>
+    <_CrossMacOSTargets>net10.0-macos</_CrossMacOSTargets>
+    <_CrossTvOSTargets>net10.0-tvos</_CrossTvOSTargets>
+    <_CrossWindowsTargets>net10.0-windows10.0.22000.0</_CrossWindowsTargets>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <_CrossTargetFrameworks>$(_CrossCommonTargets)</_CrossTargetFrameworks>
+    <!-- Windows-specific targets -->
+    <_CrossTargetFrameworks Condition=" $([MSBuild]::IsOSPlatform('windows')) ">$(_CrossAndroidTargets);$(_CrossiOSTargets);$(_CrossMacCatalystTargets);$(_CrossMacOSTargets);$(_CrossTvOSTargets);$(_CrossWindowsTargets);$(TargetFrameworks)</_CrossTargetFrameworks>
+    <!-- Linux-specific targets -->
+    <_CrossTargetFrameworks Condition=" $([MSBuild]::IsOSPlatform('linux')) ">$(_CrossAndroidTargets);$(TargetFrameworks)</_CrossTargetFrameworks>
+    <!-- Mac-specific targets -->
+    <_CrossTargetFrameworks Condition=" $([MSBuild]::IsOSPlatform('osx')) ">$(_CrossAndroidTargets);$(_CrossiOSTargets);$(_CrossMacCatalystTargets);$(_CrossMacOSTargets);$(_CrossTvOSTargets);$(TargetFrameworks)</_CrossTargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
