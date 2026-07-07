@@ -18,6 +18,12 @@
     <RunAOTAnalysis>true</RunAOTAnalysis>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Description>Time line for Android</Description>
+    <PackageId>Nivaes.TimeLine.Droid</PackageId>
+    <PackageTags>xamarin;android;nivaes</PackageTags>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

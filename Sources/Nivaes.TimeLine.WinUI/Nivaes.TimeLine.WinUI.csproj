@@ -28,6 +28,12 @@
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Description>Time line for WinUI3</Description>
+    <PackageId>Nivaes.TimeLine.UIKit</PackageId>
+    <PackageTags>xamarin;windows;winui;nivaes</PackageTags>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
     <None Include="Docs\Readme.md" Pack="true" PackagePath="\" />

@@ -29,12 +29,18 @@
     <TargetPlatformVersion>$(_TargetPlatformTvOSVersion)</TargetPlatformVersion>
   </PropertyGroup>
 
-
   <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>Time line for iOS and maccatalyst</Description>
+    <PackageId>Nivaes.TimeLine.UIKit</PackageId>
+    <PackageTags>xamarin;ios;maccatalyst;UIKit;nivaes</PackageTags>
+  </PropertyGroup>
+
 
   <ItemGroup>
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
