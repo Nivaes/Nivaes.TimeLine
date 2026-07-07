@@ -24,6 +24,12 @@
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Description>Time line for Android, ios, maccatalys, winui</Description>
+    <PackageId>Nivaes.TimeLine</PackageId>
+    <PackageTags>xamarin;android;ios;macatalys;uikit;windows;winui;nivaes</PackageTags>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
     <None Include="Docs\Readme.md" Pack="true" PackagePath="\" />

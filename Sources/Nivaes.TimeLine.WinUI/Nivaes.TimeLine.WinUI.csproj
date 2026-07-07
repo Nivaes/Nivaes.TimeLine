@@ -30,7 +30,7 @@
 
   <PropertyGroup>
     <Description>Time line for WinUI3</Description>
-    <PackageId>Nivaes.TimeLine.UIKit</PackageId>
+    <PackageId>Nivaes.TimeLine.WinUI</PackageId>
     <PackageTags>xamarin;windows;winui;nivaes</PackageTags>
   </PropertyGroup>
 
