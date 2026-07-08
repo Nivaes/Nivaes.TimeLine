@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>$(_CrossWindowsTargets)</TargetFrameworks>
-    <TargetPlatformMinVersion>$(_CrossWindowsPlatformMinVersion)</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>$(_TargetPlatformWinodwsMinVersion)</TargetPlatformMinVersion>
     
     <AssemblyName>Nivaes.TimeLine.WinUI</AssemblyName>
     <RootNamespace>Nivaes.TimeLine.WinUI</RootNamespace>
