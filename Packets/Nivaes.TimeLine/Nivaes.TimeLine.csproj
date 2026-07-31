@@ -39,19 +39,19 @@
   </ItemGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-    <ProjectReference Include="..\Sources\Nivaes.TimeLine.UIKit\Nivaes.TimeLine.UIKit.csproj" />
+    <ProjectReference Include="..\..\Sources\Nivaes.TimeLine.UIKit\Nivaes.TimeLine.UIKit.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
-    <ProjectReference Include="..\Sources\Nivaes.TimeLine.UIKit\Nivaes.TimeLine.UIKit.csproj" />
+    <ProjectReference Include="..\..\Sources\Nivaes.TimeLine.UIKit\Nivaes.TimeLine.UIKit.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tvos'">
-    <ProjectReference Include="..\Sources\Nivaes.TimeLine.UIKit\Nivaes.TimeLine.UIKit.csproj" />
+    <ProjectReference Include="..\..\Sources\Nivaes.TimeLine.UIKit\Nivaes.TimeLine.UIKit.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-    <ProjectReference Include="..\Sources\Nivaes.TimeLine.Droid\Nivaes.TimeLine.Droid.csproj" />
+    <ProjectReference Include="..\..\Sources\Nivaes.TimeLine.Droid\Nivaes.TimeLine.Droid.csproj" />
   </ItemGroup>
 
   <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
@@ -59,7 +59,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
-    <ProjectReference Include="..\Sources\Nivaes.TimeLine.WinUI\Nivaes.TimeLine.WinUI.csproj" />
+    <ProjectReference Include="..\..\Sources\Nivaes.TimeLine.WinUI\Nivaes.TimeLine.WinUI.csproj" />
   </ItemGroup>
 
 </Project>

@@ -17,6 +17,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\Packets\Nivaes.TimeLine.csproj" />
+    <ProjectReference Include="..\..\Packets\Nivaes.TimeLine\Nivaes.TimeLine.csproj" />
   </ItemGroup>
 </Project>

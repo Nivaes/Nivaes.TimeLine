@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/Packets/">
-    <Project Path="Packets/Nivaes.TimeLine.csproj" />
+    <Project Path="Packets/Nivaes.TimeLine/Nivaes.TimeLine.csproj" />
   </Folder>
   <Folder Name="/Samples/">
     <Project Path="Samples/Nivaes.TimeLine.Droid.Sample/Nivaes.TimeLine.Droid.Sample.csproj">
