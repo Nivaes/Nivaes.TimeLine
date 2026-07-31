@@ -41,11 +41,9 @@
     <PackageTags>xamarin;ios;maccatalyst;UIKit;nivaes</PackageTags>
   </PropertyGroup>
 
-
   <ItemGroup>
     <None Include="Images\icon.png" Pack="true" PackagePath="\" />
     <None Include="Docs\Readme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
-
 
 </Project>
