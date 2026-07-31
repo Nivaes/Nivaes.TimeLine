@@ -47,6 +47,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Packets\Nivaes.TimeLine.csproj" />
+		<ProjectReference Include="..\..\Sources\Nivaes.TimeLine.WinUI\Nivaes.TimeLine.WinUI.csproj" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
