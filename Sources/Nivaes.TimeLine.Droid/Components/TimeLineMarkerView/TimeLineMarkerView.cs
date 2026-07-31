@@ -21,8 +21,8 @@
 
         internal Color StartColor
         {
-            get => Marker!.Color;
-            set => Marker!.Color = value;
+            get => Marker.Color;
+            set => Marker.Color = value;
         }
 
         internal Color EndColor { get; set; }
@@ -82,7 +82,7 @@
             int cWidth = width - pLeft - pRight;
             int cHeight = height - pTop - pBottom;
 
-            int markSize = System.Math.Min(TimeLineAttributes.MarkerSize, System.Math.Min(cWidth, cHeight));          
+            int markSize = System.Math.Min(TimeLineAttributes.MarkerSize, System.Math.Min(cWidth, cHeight));
 
             if (TimeLineAttributes.MarkerInCenter)
             {

@@ -169,11 +169,11 @@ namespace Nivaes.TimeLine.Droid
                 }
                 else if (!timeLineItem.ShowMarker)
                 {
-                    timeLineViewHolder!.TimeLineMarker!.Visibility = ViewStates.Invisible;
+                    timeLineViewHolder.TimeLineMarker!.Visibility = ViewStates.Invisible;
                 }
                 else
                 {
-                    BindingTypeLineMarker(timeLineViewHolder!.TimeLineMarker, position);
+                    BindingTypeLineMarker(timeLineViewHolder.TimeLineMarker, position);
 
                     if (timeLineViewHolder?.TimeLineMarker != null)
                     {
@@ -199,52 +199,52 @@ namespace Nivaes.TimeLine.Droid
                 if (TimeLineAttributes!.TimeLinePositioin < position)
                 {
                     timeLineMarkerView!.MarketPosition = TimeLinePositionType.NoMarket;
-                    timeLineMarkerView!.StartColor = TimeLineAttributes.LineColor;
-                    timeLineMarkerView!.EndColor = TimeLineAttributes.LineColor;
+                    timeLineMarkerView.StartColor = TimeLineAttributes.LineColor;
+                    timeLineMarkerView.EndColor = TimeLineAttributes.LineColor;
                 }
-                else if (TimeLineAttributes!.TimeLinePositioin > position)
+                else if (TimeLineAttributes.TimeLinePositioin > position)
                 {
                     timeLineMarkerView!.MarketPosition = TimeLinePositionType.Market;
-                    timeLineMarkerView!.StartColor = TimeLineAttributes.MarketColor;
-                    timeLineMarkerView!.EndColor = TimeLineAttributes.MarketColor;
+                    timeLineMarkerView.StartColor = TimeLineAttributes.MarketColor;
+                    timeLineMarkerView.EndColor = TimeLineAttributes.MarketColor;
                 }
                 else
                 {
                     timeLineMarkerView!.MarketPosition = TimeLinePositionType.MarketPosition;
-                    timeLineMarkerView!.StartColor = TimeLineAttributes.MarketColor;
-                    timeLineMarkerView!.EndColor = TimeLineAttributes.LineColor;
+                    timeLineMarkerView.StartColor = TimeLineAttributes.MarketColor;
+                    timeLineMarkerView.EndColor = TimeLineAttributes.LineColor;
                 }
 
                 if (Items.Count() == 1)
                 {
-                    timeLineMarkerView!.TimeLineType = TimeLineItemType.OnlyOne;
+                    timeLineMarkerView.TimeLineType = TimeLineItemType.OnlyOne;
                 }
                 else if (position == 0)
                 {
                     if (!Items.ElementAt(1).ShowMarker)
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.OnlyOne;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.OnlyOne;
                     else
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Begin;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.Begin;
                 }
                 else if (position >= Items.Count() - 1)
                 {
                     if (!Items.ElementAt(position - 1).ShowMarker)
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.OnlyOne;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.OnlyOne;
                     else
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.End;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.End;
                 }
                 else
                 {
                     bool showEnd = Items.ElementAt(position + 1).ShowMarker;
                     bool showBegin = Items.ElementAt(position - 1).ShowMarker;
                     if (showEnd && showBegin)
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Normal;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.Normal;
                     else if (!showEnd)
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.End;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.End;
                     else if (!showBegin)
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Begin;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.Begin;
                     else
-                        timeLineMarkerView!.TimeLineType = TimeLineItemType.Normal;
+                        timeLineMarkerView.TimeLineType = TimeLineItemType.Normal;
                 }
             }
 

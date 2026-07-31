@@ -287,14 +287,14 @@ namespace Nivaes.TimeLine.UIKitLib
                 if (TimeLineAttributes!.TimeLinePositioin < indexPath.Row)
                 {
                     timeLinePositionType = TimeLinePositionType.NoMarket;
-                    startColor = TimeLineAttributes!.LineColor;
-                    endColor = TimeLineAttributes!.LineColor;
+                    startColor = TimeLineAttributes.LineColor;
+                    endColor = TimeLineAttributes.LineColor;
                 }
                 else if (TimeLineAttributes.TimeLinePositioin > indexPath.Row)
                 {
                     timeLinePositionType = TimeLinePositionType.Market;
-                    startColor = TimeLineAttributes!.MarketColor;
-                    endColor = TimeLineAttributes!.MarketColor;
+                    startColor = TimeLineAttributes.MarketColor;
+                    endColor = TimeLineAttributes.MarketColor;
                 }
                 else
                 {

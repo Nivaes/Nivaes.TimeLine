@@ -109,7 +109,7 @@
                     else
                     {
                         timeLineViewHolder.Message!.Visibility = ViewStates.Visible;
-                        timeLineViewHolder.Message!.Text = timeLineItem.Message;
+                        timeLineViewHolder.Message.Text = timeLineItem.Message;
                     }
 
                     timeLineViewHolder.ImageNext!.Visibility = mShowImageNext ? ViewStates.Visible : ViewStates.Gone;
@@ -129,9 +129,9 @@
         private sealed class TestDetailViewHolder
             : TimeLineView.TimeLineContentViewHolder
         {
-            public TextView? Title { get; private set; }
-            public TextView? Message { get; private set; }
-            public View? ImageNext { get; private set; }
+            public TextView? Title { get; }
+            public TextView? Message { get; }
+            public View? ImageNext { get; }
 
             public TestDetailViewHolder(View view)
                 : base(view)
