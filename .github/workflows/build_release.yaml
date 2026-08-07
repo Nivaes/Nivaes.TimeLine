@@ -65,10 +65,10 @@ jobs:
       shell: bash
       run: |
         find . -maxdepth 1 -type f \
-            -name "Nivaes.TimeLine.*.snupkg" \
-            ! -name "Nivaes.TimeLine.Droid.*.snupkg" \
-            ! -name "Nivaes.TimeLine.UIKit.*.snupkg" \
-            ! -name "Nivaes.TimeLine.WinUI.*.snupkg" \
+            -name "./Artifacts/Nivaes.TimeLine.*.snupkg" \
+            ! -name "./Artifacts/Nivaes.TimeLine.Droid.*.snupkg" \
+            ! -name "./Artifacts/Nivaes.TimeLine.UIKit.*.snupkg" \
+            ! -name "./Artifacts/Nivaes.TimeLine.WinUI.*.snupkg" \
             -delete
         rm -f ./Artifacts/*.SourceGenerator.*.snupkg
 
