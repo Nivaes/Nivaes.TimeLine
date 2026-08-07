@@ -64,7 +64,12 @@ jobs:
     - name: Remove SourceGenerator symbols
       shell: bash
       run: |
-        rm -f ./Packets/*.snupkg
+        find ./Artifacts -maxdepth 1 -type f \
+            -name "Nivaes.TimeLine.*.snupkg" \
+            ! -name "Nivaes.TimeLine.Droid.*.snupkg" \
+            ! -name "Nivaes.TimeLine.UIKit.*.snupkg" \
+            ! -name "Nivaes.TimeLine.WinUI.*.snupkg" \
+            -delete
         rm -f ./Artifacts/*.SourceGenerator.*.snupkg
 
     - name: Update release
