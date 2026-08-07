@@ -64,6 +64,7 @@ jobs:
     - name: Remove SourceGenerator symbols
       shell: bash
       run: |
+        rm -f ./Packets/*.snupkg
         rm -f ./Artifacts/*.SourceGenerator.*.snupkg
 
     - name: Create Release
