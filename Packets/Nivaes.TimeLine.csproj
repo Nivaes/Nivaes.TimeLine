@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst;net10.0-tvos</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>$(_CrossAndroidTargets);$(_CrossiOSTargets);$(_CrossMacCatalystTargets);$(_CrossTvOSTargets)</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);$(_CrossWindowsTargets)</TargetFrameworks>
 
     <ImplicitUsings>enable</ImplicitUsings>
 
@@ -55,6 +55,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
+    <TargetPlatformMinVersion>$(_CrossWindowsPlatformMinVersion)</TargetPlatformMinVersion>
     <Platforms>x64;ARM64</Platforms>
   </PropertyGroup>
 
